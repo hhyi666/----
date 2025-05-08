@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数
+        function foo(){
+            console.log('foo')
+        }
+
+        //方法;将函数放进对象里面(特殊的函数)
+        // key字符串类型,''""可以省略
+        var person =  {
+            name: "why",
+            age : 18,
+            height : 1.77,
+            "my friend" : {//也可以是对象类型
+                name : "kobe",
+                age : 30,
+            },
+            run : function(){
+                console.log('running')
+            },
+            eat : function(){
+                console.log('eating')
+            },
+            study : function(){
+                console.log('studying')
+            },
+        }
+
+        // 创建方式
+        //1 {}
+        var obj = {
+            name : "why",
+        }
+        //2 new object
+        var ob2 = new Object()
+        ob2.name = "coder"
+
+        //3自定义类
+        function Person(){}
+        var ob3 = new Person();
+
+    </script>
+</body>
+</html>

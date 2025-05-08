@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "why",
+            "my friend" : "kobe",
+            "eating something":function(){
+                console.log("eating")
+            }
+        }
+        console.log(obj["my friend"]);
+        console.log(obj.name);
+
+        //函数这样即可直接打印
+        obj["eating something"]();
+        //点符号当中输出不能包括空格所以要用[]进行访问
+
+    </script>
+    
+</body>
+</html>

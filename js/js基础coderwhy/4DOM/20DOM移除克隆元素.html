@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class = "removebtn">移除box</button>
+    <button class = "clonebtn">克隆box</button>
+    <div class="box">
+        <h1>标题</h1>
+        <p>u安啊是的就卡手机卡的落</p>
+    </div>
+    <script>
+
+        var boxEI = document.querySelector(".box")
+        var removeEI = document.querySelector(".removebtn")
+
+        removeEI.onclick = function(){
+            boxEI.remove()
+            //全部移除
+        }
+
+        var cnt = 0
+        var cloneEI = document.querySelector(".clonebtn")
+        cloneEI.onclick = function(){
+            var newnode = boxEI.cloneNode(true)
+            newnode.children[0].textContent = "标题" + cnt
+            // boxEI.after(newnode)//添加
+            document.body.append(newnode)
+            cnt ++
+        }
+        
+    </script>
+</body>
+</html>

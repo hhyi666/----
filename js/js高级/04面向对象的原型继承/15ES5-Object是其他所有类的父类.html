@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/inherit.js"></script>
+    <script>
+
+        //继承自Object类
+        function Person(){}
+        function Teacher(){}
+        function Student(){}
+        //继承
+        inherit(Teacher,Person)
+        inherit(Student,Person)
+
+        console.log(Person.prototype.__proto__ === Object.prototype)
+
+        //在object原型上加属性
+        //下面所有的所有可以继承
+        Object.prototype.message = "huuyii"
+        var stu = new Student()
+        console.log(stu.message)
+
+        //object原型有东西
+        console.log(Object.prototype)
+
+        //函数对象也是继承子object
+        function foo(){
+            console.log(foo.message)
+        }
+        foo()
+    </script>
+</body>
+</html>

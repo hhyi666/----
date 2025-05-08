@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            background-color: orange;
+        }
+        .box button{
+            flex : 1;
+            height: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button>删除</button>
+        <button>新增</button>
+        <button>搜索</button>
+    </div>
+    <script>
+        //监听button元素
+        // var btnEls = document.querySelectorAll("button")
+        // for (var btnEl of btnEls) {//就是建立三个不同的函数
+        //     btnEl.onmouseover = function(){
+        //         console.log(this.textContent)
+        //     }
+        // }
+
+        //事件委托
+        //over可以用与事件委托
+        //enter不行(No 冒泡)
+        var boxEl = document.querySelector(".box")
+        boxEl.onmouseover = function(event){
+            //确定监听的类型
+            if(event.target.tagName === "BUTTON"){
+               console.log(event.target.textContent) 
+            }
+        }
+    </script>
+</body>
+</html>

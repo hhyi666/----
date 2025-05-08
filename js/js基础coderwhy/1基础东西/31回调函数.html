@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function foo(fn){
+        //     //通过fn调用bar过程，函数回调
+        //     fn();
+        // }
+
+        // function bar(){
+        //     console.log('bar执行');
+        // }
+        // //加括号是undefined
+        // foo(bar);
+
+        //函数回调案例
+        // function request(url,callback){
+        //     console.log("根据url向服务器发送请求");
+        //     console.log("需要时间");
+        //     //花费时间较长（异步操作）
+        //     var list = ["1","2","3"];//不能return出去
+        //     callback(list);
+        // }
+
+        // function handleresult(res){
+        //     console.log("拿到结果",res);
+        // }
+        // request("https://www.baidu.com",handleresult);
+
+        // 函数回调重构
+        //高阶函数
+        function request(url,callback){
+            console.log("根据url向服务器发送请求");
+            console.log("需要时间");
+            //花费时间较长（异步操作）
+            var list = ["1","2","3"];//不能return出去
+            callback(list);
+        }
+        // 匿名函数没有名字
+        request("url",function(res){
+            console.log("拿到数据",res);
+        });
+    </script>
+</body>
+</html>

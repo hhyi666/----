@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;height: 200px;
+            background-color: orange;
+        }
+        .box span {
+            height: 100px;width: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span></span>
+    </div>
+    <script>
+        var boxEl = document.querySelector(".box")
+        var spanEl = document.querySelector("span")
+        //两组
+        // enter leave 元素里面的子元素不会有影响 不支持冒泡span -> div(NO)
+        // boxEl.onmouseenter = function(){
+        //     console.log("onmouseenter")
+        // }
+        // boxEl.onmouseleave = function(){
+        //     console.log("onmouseleave")
+        // }
+        // spanEl.onmouseenter = function(){
+        //     console.log("span enter")
+        // }
+        // spanEl.onmouseleave = function(){
+        //     console.log("span leave")
+        // }
+        
+        //over out 
+        //进入子元素后冒泡会导致box再次over一次(冒泡)
+        boxEl.onmouseover = function(){
+            console.log("over")
+        }
+        boxEl.onmouseout = function(){
+            console.log("out")
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // function pow(a,t){
+        //     if(t === 0){
+        //         return 1;
+        //     }
+        //     return a*pow(a,t-1);
+        // }
+
+
+        // console.log(pow(2,4));
+
+        // function sum(a,b){
+        //     return a+b;
+        // }
+
+        // var t1 = Number(prompt());
+        // var t2 = Number(prompt());
+        // console.log(typeof t1);
+        // console.log(sum(t1,t2));
+
+        // function printName(name){
+            //$这样的引用只能够使用反引号进行引用
+        //     console.log('my name if ${name}');
+        // }
+        // printName("sss");
+
+        //没有写返回值，默认返回undefined;
+        //我们也可以写返回值
+        //return 没有写返回值也会导致indefined
+        // function getCircleArea(radius){
+        //     return Math.PI*radius*radius;
+        // }
+        // var r = Number(prompt());
+        // console.log(getCircleArea(r));
+
+        // function sumN(n){
+        //     console.log(`chaunru${n}的数有误`)
+        //     if(n == 0){
+        //         return 0;
+        //     }
+        //     return n+sumN(n-1);
+        // }
+        // console.log(sumN(5));
+
+        //10_0000_0000语法糖（更加简单）
+        // 传入数字，将亿级别数字转化成亿级别的文本1.1亿
+        //从服务器拿到数字
+        // 数字化格式化的函数练习
+        var playCount1 = 11233;
+        var playCount2 = 3421000;
+        var playCount3 = 9999999999;
+
+        console.log(fomatCount(playCount1));
+        console.log(fomatCount(playCount2));
+        console.log(fomatCount(playCount3));
+        function fomatCount(count){
+            var fomatCount = 0;
+            if(count >= 10_0000_0000){
+                fomatCount = Math.floor(count/10_0000_0000) + "亿";
+            }else if(count >= 10_0000){
+                fomatCount = Math.floor(count / 10_0000) + "万";
+            }else{
+                fomatCount = count;
+            }
+            return fomatCount;
+        }
+
+        
+    </script>
+</body>
+</html>

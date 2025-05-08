@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .box{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="box">hahahha</div>
+    <p>我是内容</p>
+    <button>删除box</button>
+
+    <script>
+        //第一次确定节点的大小和位置，称之为布局
+        //之后对节点的大小，位置进行修改重新计算，就会进行回流
+        var boxEl = document.querySelector(".box")
+        var btnEl = document.querySelector("button")
+        //DOM树没有改变 但是会进行重新布局
+        btnEl.onclick = function(){
+            // boxEl.remove()
+            //这里的删除操作会进行！！！回流！！！
+            //这样才能够重新进行排版,重新绘制
+            boxEl.style.height = "200px"
+        }
+        //消耗性能的操作
+        //引起回流的情况 ：
+        // dom结构发生改变
+        // 改变了布局
+        // 窗口的改变
+        // 使用getComouterStyle方法获取尺寸位置等信息
+        
+        //重绘
+        // 修改背景色
+        // 边框颜色 样式 文字颜色。。。
+
+
+        //避免回流
+        //修改样式的时候尽量一次性修改 （动态添加class进行修稿）
+        //尽量避免频繁的操作dom
+        //尽量避免getComputerStyle获取尺寸位等信息
+        //对某些元素进行position 的absolute或者fixed
+    </script>
+</body>
+</html>

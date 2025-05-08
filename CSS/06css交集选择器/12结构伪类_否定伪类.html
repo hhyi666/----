@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 否定选择器 */
+        /* div > p:not(.fail){
+            color : red;
+        } */
+/* 
+        div > p :not([title]^="加油"){
+            color : red;
+        } */
+
+        div>p:not(:first-child){
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>张三:1</p>
+        <p>李四:2</p>
+        <p>王五:3</p>
+        <p class = "fail" title = "加油">随其</p>
+        <p class = "fail" title = "加油">askd</p>
+    </div>
+</body>
+</html>

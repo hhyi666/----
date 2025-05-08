@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            background-color: gray;
+            width : 400px;
+            /* border: 1px solid red;
+            padding : 1px; */
+            overflow : hidden;
+            /* 能够解决父辈元素的吃margin的问题 
+            防止父辈元素和边界产生距离
+            */
+
+        }
+        .inner1{
+            width : 100px;
+            height: 100px;
+            background-color: yellow;
+            margin-top : 100px;
+        }
+        .inner2{
+            width : 100px;
+            height: 100px;
+            background-color: red;
+            /* margin-top: 50px; */
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class = "outer">
+        <div class = "inner1">什么鬼</div>
+        <div class = "inner2">shshshsh</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            padding: 20px;
+            border : 1px solid black;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        近年来，中国和俄罗斯之间的友谊日深，双方在许多的问题上都保持着相似的观点，作为中方的亲密友国，俄方在台湾问题上始终坚持一个中国原则。但在此之前，俄方从来没有在中国收复台湾的问题做出过具体评论，而普京在公众面前的表态是否代表着俄罗斯会在中国收复台湾的行动上提供军事或者经济支持？而未来台湾问题会走向何方？这也是我们现在需要思考以及关注的问题。
+        一,台湾问题属于历史遗留问题，1949年蒋介石败退大陆后以台湾为据点，一直渴望反攻大陆，本来这只是一个简单的中国内政问题，但是美国的介入让这个内政问题上升到了前所未有的高度。</div>
+
+    <script>
+        var boxEL = document.querySelector(".box")
+
+        // 获取样式 1获取宽高简单方法
+        var boxstyle = getComputedStyle(boxEL)
+        console.log(boxstyle.width, boxstyle.height)
+
+        //获取更多的样式
+        console.log(boxEL.clientWidth)//内容加padding不包括滚动条
+        console.log(boxEL.clientHeight)
+        console.log(boxEL.clientTop)
+        window.onclick = function(){
+            console.log(boxEL.scrollTop)
+            //滚动距离
+        }
+        
+    </script>
+</body>
+
+</html>

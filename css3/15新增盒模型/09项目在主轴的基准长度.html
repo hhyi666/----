@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+        .outer{
+            width: 1000px;height: 900px;
+            background-color: #888;
+            margin: 0 auto ;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        .inner{
+            width: 200px;height: 200px;
+            background-color: skyblue;
+            border : 1px solid black;
+            box-sizing: border-box;
+        }
+        .inner2{
+            /* 设置元素在主轴的基准长度 */
+
+            flex-basis: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner inner2">2</div>
+        <div class="inner inner3">3</div>
+    </div>
+    
+</body>
+</html>

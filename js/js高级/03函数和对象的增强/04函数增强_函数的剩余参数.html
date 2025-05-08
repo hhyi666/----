@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //剩余参数 rest 
+        function foo(num1,num2,...othernums){
+            console.log(arguments)
+
+            //argument不是
+            //本身就是数组
+            console.log(othernums)//拿到剩余的参数
+        }
+
+        foo(1,2,3,4)
+
+        function bar(...args){
+            console.log(args)
+        }
+        bar(1,1,1,1,1,1)
+
+        //!!剩余参数卸载最后
+
+        // function sum(...sss){
+        //     var sm = 0
+        //     for (const aa of sss) {
+        //         sm += aa
+        //     }
+        //     return sm
+        // }
+        // console.log(sum(1,1,1,1))
+    </script>
+</body>
+</html>

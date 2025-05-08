@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var height = 10;
+        height = 1.1;
+        console.log(height);
+
+        // 特殊数值
+        var t1 = Infinity;
+        var t2 = 1/0;
+        console.log(t1,t2);
+
+        //得到的不是数字(NAN)
+        var result = 3*"c";
+        console.log(result);
+
+        //进制地表示
+
+        var num1 = 100;//十进制
+        var num2 = 0x100;//16进制下的100;0x表示16进制
+        //  0o开头的是8进制
+        // 0b二进制
+        var max = Number.MAX_VALUE;
+        // 有最大值也有最小值
+        console.log(max);
+        var t = 1;
+        for(var i = 1;i<=1000;i++){
+            t *= 2;
+        }
+        console.log(t);
+        console.log(isNaN(result));
+    </script>
+</body>
+</html>

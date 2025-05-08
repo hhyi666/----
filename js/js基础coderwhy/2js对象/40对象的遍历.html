@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var info = {
+            name : "why",
+            age : 18,
+            height : 1.99,
+        }
+        //把所有的对象名字以及内容作为数组返回回来
+        var infokeys = Object.keys(info)
+        // 对对象进行i遍历
+        for(var i = 0;i<infokeys.length;i++){
+            var key = infokeys[i]
+            var value = info[key]
+            console.log(`key:${key},value:${value}`)
+        }
+        //第二种方法
+        //直接拿到key的值
+        for (var key in info) {
+            console.log(key,":",info[key])
+        }
+
+        //第三种方法(不支持)
+        // for (var key of info) {
+            
+        // }
+    </script>
+</body>
+</html>

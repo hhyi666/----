@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var names = ["asd","rfdf","mkkl","oik"]
+        console.log(names.indexOf("asd"))
+
+        //数组存放对象类型
+        var stu = [
+            {name:"n1",age:11},
+            {name:"n2",age:12},
+            {name:"n3",age:144},
+        ]
+        // 查找age==11 的学生
+        // indexof查找数组局限找不到
+        var stuu = null
+        for(var i = 0;i<stu.length;i++){
+            // console.log(stu[i])
+            if(stu[i].age==11){
+                stuu = stu[i]
+                console.log(stu[i])
+                break
+            }
+        }
+        if(stuu){
+            console.log("yes")
+        }else console.log("no")
+        //！！！！！！！！！！！！！！！！！!!
+        //数组find(高阶函数（传入函数操作）)找相应的值
+        var bb = stu.find(function(item){//传入并且鉴定成功，返回true证明找到并传递元素
+            //调用length次,会传进来
+            if(item.age == 11){
+                return true
+            }
+        })
+        console.log(bb)
+    </script>
+</body>
+</html>

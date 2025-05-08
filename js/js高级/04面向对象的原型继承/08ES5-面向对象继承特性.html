@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //存在大量的重复的属性和方法
+        //这里就想到使用相同的父类进行封装 后面中直接只用就行
+        
+        function Student(name,age,sno){
+            this.name = name
+            this.age = age
+            this.sno = sno
+        }
+
+        Student.prototype.running = function(){}
+        Student.prototype.eating = function(){}
+        Student.prototype.studying = function(){}
+
+        function Teacher(name,age,title){
+            this.name = name
+            this.age = age
+            this.title = title
+        }
+        Teacher.prototype.running = function(){}
+        Teacher.prototype.eating = function(){}
+        Teacher.prototype.teaching = function(){}
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>UI伪类</title>
+    <style>
+        /* 选中的是勾选框 */
+        input:checked{
+            width : 15px;
+            height : 15px;
+            background-color: green;
+        }
+        /* 选中的是被禁用的元素 */
+        input:disabled{
+            background-color: gray;
+        }
+        input:enabled{
+            color : red;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <input type = "checkbox" name = "agree">是否同意协议
+    <br>
+    <input type = "radio" name = "gender" >
+    <input type = "radio" name = "gender" >
+    <br>
+    <input type = "text"><br>
+    <input type = "text" disabled>
+</body>
+</html>

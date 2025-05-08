@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 class = "time">2025-03-10 22:00:10</h2>
+    <script>
+
+        //封装工具函数（加上位数）
+        function padLeft(content,count,padstr){
+            count = count||2//要有几位数
+            //这里转进来count是0 false 不穿进来就会取2
+            padstr = padstr || "0"//前面加上0
+            //后面加上0 并且 count是0的话就变成两位数
+            content = String(content)
+            return content.padStart(count,padstr)
+        }
+        var timeEL = document.querySelector(".time")
+
+        //计数1s更改一次
+        setInterval(() => {
+            //月份smin等需要有两位数，
+            var data = new Date()//每次都要最新的就放在里面
+            var yy = data.getFullYear()
+            var month = padLeft(data.getMonth()+1)
+            var day = padLeft(data.getDate())
+            var hour = padLeft(data.getHours())
+            var min = padLeft(data.getMinutes())
+            var s = padLeft(data.getSeconds())
+            console.log(min)
+            timeEL.textContent = `${yy}-${month}-${day} ${hour}-${min}-${s}`
+        }, 1000);
+        
+        
+
+    </script>
+</body>
+</html>

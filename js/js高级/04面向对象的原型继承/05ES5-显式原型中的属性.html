@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //非常重要的属性constructor指向函数对象
+        function Person(){
+
+        }
+
+        console.log(Person.prototype)
+        //直接在函数原型中创建新的函数对象
+        Person.prototype.running = function(){}
+        Person.prototype.message = "Hello"
+        Person.prototype.eating = function(){}
+        var p1 = new Person()
+        var p2 = new Person()
+        
+        //自己没有找到，就去原型中找
+        console.log(p1.message)//直接从原型中找到
+        console.log(Person.prototype)
+        
+
+        //函数对象有个prottype指向原型对象
+        //原型对象中由constructor指向函数对象
+        //相等
+        var personPrototype = Person.prototype
+        console.log(personPrototype.constructor === Person)
+
+        p1.__proto__.info = "中国很美丽"
+        console.log(p1.info)
+        //使用生成的新对象的——proto——也可以加载函数的原型当中
+        //p2也可以访问到
+
+        //但是p1单独加 p2就不会出现
+
+    </script>
+</body>
+</html>

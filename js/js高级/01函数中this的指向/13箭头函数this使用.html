@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //1.普通函数中是有this标识符
+        // function foo(){
+        //     console.log(this)
+        // }
+        // foo()
+        // foo.apply("aaa")
+
+
+        //2.箭头函数中没有this
+        var bar = () => {
+            console.log(this)
+            //这里没有this只能去全局找到this指向window
+        }
+        bar()
+        //apply调用也没有this
+        bar.apply("aaa")
+
+        
+        //3.this的查找规则
+        var obj = {
+            name : "obj",
+            foo : function(){
+                var bar = () => {
+                    //向上找到foo的this
+                    console.log("bar:",this)   
+                }
+                return bar
+            }
+        }
+        var fn = obj.foo()
+        fn.apply("bbb")
+    </script>
+</body>
+</html>

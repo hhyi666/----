@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function sum(count){
+            function add(num){
+                return count + num
+            }
+            return add
+        }
+
+        var add5 = sum(5)
+        add5(100)
+        console.log(add5(100))
+        var add8 = sum(8)
+        //假如不再使用adder8
+        //内存泄漏 ： 对于不在使用的对象，但是对于CG来说，他不知道要进行释放的对应的内存依然会进行保留
+        add8 = null //进行释放
+        
+    </script>
+</body>
+</html>

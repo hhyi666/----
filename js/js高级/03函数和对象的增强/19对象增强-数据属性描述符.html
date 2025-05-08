@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "huuyii",
+            age : 18
+        }
+
+        //这样的时候默认时false
+        Object.defineProperty(obj,"name",{
+            configurable:false,//不能删除
+            //后面也不能进行修改
+            enumerable : false,//不能通过forin or object。keys拿到
+            writable : false,//只能读取不能写入
+            value : "ccc"//返回固定的值
+        })
+        delete obj.name
+        console.log(obj.name)
+
+        //可以通过Object.defineProperty添加一个新的属性 默认时false
+        Object.defineProperty(obj,"message",{})
+        delete obj.message
+        console.log(obj.message)
+
+        //拿不到undefined
+        console.log(Object.keys(obj))
+    </script>
+</body>
+</html>

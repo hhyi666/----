@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./js/inherit.js"></script>
+    <script>    
+        var obj = {
+            name : "hhh",
+            age : 18
+        }
+        
+        var info = createObject(obj)
+        info.address = "china"
+        info.intro = "66666"
+
+        console.log(info.address)
+        console.log(info)
+
+        //判断是不是在自己的原型上
+        console.log(info.hasOwnProperty("name"))
+        console.log(info.hasOwnProperty("address"))
+
+        //in操作符
+        //检查是否在原型上
+        console.log("name" in info)
+        //for in 都会遍历到 但有的不能被访问
+        for(var key in info){
+            console.log(key)
+        }
+
+        //instanceof
+        function Person(){}
+        function Student(){}
+        
+        inherit(Student,Person)
+
+
+        //stu实例（iinstance）对象
+        //stu 是 Student 的实例
+        //找原型链 判断是否在原型链上
+        var stu = new Student()
+        console.log(stu instanceof Student)
+        console.log(stu instanceof Person)
+        
+
+        //isPrototypeOf判断是否是stu的原型 和instance的反着来
+        console.log(Student.prototype.isPrototypeOf(stu))
+        console.log(obj.isPrototypeOf(stu))
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tip-bar{
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            height: 30px;
+            background-color: gray;
+            border-radius: 16px;
+        }
+        img{
+            width: 30px;height: 30px;
+            border-radius: 50%;
+            margin-right: 5px;
+            
+        }
+        span{
+            font-size: 13px;
+            color: white;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class = "tip-bar">
+        <img src="https://pic3.zhimg.com/v2-47cd2c339ba4b6ec68c376ba8c0d8b49_r.jpg?source=1940ef5c" alt="">
+        <span>奥特曼对这个商品感兴趣</span>
+    </div>
+    <script>
+        //从服务器拿到数据 ajax/fetch 请求类似数组
+        //玩数组
+        let tipList = [
+            {
+                icon: `http://puui.qpic.cn/vcover_vt_pic/0/h9e59hjq99pd9qrt1463551363.jpg/0`,
+                title : `喜羊羊对这个商品感兴趣`
+            },
+            {
+                icon: `https://img.tukuppt.com/png_preview/00/09/32/9vRDeVBxQf.jpg!/fw/780`,
+                title: `孙悟空对这个商品感兴趣`
+            }
+        ]
+
+        //2.动态切换数据
+        //2.1获取元素
+        var tipBar = document.querySelector(".tip-bar")
+        var imgEl = tipBar.querySelector("img")
+        var spanEl = tipBar.querySelector("span")
+        //2.2 3s切换数据
+        //声明索引
+        var counter = 0;//记录索引声明位置
+        setInterval(function(){
+            var tipItem = tipList[counter]
+
+            imgEl.src = tipItem.icon
+            spanEl.textContent = tipItem.title
+
+            counter ++
+            if(counter === tipList.length)counter = 0
+        },3000)
+        
+        //随机播放
+        // Math.random()
+    </script>
+</body>
+</html>

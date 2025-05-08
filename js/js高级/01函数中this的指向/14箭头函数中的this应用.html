@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //网络请求的工具函数
+        function request(url,callbackFn){
+            var result = ["abc","nba","cba"]
+            callbackFn(result)
+        }
+        //实际操作的位置（业务）
+        var obj = {
+            names : [],
+           
+            network : function(){
+                //1.早期的做法
+                // var _this = this
+                // request("/names",function(res){
+                //     _this.names = [].concat(res)//回调
+                // })
+
+                //2.箭头函数的写法
+                //直接找到上层的this然后进行更改
+                request("/names",(res) => {
+                    this.names = [].concat(res)//回调
+                })
+            }
+        }
+        obj.network()
+        console.log(obj)
+    </script>
+</body>
+</html>

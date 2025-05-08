@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: black;
+            height: 40px;
+            padding:  0 10px;
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        a{
+            color : white
+        }
+        img{
+            width: 40px;
+            border-radius: 20px;
+            margin-left: 10px;
+            margin-right: 50px;
+        }
+        .box span{
+            color : white;
+        }
+        .btn{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <a href="#">×</a>
+        <img src="../图片/奥特曼.jpg" alt="">
+        <span>打开京东</span>
+        <div class = "btn">搜索</div>
+    </div>
+
+    <script>
+        var b = document.querySelector(".box")
+        var aEl = document.querySelector("a")
+
+        aEl.onclick = function(){
+            b.style.height = 0
+        }
+        b.ontransitionend = function(){
+            b.remobe();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 行内元素没有上下margin -->
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width : 400px;
+            height : 400px;
+            background-color: gray;
+            padding : 50px;
+
+        }
+        .inner{
+            width : 100px;
+            height: 100px;
+            background-color: orange;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 子元素的margin参看父元素进行设置 -->
+     <!-- 在父元素的里面 -->
+    <div class = "outer">
+        <div class = "inner"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 全局定义
+        var message = "hello world";
+
+        if(true){
+            console.log(message);
+        }
+
+        function foo(){
+            console.log(message);
+        }
+        foo();
+
+        //2.es5之前是没有块级作用域的（var定义的变量没有块级作用域）
+        {
+            var count = 1;
+            console.log(count);
+        }
+        console.log(count);
+        //在里面和在外面是一样的
+        //for循环也是这样
+
+        // function t(){
+        //     var bar = "bar";
+        // }
+        //函数定义的变量外界不能访问（函数作用域）
+        // console.log(bar);
+
+        //函数有自己的作用域
+        function sayHello(){
+            var nickname = "kobe";
+            console.log(nickname);
+
+            function hi(){
+                console.log("hi");
+            }
+            hi();
+        }
+        sayHello();
+        // console.log(nickname);
+    </script>
+</body>
+</html>

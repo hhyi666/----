@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>打开新的网页</button>
+    <button>替换新的网页</button>
+    <button>重新加载网页</button>
+    <script>
+        //完整的url
+        console.log(location.href)
+
+        //获取信息
+        //主机地址
+        console.log(location.hostname)
+        console.log(location.host)
+        console.log(location.protocol)//协议
+        console.log(location.hash)
+
+        //location方法
+        var btns = document.querySelectorAll("button")
+        btns[0].onclick = function(){
+            location.assign("http://baidu.com")
+        }
+        btns[1].onclick = function(){
+            location.replace("http://baidu.com")
+            //替换不能返回之前的网站
+        }
+        btns[2].onclick = function(){
+            location.reload()
+        }
+
+        //4urlsearchparams
+        //能够找到里面的字符串
+        var urlSearchString = ""
+        var t = new URLSearchParams(urlSearchString)
+        console.log(t)
+
+        //追加
+        t.append("","")
+        //编码
+        encodeURIComponent
+        //解码
+        decodeURIComponent
+    </script>
+</body>
+</html>

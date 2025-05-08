@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <span class = "first">hahahah</span>
+        <p>我嘞个都</p>
+    </div>
+    <script>
+        var boxEI = document.querySelector(".box")
+        //这样写法效率不高
+        //1.innerHTML
+        // boxEI.innerHTML = `<h2 class = "title">标题</h2>`
+
+        // setTimeout(function(){
+        //     var titleEI = document.querySelector(".title")
+        //     titleEI.classList.add("active")
+        // },2000)
+
+        //2.创建dom对象
+        var h2EI = document.createElement("h2")
+        console.log(h2EI)
+        h2EI.className = "title active"
+        h2EI.textContent = "我是标题"
+        //传入文本
+
+        //插入boxEI  
+        // boxEI.append(h2EI) //添加到最后面
+        // boxEI.prepend(h2EI)//最前面
+        // boxEI.after(h2EI)//放后面
+        // boxEI.before(h2EI)//放前面
+        // boxEI.replaceWith(h2EI)//直接替换
+
+        //插入span和p元素之间
+        // var spanEI = boxEI.children[0]
+        //也可以在元素上面使用
+        var spanEI = boxEI.querySelector("span")
+        spanEI.after(h2EI)
+        console.log(spanEI.nextElementSibling)
+    </script>
+</body>
+</html>

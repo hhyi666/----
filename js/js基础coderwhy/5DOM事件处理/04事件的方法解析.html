@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+        .box span{
+            width: 100px;height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com" target="_blank">百度</a>
+
+    <div class="box">
+        <span>
+            <button>按钮</button>
+        </span>
+    </div>
+    <script>
+        //阻止默认行为
+        // var aEL = document.querySelector("a")
+        // aEL.onclick = function(event){
+        //     console.log("a元素点击")
+        //     event.preventDefault()
+        // }
+
+        //2阻止事件进一步传递
+        var benEL = document.querySelector("button")
+        var spanEL = document.querySelector("span")
+        var divEL = document.querySelector(".box")
+
+        //捕获
+        divEL.addEventListener("click",function(event){
+            console.log("div")
+            event.stopPropagation()
+            //阻止捕获进一步传递
+
+        },true)
+        spanEL.addEventListener("click",function(){
+            console.log("span")
+        },true)
+        benEL.addEventListener("click",function(){
+            console.log("btn")
+        },true)
+        //冒泡
+        divEL.addEventListener("click",function(){
+            console.log("div")
+        })
+        spanEL.addEventListener("click",function(){
+            console.log("span")
+        })
+        benEL.addEventListener("click",function(){
+            console.log("btn")
+        })
+
+    </script>
+</body>
+</html>

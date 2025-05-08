@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(message)
+
+        // var message = "Global Message"
+
+        // function foo(){
+        //     var message = "foo message"
+        //     console.log(message)
+            
+        // }
+        // foo()
+
+
+        //！！函数的作用域链已经在定义的时候已经创建好了后面不会改变作用域链
+
+        //作用域链是一个对象列表，用于变量标识符的求值
+        //当进入一个上下文时 这个作用域链
+        var message = "Global message"
+        
+        function foo(){
+            console.log(message)//自己的作用域中没有对应的值 向上层查找
+        }
+        foo()
+
+        var obj = {
+            name : "obj",
+            bar : function(){
+                var message = "bar message"
+                foo()
+            }
+        }
+        obj.bar()//这里的message还是Global不会改变
+    </script>
+</body>
+</html>

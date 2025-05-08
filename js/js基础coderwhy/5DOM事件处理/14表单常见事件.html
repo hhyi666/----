@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+       <input type="text">
+       <textarea name="" id="" cols = "20" rows= "10"></textarea>
+       
+       <button type = "reset">重置</button> 
+       <button type = "submit">提交</button> 
+       
+    </form>
+    
+    <script>
+        // var inputEl = document.querySelector("input")
+
+        //1获取焦点和失去焦点
+        // inputEl.onfocus = function(){
+        //     console.log("yes")
+        // }
+        // inputEl.onblur = function(){
+        //     console.log("No")
+        // }
+
+        // //2内容发生改变
+        // inputEl.oninput = function(){
+        //     console.log("shuqu" ,inputEl.value)
+        // }
+        // //失去焦点，确定值的时候才会发生改变
+        // inputEl.onchange =  function(){
+        //     console.log("askdasj")
+        // }
+
+        //监听重置和提交事件
+        var formEl = document.querySelector("form")
+        formEl.onreset = function(event){
+            console.log("发生重置")
+            event.preventDefault()
+        }
+        formEl.onsubmit = function(event){
+            console.log("提交")
+            //axios提交
+            event.preventDefault()
+        }
+    </script>
+</body>
+</html>

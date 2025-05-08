@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 我是注释 -->
+    <!-- 我是diic -->
+    我是文本
+    <div class="box">
+        <h2>woshi </h2>
+    </div>
+    <script>
+        var bodynode = document.body.childNodes
+        console.log(bodynode)
+        var commemt =  bodynode[3]
+        console.log(commemt)
+        var textnode = bodynode[4]
+        console.log(textnode)
+        var divnode = bodynode[5]
+        console.log(divnode)
+
+        //节点有属性
+        //nodetype返回数值代表节点类型
+        // for (var node of bodynode) {
+        //     if(node.nodeType==8)console.log("注释")
+        //     else if(node.nodeType == 3)console.log("wenben")
+        //     else if(node.nodeType == 1)console.log("div")
+        // }
+        console.log(commemt.nodeType,textnode.nodeType,divnode.nodeType)
+        // switch () {
+        //     case value:
+                
+        //         break;
+        
+        //     default:
+        //         break;
+        // }
+        console.log(commemt.nodeType == Node.COMMENT_NODE)
+
+        // nodename节点名称
+        //tagname 针对元素标签设置只有元素标签才能使用
+        console.log(commemt.nodeName,divnode.nodeName,textnode.nodeName)
+        console.log(commemt.tagname,divnode.tagname)
+        
+
+        //date =针对非元素数据获取数据使用data = nodevalue
+        console.log(commemt.data)
+        //innerHTML针对元素数据并且会获取html标签
+        console.log(divnode.innerHTML)
+        //只拿文本内容，
+        console.log(divnode.textContent)
+
+        divnode.innerHTML = "hhhhh"//进行替换
+        divnode.textContent = "qqq"//也可以替换
+
+        divnode.innerHTML = "<h2>hhhh<h2>"
+        //这个会解析标签
+        divnode.textContent = "<h1>asjkld<h1>"
+        //只会当成文本
+
+
+        //outerHTML
+        console.log(divnode.outerHTML)
+        //自己本身也会被获取
+
+    </script>
+</body>
+</html>

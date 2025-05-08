@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = 100
+
+        //1.直接乘2
+        function double(num){
+            return num * 2
+        }
+        //2.平方
+        function pow(num){
+            return num ** 2
+        }
+
+        //将上面的两个函数进行组合
+        //组合函数
+        function composeFn(num){
+            return pow(double(num))
+        }
+        console.log(composeFn(num))
+    </script>
+</body>
+</html>

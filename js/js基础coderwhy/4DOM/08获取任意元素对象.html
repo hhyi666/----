@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="container">
+           <h1>我是标题</h1>
+            <p>我是段落 <span class = "sss">coder</span> 呵呵哈哈哈</p> 
+        </div>
+        <div>
+            <h3 id = "hhh">jaslkdjas</h3>
+        </div>
+    </div>
+
+    <script>
+
+        //DOM 获取元素并进行访问修改
+        //children都是数组记得加上数字
+        //导航获取
+       var t = document.body.firstElementChild.children[0].children[1].children[0]
+       console.log(t)
+       t.style.color = "red"
+
+
+       //直接获取classname
+       //这里的span1 也是不是数组但是类似数组elements(类数组对象，可迭代)
+       var span1 = document.getElementsByClassName("sss")
+       console.log(span1)
+       span1[0].style.color = "green"
+       var s = document.getElementsByClassName("container")
+       console.log(s)
+
+       //通过id获取
+       //这里不是数组（id不能重复，只有一个）
+        var h3EI = document.getElementById("hhh")
+        console.log(h3EI)
+        
+        //获取元素直接方法
+        
+        //3 queryselector（常用）
+        //直接访问用id或者class
+        var key = document.querySelector("#hhh")
+        //这个只找到第一个
+        //querySeleterAll 找到左右相同的标签的元素
+        console.log(key)
+        key.style.color = "red"
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nums = [20,5,12,912,10,23]
+        //sort排序
+        // nums.sort(function(item1,item2){
+        //     return item1 - item2
+        // })
+        // console.log(nums)
+        // console.log(nums.reverse())
+        nums.sort(function(item1,item2){
+            return item2 - item1;
+        })
+        console.log(nums)
+
+        //复杂排序
+        var stu = [            
+            {id : 111,name : "hh",age:11},
+            {id : 123,name : "zz",age:12},
+            {id : 156,name : "dd",age:31},
+        ]
+        stu.sort(function(item1,item2){
+            return item2.age-item1.age
+        })
+        console.log(stu)
+    </script>
+</body>
+</html>

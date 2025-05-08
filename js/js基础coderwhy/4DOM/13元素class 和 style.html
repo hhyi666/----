@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color : red;
+            font-size: 20px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">box</div>
+    <script>
+        var boxEI = document.querySelector(".box")
+        // boxEI.onclick = function(){
+        //     //直接修改
+        //     boxEI.style.color = "red"
+        //     boxEI.style.fontSize = "100px"
+        //     boxEI.style.backgroundColor = "green"
+        // }
+        var cnt = 1;
+        //动态添加css给class(推荐)
+        boxEI.onclick = function(){
+            boxEI.className = "active"
+            
+            //动态添加宽度
+            boxEI.style.width = 100*cnt + "px"
+            cnt ++;
+        }
+        
+
+        
+    </script>
+</body>
+</html>

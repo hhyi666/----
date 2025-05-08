@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color : red;
+            font-size: 40px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        //每一个li监听自己的函数点击
+        // var liEls = document.querySelectorAll("li")
+        // for(var liEl of liEls){
+        //     // liEl.onclick = function(event){
+        //     //     event.currentTarget.classList.add("active")
+        //     // }
+        //     liEl.onclick = function(){
+        //         this.classList.add("active")
+        //     }
+        // }
+
+        //ul监听
+        //事件委托，li的事件交给ul进行处理，提高效率
+        // var ulEl = document.querySelector("ul")
+        // ulEl.onclick = function(event){
+        //     console.log(event.target)
+        //     //在那里发生点击
+        //     event.target.classList.add("active")
+        // }
+
+        //点击li变成active其他取消active
+        var ulEl = document.querySelector("ul")
+        var activeEl = null
+        ulEl.onclick = function(event){
+
+            //其他清除
+            // for(var i = 0;i<ulEl.children.length;i++){
+            //     ulEl.children[i].classList.remove("active")
+            // }
+
+            // var activeEl = ulEl.querySelector(".active")
+            //一开始是null找不到
+            // activeEl && activeEl.classList.remove("active")
+
+            //最新的方法，使用变量进行记录一开始设置为null
+            //严谨 防止点到ul
+            if(activeEl && event.target !== ulEl){
+                activeEl.classList.remove("active")
+            }
+            if(event.target !== ulEl ){
+                event.target.classList.add("active")
+            }
+            
+            activeEl = event.target
+            
+        }
+    </script>
+</body>
+</html>

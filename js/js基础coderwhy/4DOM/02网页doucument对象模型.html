@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <script>
+        var htmlEI = document.documentElement
+        var bodyEI = document.body
+        
+        console.log(htmlEI,bodyEI)
+
+        //获取节点的导航
+        var bodyEI = document.body
+        //获取body的子节点
+        //这里没有li是ul的字节点
+        console.log(bodyEI.childNodes)
+        
+        //获取子节点
+        console.log(bodyEI.children)
+
+        //获取注释
+        console.log(bodyEI.nextElementSibling)
+
+        //获取父节点
+        console.log(bodyEI.parentElement)
+    </script>
+</body>
+</html>

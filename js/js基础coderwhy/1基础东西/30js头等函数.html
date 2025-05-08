@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数可以作为 头等公民 别的函数的参数，函数的返回值，变量，数据结构等等....
+        var foo1 = function(){
+            console.log('foo1被执行');
+
+        }
+        // foo1();
+        // var foo2 = foo1;
+        // foo2();
+
+        //函数可以作为另一个函数的参数以及返回值
+        // function bar(name){
+        //     // console.log("name:", name);
+        //     // name();
+        //     function hi(){
+        //         console.log('h1 '+name);
+        //     }
+            // return hi;
+            //也可以返回一个函数
+        // }
+        // 不需要加上括号
+        // var fn = bar('kobe');
+        // console.log(fn);
+        // fn();
+
+        //5.函数可以存储在一个数据结构当中
+        var obj = {
+            name:'hhy',
+            eating : function(){//存进对象当中
+                console.log("eating");
+            }
+        }
+        obj.eating();
+
+        function bar1(){
+            console.log('1');
+        }
+        function bar2(){
+            console.log('2');
+        }
+        function bar3(){
+            console.log('3');
+        }
+        var fns = [bar1,bar2,bar3];
+        console.log(fns[0]);
+
+        //函数时编程：使用函数来作为头等公民使用函数，这种编程方式（范式）
+        //支持函数式编程（java不支持）
+    </script>
+</body>
+</html>

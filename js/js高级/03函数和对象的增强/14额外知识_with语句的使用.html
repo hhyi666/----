@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        var obj = {
+            message : "hello"
+        }
+
+        with(obj){//多加了一层obj作用域，扩展作用域链
+            console.log(message)
+        }
+        
+        //可能导致混淆 产生错误
+    </script>
+</body>
+</html>

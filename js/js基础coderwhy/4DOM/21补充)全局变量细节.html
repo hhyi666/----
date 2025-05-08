@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class = "udd">+</button>
+    <button class = "ddd">-</button>
+    <h2 class = "counter">0</h2>
+
+    <script>
+        //获取按钮
+        var uddEL = document.querySelector(".udd")
+        var dddEL = document.querySelector(".ddd")
+        var h2EL = document.querySelector(".counter")
+        var counter = 0//全局变量
+        uddEL.onclick = function(){
+            counter++
+            h2EL.textContent = counter
+        }
+        dddEL.onclick = function(){
+            counter--
+            h2EL.textContent = counter
+        }
+       
+    </script>
+</body>
+</html>

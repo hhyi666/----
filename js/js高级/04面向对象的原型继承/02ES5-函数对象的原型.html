@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+
+        }
+
+        function foo(){
+            
+        }
+
+        //1.将函数看成普通的对象 具备——proto——（隐式原型）
+        //作用 ： 查找key对相应的value 会找到原型身上
+        console.log(obj.__proto__)
+        console.log(foo.__proto__)
+
+        //2.将函数看成一个函数的时候，具有prototype
+        //用来构建对象时，给对象设置隐式原型的
+        console.log(foo.prototype)//只有函数才具有这个原型
+        // console.log(obj.prototype)//对象没有这个原型 只有隐式原型
+
+
+        //new操作符
+        //1.创建空对象
+        //2.将这个空对象赋值给ithis
+        //3.将函数的显式原型（prototype）赋值给对象的隐式原型（__proto__）
+        //obj.__proto__ = foo.prototype
+        //4.执行函数体中的代码
+        //5.返回对象
+        
+        
+    </script>
+</body>
+</html>

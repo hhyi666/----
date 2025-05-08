@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        .outer{
+            width: 400px;
+            background-color: #888;
+            display: inline-block;
+            /* 开启bfc解决margin塌陷问题 */
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            margin : 20px;
+        }
+        .inner1{
+            background-color: red;
+        }
+        .inner2{
+            background-color: green;
+        }
+        .inner3{
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class = "outer">
+        <div class="inner inner1"></div>
+        <div class="inner inner2"></div>
+        <div class="inner inner3"></div>
+    </div>
+</body>
+</html>

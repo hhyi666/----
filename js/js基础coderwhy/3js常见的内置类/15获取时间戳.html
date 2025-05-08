@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var date = new Date()
+        //获取时间戳
+        //1 
+        var t = Date.now()
+        console.log(t)
+
+        //2
+        var tt = date.getTime()
+        console.log(tt)
+        
+        //3
+        var f = date.valueOf()
+        console.log(f)
+
+        //4
+        console.log(+date)
+
+        // 计算操作花费的时间
+        var starttime = Date.now()
+        for(var i = 1;i<1000000;i++){
+
+        }
+        var endtime = Date.now()
+        console.log(endtime - starttime)
+        //找到两个时间点 测试
+
+        //字符串时间转化时间戳
+        var date  = "2023-09-11"
+        var t = Date.parse(date)//转化成时间戳
+        console.log(t)
+    </script>
+</body>
+</html>

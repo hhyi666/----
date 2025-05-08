@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var info = {
+            name : "why",
+            running : function(){
+                console.log("running",this.name)
+                // this指向调用者
+            },
+            eating : function(){
+                console.log("eating",this.name)
+                //直接指向使用对象
+            }
+        }
+        info.running()
+        info.eating()
+        //全局环境this指向window
+        //通过对象调用，指向对象
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width : 800px;
+            height: 400px;
+            background-color: skyblue;
+            padding : 10px;
+            text-align: center;
+        }
+        .inner1{
+            background-color: red;
+            padding : 10px;
+        }
+
+        .inner2{
+            background-color: green;
+            padding : 10px;
+            float: left;
+            /* 浮动之后能够和其他元素共用一行 */
+            /* 
+            1.脱离文档流
+            2.可以设置宽高
+            3.不会独占一行,与其他公用
+            4.margin问题基本不会出现
+            5.不会被当作文本处理
+            */
+        }
+
+        .inner3{
+            background-color: yellow;
+            padding : 10px;
+        }
+    </style>
+      
+</head>
+<body>
+    <div class = "outer">
+        <div class = "inner1">盒子1</div>
+        <div class = "inner2">盒子2</div>
+        <div class = "inner3">盒子3</div>
+    </div>
+</body>
+</html>

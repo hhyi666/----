@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var info = {
+            name: "why",
+            age : 18,
+            running : function(){
+                console.log("running")
+            },
+            friend : {
+                name:"hhy",
+                age : 18,
+            } 
+        }
+        //访问对象
+        console.log(info.friend.age)
+        //也可以修改对象的属性
+        info.age = 25
+        console.log(info.age)
+
+        //添加新的属性
+        info.height = 1.99;
+        console.log(info.height)
+        info.study = function(){
+            console.log("hello student")
+        }
+        console.log(info.study)
+
+        //删除关键字
+        delete info.age
+        delete info.height
+        console.log(info.height)
+
+    </script>
+
+</body>
+</html>

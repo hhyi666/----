@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //一系列对象
+        var stu1 = {
+            name : "why",
+            age : 18,
+            height : 1.8,
+        }
+        var stu2 = {
+            name : "kobe",
+            age : 20,
+            height : 1.7,
+        }
+        var stu3 = {
+            name : "jjb",
+            age : 6,
+            height : 1.5,
+        }
+
+        //方式2
+        // for(var i = 0;i<3;i++){
+            //进行创建
+        // }
+
+        //方式3
+        //函数，工厂函数创建学生对象 一种设计模式
+        //自己定义创建函数
+        function createStudent(name,age,height){
+            var stu = {}
+            stu.name= name
+            stu.age = age
+            stu.height = height
+            stu.running = function(){
+                console.log("running")
+            }
+            return stu
+        }
+        var stu1 = createStudent("why",18,1.8)
+        var stu2 = createStudent("jjb",7,1.5)
+        var stu3 = createStudent("fff",10,1.8)
+
+        //重构
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+.crumbs {
+    height: 63px;
+    line-height: 63px;
+    /* color: #333; */
+    font-size: 12px;
+}
+
+.crumbs .item:last-child {
+    color: #000;
+}
+
+.operation {
+    background-color: #fff;
+    padding: 0 24px;
+}
+
+.operation>.row {
+    display: flex;
+}
+
+.operation>.row .item {
+    width: 104px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 12px;
+    color: #000;
+    cursor: pointer;
+}
+.operation > .row .item:first-child{
+    color: #666;
+    cursor: auto;
+}
+.operation>.row .active{
+    color: red;
+}
+
+/* 商品列表部分 */
+.products{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    /* 进行换行 */
+    justify-content: space-between;
+    padding-left: 0;
+}
+.products > .item{
+    width: 291px;
+    height: 386px;
+    background-color: #fff;
+    margin-bottom: 12px;
+}
+
+.products > .item:hover {
+    box-shadow: 0 0 1px 1px black;
+}
+/* 剧中，找到父元素 */
+.products > .item a{
+    /* display: block; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* 主轴剧中 */
+}
+.products > .item .album{
+    height: 180px;width: 180px;
+    margin: 30px 0;
+    
+}
+.products > .item .name{
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+
+}
+.products > .item .discount{
+    color: #666;
+    margin-top: 12px;
+}
+.products > .item .price{
+    margin: 12px 0 16px;
+    color: red;
+    font-size: 16px;
+    font-weight: 700;
+}
+.products > .item .service{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    margin: -10px 0;
+}
+.products > .item .service .tip{
+    font-size: 12px;
+    color: red;
+    border: 1px solid red;
+    padding: 2px 3px;
+    margin: 0 3px;
+    border-radius: 5px;
+}
+.products > .item .commont{
+    display: flex;
+    justify-content: center;
+}
+.products > .item .commont span{
+    font-size: 12px;
+    color: #666;
+    margin: 20px 5px;
+}

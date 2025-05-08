@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(){
+            console.log("foo函数:",this);
+        }
+
+        //方式一： 直接调用 this指向window
+        //foo()
+
+        //方式二： 通过对象调用 this指向对象
+        var obj = {name : "why"}
+        obj.aaa = foo
+        obj.aaa()
+
+
+    </script>
+</body>
+</html>
+<!-- 1.函数调用，js默认this绑定一个值 -->
+<!-- 2.this的绑定和定义的位置没有关系 -->
+<!-- 3.this的绑定和调用方式和位置有关系 -->
+<!-- 4.运行的时候才决定this指向的对象 -->

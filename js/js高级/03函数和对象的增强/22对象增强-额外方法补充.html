@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "why",
+            age : 18
+        }
+        //获取对象属性描述符
+        console.log(Object.getOwnPropertyDescriptor(obj,"name"))
+        console.log(Object.getOwnPropertyDescriptors(obj))
+        
+
+        //禁止对象的扩展
+        Object.preventExtensions(obj)
+        // obj.address = "chengdu"
+
+
+        //密封对象，不允许配置和删除属性 ： seal
+        //调用preventExtensions
+        //configure ： false
+        Object.seal(obj)
+        
+
+        //冻结对象 ： 不能够进行写入 wrirteable : false
+        Object.freeze(obj)
+        
+    </script>
+</body>
+</html>

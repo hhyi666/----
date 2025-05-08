@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 单独进行下载 不会因为脚本而阻塞 长使用域独立的脚本-->
+    <!-- 不能保证顺序，他是独立下载运行，不会等待其他的脚本
+        不会能保证再DOMContentLoaded之前或者之后执行 -->
+    <script src="./js/index.js" async></script>
+    
+</body>
+</html>

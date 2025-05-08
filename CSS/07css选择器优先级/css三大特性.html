@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel = "stylesheet" href ="./index.css">
+    <style>
+        /* 层叠性 */
+        h2{
+            color : red;
+        }
+        h2{
+            color : green !important;
+        }
+        div{
+            color : red;
+            font-size : 40px;
+            background-color: skyblue;
+        }
+        p{
+            color : purple;
+        }
+        /* 优先级 继承的样式是最菜的 */
+        *{
+            color : gray;
+        }
+        
+        div,p,span{
+            font-size : 100px;
+        }
+    </style>
+</head>
+<body>
+    <h2 id = "www">我爱你</h2>
+    <hr>
+    <!-- 继承性拥有祖先的特性 -->
+    <div>
+        div中的文字
+        <span>span</span>
+        <p>
+            <!-- 继承p的属性 -->
+            <span>shenb</span>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(a,b,c){
+            
+
+        }
+        function bar(m,n){
+
+        }
+
+        foo.message = "hello world"
+        console.log(foo.message)
+        // var obj = { }
+
+
+        //默认函数对象中有自己的属性
+        //1.name属性
+        console.log(foo.name)
+
+        //将两个函数放在数组中
+        // var fns = [foo,bar]
+        // for(var fn of fns){
+        //     console.log(fn.name)
+        // }
+
+        //2/length属性 获取参数的个数
+        // function test(){
+            
+        // }
+        // test(111,222,333)
+        // console.log(foo.length)
+
+        //额外补充
+        //剩余参数不算在length的里面
+        function demo(...arg){
+            
+        }
+        demo("aaa","bbb","ccc")
+        console.log(demo.length)
+    </script>
+</body>
+</html>

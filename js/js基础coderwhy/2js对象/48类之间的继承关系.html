@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(){
+
+        }
+        function Student(){
+            
+        }
+        //继承的概念
+        class Person{
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            running(){
+
+            }
+        }
+        //student 继承 person 
+        //具有person的属性，并且有自己的属性
+        class Student extends Person{
+            studying(){
+
+            }
+        }
+        var stu = new Student("why",18)
+        stu.running()
+        stu.studying()
+
+        //继承的好处
+        //1 增加代码的复用性
+        
+        //2 继承是多态的前提
+    </script>
+</body>
+</html>

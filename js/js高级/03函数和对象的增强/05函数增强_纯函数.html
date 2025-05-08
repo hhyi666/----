@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //纯函数
+        //确定输入，输出
+        //不能产生副作用
+        //不依赖外界元素
+        function sum(num1,num2){
+            return num1+num2
+        }
+        
+
+        //不是纯函数，产生副作用，改变对应的对象
+        function print(info){
+            console.log(info.name,info.age,info.message)
+            info.flag = "已经打印结束"
+        }
+        
+        var obj = {
+            name : "why",
+            age  : 18,
+            message : "hhhh"
+        }
+        print(obj)
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.绑定的是null或者undefined的时候，是默认绑定
+        // function foo(){
+        //     console.log(typeof this)
+        // }
+        // foo()
+        // foo.apply("ass")
+        //传入的时null undefined 。。。等没有包装类型的时候还是window
+        // foo.apply(null)
+        
+
+        //2.间接函数引用
+        // var obj1 = {
+        //     name : "obj1",
+        //     foo : function(){
+        //         console.log(this)
+        //     }
+        // }
+        // var obj2 = {
+        //     name : "obj2",
+        // };
+        // (obj2.foo = obj1.foo)();//默认绑定规则
+        // obj1.foo.apply(obj2)
+        // obj2.foo = obj1.foo
+        // obj2.foo()
+
+        //3.箭头函数的使用 arrow function
+        //ES6之后增加的编写方法，更加简洁
+        //箭头函数不会绑定this argument属性
+        //箭头函数不能作为构造函数使用（不能和new一起使用）
+        
+
+    </script>
+</body>
+</html>

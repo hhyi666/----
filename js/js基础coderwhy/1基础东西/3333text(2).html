@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <button>按钮1</button>
+        <button>按钮2</button>
+        <button>按钮3</button>
+        <button>按钮4</button>
+    </div>
+
+    <script>
+        var btns = document.querySelectorAll("button")
+        console.log(btns)
+        for(var i = 0;i<4;i++){
+            var btnl = btns[i];
+            btnl.index = i;//绑定属性
+            //后面直接用
+
+            //这里使用立即执行函数就可以将i导入使用
+            //1立即执行函数
+            // (function(m){
+            //     btnl.onclick = function(){
+            //         console.log(`${m+1}点击`)
+            //     }
+            // })(i)
+
+            // //2 直接获取this
+            // btnl.onclick = function(){
+            //     console.log(this)
+            //     //这里面拿到的是谁使用的函数就输出谁
+            // }
+
+            //3拿索引
+            btnl.onclick = function(){
+                console.log(this.index)
+            }
+
+        }
+    </script>
+</body>
+</html>

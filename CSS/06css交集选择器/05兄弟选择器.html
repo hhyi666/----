@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 选中div后紧紧相邻的兄弟元素（相邻） */
+        div+p{
+            color :red;
+        }
+        /* 后面全部兄弟 */
+        div~p{
+            color : blue;
+        }
+    </style>
+</head>
+<body>
+    <div>wo</div>
+    <p>前端</p>
+    <p>Java</p>
+    <p>大数据</p>
+    <div>woowow</div>
+    <h1>jdas</h1>
+</body>
+</html>

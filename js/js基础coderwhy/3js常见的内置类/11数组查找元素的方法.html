@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var names = ["asd","kdssd","mdvk"]
+
+        //和字符串差不多
+        console.log(names.includes("asd"))
+
+        //findindex
+        var findIndex = names.findIndex(function(item,index,arr){
+            return item === "asd"
+        })
+        console.log(findIndex)
+
+        //箭头函数
+        var findIndex = names.findIndex(item => item === "asd")
+        console.log(findIndex)
+    </script>
+</body>
+</html>

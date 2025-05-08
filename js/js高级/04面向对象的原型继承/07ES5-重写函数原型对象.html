@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Person(){
+
+        }
+
+        // console.log(Person.prototype)
+        // //在原有的函数对象原型进行修改
+        // Person.prototype.message = "jjjj"
+        // Person.prototype.info = "kkk"
+        // Person.running = function(){}
+
+        //这样写获取的不包括constructor
+        // console.log(Object.keys(Person.prototype))
+
+        //直接赋值一个新的原型对象 直接新建原型
+        //常见新的原型对象
+        Person.prototype = {
+            message : "jjj",
+            info : "kkk",
+            running : function(){},
+            // constructor : Person  //这样写就能够访问到constructor
+            //!!!!!!!!最后记得加上原来函数的constructor
+        }
+        Object.defineProperty(Person,"constructor",{value : Person})//这样加上就不会通过keys访问到
+        console.log(Object.keys(Person.prototype))
+        
+
+
+        var p1 = new Person()
+
+    </script>
+</body>
+</html>

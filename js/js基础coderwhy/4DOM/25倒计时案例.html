@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cutdown{
+            color : red
+        }
+        .cutdown .time{
+            background-color: red;
+            color: white;
+            font-size: 100px;
+            display: inline-block;
+            padding: 10px;
+            border : 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class = "cutdown">
+        <span class = "time hour">03</span>
+        <span class = "split">:</span>
+        <span class = "time min">25</span>
+        <span class = "split">:</span>
+        <span class = "time second">43</span>
+    </div>
+    <script>
+
+        function padLeft(content,count,padstr){
+            count = count||2//要有几位数
+            //这里转进来count是0 false 不穿进来就会取2
+            padstr = padstr || "0"//前面加上0
+            //后面加上0 并且 count是0的话就变成两位数
+            content = String(content)
+            return content.padStart(count,padstr)
+        }
+
+        var hourEL = document.querySelector(".hour")
+        var minEL = document.querySelector(".min")
+        var secondEL = document.querySelector(".second")
+
+        //不需要获取新的
+        var endTime = new Date()
+        endTime.setHours(24)
+        endTime.setMinutes(0)
+        endTime.setSeconds(0)
+        endTime.setMilliseconds(0)
+        //1s更新一次
+        setInterval(() => {
+            //获取倒计时的分钟秒钟
+            //每次都需要新东西
+            var nowDate = new Date()
+
+            //制造时间差
+            //这样算出来是ms还需要除以1000转化成s
+            var intervalTime = Math.floor((endTime.getTime()-nowDate.getTime())/1000)
+            console.log(intervalTime)
+
+            //找到时分秒
+            var hour = Math.floor(intervalTime/3600)
+            var min = Math.floor(intervalTime/60) % 60
+            var second = intervalTime % 60
+            
+            
+            hourEL.textContent = padLeft(hour)
+            minEL.textContent = padLeft(min)
+            secondEL.textContent = padLeft(second)
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //实现继承的思想主要就是找打原型链的最上面设置共同否有的属性
+        var info = {}
+        //相当于
+        var info = new Object()
+        console.log(info.__proto__)//能够访问对应的Object原型
+
+        var obj = {
+            name : "huuyii",
+            age : 18
+        }
+
+        console.log(obj.name)
+        console.log(obj.message)
+        //查找顺序
+        //在自己中没有找到message
+        //就去自己的原型—__proto__中找message
+        //在自己的原型中还是没有找到，就只能去函数原型 Object的原型中找 但是 ————> NULL
+        //直接就是undefined
+
+
+        //这两种方法都可以i找到
+        //每个对象都有自己的原型__proto__
+        obj.__proto__ = {
+            // message : "aaa"
+        }
+
+        obj.__proto__.__proto__ = {
+            message : "aaa"
+        }
+        console.log(obj.message)
+    </script>
+</body>
+</html>

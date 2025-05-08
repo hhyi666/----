@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;height: 200px;
+            background-color: orange;
+            /* 是指哪个属性需要过渡 */
+            transition-property: height ,width,background-color;
+            /* 时间 */
+            transition-duration: 1s;
+            /* 不要写在hover里面 */
+            /* 过渡的延迟 */
+            /* transition-delay: 0s; */
+            transition-timing-function: ease-out;
+        }
+        .box1:hover{
+            height: 400px;
+            width: 400px;
+            /* transition: 2s; */
+            /* 能够转为数字的都可以过渡 */
+            background-color: green;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+</html>

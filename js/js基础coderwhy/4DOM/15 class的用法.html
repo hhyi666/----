@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color : red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        box
+    </div>
+    <button class = "btn">切换</button>
+    <script>
+        var boxEI = document.querySelector(".box")
+
+        //修改className
+        // boxEI.className = "axx"
+
+        //使用classlist
+        boxEI.classList.add("asd")
+        console.log(boxEI.getAttribute("class"))
+        boxEI.classList.remove("asd")
+        console.log(boxEI.getAttribute("class"))
+
+        var btnEI = document.querySelector(".btn")
+        btnEI.onclick = function(){
+            boxEI.classList.toggle("active")
+            //没有加上,有删除
+        }
+        //classlist 是可迭代对象
+        
+    </script>
+</body>
+</html>

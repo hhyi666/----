@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "./js文件/index.js"></script>
+</head>
+<body>
+    <script src = "./js文件/index.js"></script>
+    <script>
+        function foo(){
+            console.log('执行')
+        }
+        foo()
+        foo();
+        //这里不加可能和下边当成一个整体
+        //立即执行函数.定义完函数立即执行
+        // (function bar() {
+        //     console.log('firstbar函数执行')
+        // })(); //立即执行
+        // var res = (function bar(name) {
+        //     console.log('firstbar函数执行'+name)
+        //     return 'hello world'
+        // })('why')
+        // console.log(res);
+        //立即执行可以引入元素
+        //{}代码块，对象类型
+        //（）控制优先级
+        //[]定义数组
+
+        //使用场景应用
+        //和普通代码的区别
+        //1立即执行函数变量有自己的作用域
+        //外界访问不到
+        //创建自己独立的上下文，访问和修改不到
+        (function(){
+            var name = 'hello';
+            console.log(name);
+        })();
+
+        var name = 'hello';
+        console.log(name);
+        //可能导致函数命冲突，不适用立即执行函数
+
+        //2应用场景2
+
+
+    </script>
+</body>
+</html>

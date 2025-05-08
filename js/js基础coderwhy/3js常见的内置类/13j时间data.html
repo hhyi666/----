@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建date对象
+        //获取当前的时间
+        var date1 = new Date()
+        console.log(date1)
+        console.log(date1.toDateString())
+
+        //2传入参数
+        var date2 = new Date("2022-02-12")
+        console.log(date2)
+
+        //3创建对象 年月日时分秒
+        var date3 = new Date(2033,10,12,1,2)
+        console.log(date3)
+
+        //4 传入时间戳从19701-1开始计算
+        var date4 = new Date(1092981999409)
+        console.log(date4) 
+    </script>
+</body>
+</html>

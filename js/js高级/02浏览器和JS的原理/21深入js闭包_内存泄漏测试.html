@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button class="create">创建数组对象</button>
+    <button class="destory">销毁数组对象</button>
+
+    <script>
+        function createArray(){
+            var arr = new Array(1024*1024).fill(100)
+
+            function test(){
+                console.log(arr)
+            }
+            return test//不进行返回，其他地方不会出现这样的话直接就清空内存了
+            //形成闭包，不会进行回收
+            //保证可以访问到外部的arr数组
+        }
+       var totalArray = []
+
+        var createbtnEl = document.querySelector(".create")
+        var destorybtnEl = document.querySelector(".destory")
+        createbtnEl.onclick = function(){
+            for(var i = 0;i<100;i++){
+                totalArray.push(createArray())
+            }
+        }
+        destorybtnEl.onclick = function(){
+            totalArray = []//清空数组就可以清空内存
+        }
+
+    </script>
+</body>
+</html>

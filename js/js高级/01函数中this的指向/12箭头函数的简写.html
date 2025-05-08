@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var names = ["huuyii","aaa","bbb"]
+
+        //1。优化一 ： 如果箭头函数只有一个参数（）可以省略
+        // names.forEach((item,index,arr) => {
+        //     console.log(item,index,arr)
+        // })
+        // names.forEach(item => {
+        //     console.log(item)
+        // })
+
+        var nums = [10,20,30,11,13]
+        //filter将满足条件的元素放进另一个数组
+
+        // var newnum = nums.filter(item =>{
+        //     return item % 2 == 0
+        // })
+        // newnum.forEach(item => {
+        //     console.log(item)
+        // })
+
+        //2.优化二  ： 如果函数体中只有一行执行代码，{}可以省略
+        // nums.forEach(item => console.log(item))
+        //有return 不能省略
+        //一行代码不能带有return关键字 如果省略需要带着 return一起省略
+        // var newnum = nums.filter(item => return item%2 === 0)
+
+        //3.优化三 ： 只有一行代码的时候，这行代码的表达式结果会作为函数的返回值默认返回
+        //就是不需要在进行return
+        // var newnum = nums.filter(item => item % 2 === 0)
+        // newnum.forEach(item => console.log(item))
+        
+        //4。优化四 ： 如果默认返回值是一个对象，那么这个对象必须加上（）
+        // var arrFn = () => ["huuyii","aaa"]
+        //返回对象就必须要加上（）
+        // var arrFn = () => ({ name : "huuyii"})
+        // console.log(arrFn())
+
+        //箭头函数实现所有偶数平方的和
+        //回调函数将函数作为对象传给另一个函数
+        var res = nums.filter(item => item % 2 === 0)
+                         .map(item => item*item)//map会执行一次回调函数，创建新数组将新元素放进新数组里面
+                         .reduce((prevValue,item) => prevValue + item)//回调函数，对数组进行操作
+        console.log(res)
+    </script>
+</body>
+</html>

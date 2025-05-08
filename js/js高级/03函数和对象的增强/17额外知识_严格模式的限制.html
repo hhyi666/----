@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict"
+
+        //1.不会意外的创建全局变量
+        // function foo(){
+        //     message = "Hello world"
+        // }
+
+        // foo()
+        // console.log(message)
+        //开启严格模式就会报错
+
+        //2.发现静默错误
+        var obj = {
+            name : "why"
+        }
+
+        //这样就不会报错
+        Object.defineProperty(obj,"name",{
+            writable : false,//不能进行修改
+            configurable : false//不能进行删除
+        })
+        // obj.name = "kobe"
+        // delete obj.name
+        console.log(obj.name)
+
+        //4，不能使用0开头
+        console.log(0o123)
+
+        //5.with不能使用
+
+        //eval函数不能为上层创建变量
+        //eval需要单独加严格模式
+        // eval(`var message = "hello"`)
+        // console.log(message)
+
+        //6。严格模式下，this不会传话成为对象类型
+        function foo(num){
+            console.log(this)
+        }
+    </script>
+</body>
+</html>

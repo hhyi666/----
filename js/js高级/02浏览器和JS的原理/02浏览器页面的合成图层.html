@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body{
+            padding: 0;border: 0;
+        }
+        .box, .container{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            /* position: absolute; */
+        }
+        .container{
+            background-color: red;
+            /* 会生成新的图层 */
+            /* position: fixed; */
+
+            /* 还是一个图层 */
+            transition: all 1s ease;
+
+            /* 形成新的图层 */
+            opacity: 0.9;
+
+            /* 增加新的图层能够增加提高性能 */
+
+        }
+        /* 会导致回流 */
+        .container:hover {
+            /* margin-left: 100px; */
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="container"></div>
+</body>
+</html>

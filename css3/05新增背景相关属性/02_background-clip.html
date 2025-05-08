@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+            margin: 0 auto;
+            font-size: 120px;
+            padding: 50px;
+            border : 50px dashed rgba(255, 0, 0, 0.5);
+            color : transparent;
+            background-image: url("../bg02.jpg");   
+            background-repeat: no-repeat;
+            /* 元素之外的不可见，可以是padding border */
+            background-origin: border-box;
+            /* 确定从哪开始确定原点 */
+            background-clip: content-box;
+            /* 确定展示的内容 可删除边上元素*/
+            -webkit-background-clip: text;
+            /* 只呈现在文字之内 */
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">nihao</div>
+</body>
+</html>

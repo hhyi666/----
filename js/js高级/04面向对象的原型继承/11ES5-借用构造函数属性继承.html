@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name,age,height,address){
+            this.name = name
+            this.age = age
+            this.height = height
+            this.address = address
+        }
+
+        Person.prototype.running = function(){
+            console.log("running")
+        }
+        Person.prototype.eating = function(){
+            console.log("eating")
+        }
+        
+        //自己没有的继承父亲
+        function Student(name,age,height,address,sno,score){
+
+            //ES6之前常用的组合借用继承
+            //重点： 借用构造函数继承
+            //让this绑定stu对象
+            Person.call(this,name,age,height,address)
+            //构造函数会调用两次
+
+            this.sno = sno
+            this.score = score
+        }
+
+        //方法一 ： 直接子类共享父类的prototype(错误)!!!!笔记记得写
+
+        //方式二 ： 创建一个父类的实例对象作为子类的原型对象
+        //子类原型上直接加上方法
+        var p = new Person("yyy",18)//这里多了莫名的属性 
+        Student.prototype = p
+
+        // Student.prototype.running = function(){
+        //     console.log("running")
+        // }
+        // Student.prototype.eating = function(){
+        //     console.log("eating")
+        // }
+        Student.prototype.studying = function(){
+            console.log("studying")   
+        }
+
+        var stu1 = new Student("huuyii",18,1.88,100)
+        stu1.running()
+        stu1.studying()
+
+        console.log(stu1.name,stu1.age)
+    </script>
+</body>
+</html>

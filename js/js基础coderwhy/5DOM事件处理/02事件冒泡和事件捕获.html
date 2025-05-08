@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;height: 200px;
+            background-color: orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box span {
+            width: 100px;height: 100px;
+            background-color: red;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="box">
+        <span></span>
+    </div>
+
+    <script>
+        var divEL = document.querySelector(".box")
+        var spanEL = document.querySelector("span")
+        var body = document.body
+
+        //事件依次向外层传递，事件冒泡(向上)
+        //最里面的最先开始
+        spanEL.onclick = function(){
+            console.log("span")
+        }
+        divEL.onclick = function(){
+            console.log("div")
+        }
+        body.onclick = function(){
+            console.log("body")
+        }
+
+        //外层到内层 事件捕获 先执行
+        //后面加true
+        spanEL.addEventListener("click",function(){
+            console.log("span")
+        },true)
+        divEL.addEventListener("click",function(){
+            console.log("div")
+        },true)
+        body.addEventListener("click",function(){
+            console.log("body")
+        },true) 
+    </script>
+</body>
+</html>

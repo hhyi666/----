@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        .banner{
+            position: relative;
+        }
+        .banner .images {
+            position: relative;
+            height: 550px;
+        }
+
+        .banner .images .item {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+
+            opacity: 0;
+            transition:  1000ms ease;
+        }
+
+        .banner .images .active {
+            opacity: 1;
+        }
+
+        .banner .images .item img {
+            position: relative;
+            transform: translate(-50%);
+            left: 50%;
+            width: 1920px;
+            height: 550px;
+        }
+
+        /* 图片非常大 
+            1.让图片居中显示开启相对定位
+            2.移动自己的-50% transform: translate(-50%);
+            3.距离父元素 left50%
+        */
+        .indicator{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 50px;
+            display: flex;
+            justify-content: center;
+        }
+        .indicator .item{
+            width: 8px;height: 8px;
+            border-radius: 50%;
+            background-color: #aaa;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .indicator .active{
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <ul class="images">
+            <li class="item active">
+                <img src="./image/huawei01.jpg" alt="">
+            </li>
+            <li class="item">
+                <img src="./image/huawei02.jpg" alt="">
+            </li>
+            <li class="item">
+                <img src="./image/huawei03.jpg" alt="">
+            </li>
+            <li class="item">
+                <img src="./image/huawei04.jpg" alt="">
+            </li>
+            <li class="item">
+                <img src="./image/huawei05.jpg" alt="">
+            </li>
+        </ul>
+        <div class="control">
+            <button class="left">&lt;</button>
+            <button class="right">&gt;</button>
+        </div>
+        <div class="indicator">
+            
+        </div>
+    </div>
+
+    <script>
+        //1.添加轮播图。。用json添加跳过
+        //动态添加指示器
+        var bannersCount = document.querySelectorAll(".item")
+        
+        var indicatorEl = document.querySelector(".indicator")
+        for(var i = 0;i<bannersCount.length;i++){
+            var itemEl = document.createElement("div")
+            itemEl.classList.add("item")
+            if(i == 0){
+                itemEl.classList.add("active")
+            }
+            indicatorEl.append(itemEl)
+
+            //监听点击
+            itemEl.index = i
+            itemEl.onclick = function(){
+                previousIndex = currentIndex
+                currentIndex = this.index
+                switchBanner()
+            }
+        }
+
+
+        //按钮
+        
+        // console.log(bannersCount)
+        var imgEl = document.querySelectorAll("img")
+        var previousIndex = 0
+        var currentIndex = 0
+        var controlEl = document.querySelector(".control")
+        var rightbutton = document.querySelector(".right")
+        var leftbutton = document.querySelector(".left")
+        leftbutton.onclick = function(){
+           lastSwitch()
+        }
+        rightbutton.onclick = function(){
+            nextSwitch()
+        }
+
+
+        //暂停自动轮播
+        var bannerEl = document.querySelector(".banner")
+        bannerEl.onmouseenter = function(){
+            console.log("yes")
+            clearInterval(timer)
+        }
+        bannerEl.onmouseleave = function(){
+            timer = setInterval(function(){
+                nextSwitch()
+            },3000)
+        }
+
+        function switchBanner(){
+            var currentItem = bannersCount[currentIndex]
+            var previousItem = bannersCount[previousIndex]
+            previousItem.classList.remove("active")
+            currentItem.classList.add("active")
+
+            //切换指示器的
+            var curInditorItemEl = indicatorEl.children[currentIndex]
+            var preInditorItemEl = indicatorEl.children[previousIndex]
+            preInditorItemEl.classList.remove("active")
+            curInditorItemEl.classList.add("active")
+
+        }   
+        function lastSwitch(){
+            previousIndex = currentIndex
+            currentIndex--
+            if(currentIndex === -1){
+                currentIndex = bannersCount.length-1
+            }
+            switchBanner()
+        }
+        function nextSwitch(){
+            previousIndex = currentIndex
+            currentIndex++
+            if(currentIndex === bannersCount.length){
+                currentIndex = 0
+            }
+            switchBanner()
+        }
+        //开启定时器
+        timer = null
+        startTimer()
+        function startTimer(){
+            timer = setInterval(function(){
+                nextSwitch()
+            },3000)
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function foo(x,y,z){
+            console.log(x + y + z)
+        }
+        
+        function sum(sum1,sum2){
+            return sum1 + sum2
+        }
+
+        function logInfo(){
+            console.log(`时间：${date} 类型：${type} 内容：${message}`)
+        }
+
+        //手动转化
+
+        //自动转化
+        function hyCurrying(fn){
+            function curryFn(...args){
+                //两类操作
+                //1.继续返回新的函数
+
+                if(args.length >= fn.length){
+                    //执行第二类操作 够用直接返回
+                    return fn.apply(this,args)
+                }
+                else{
+                    //执行第一类操作 减去最开头的然后直接使用
+                    return function(...newargs){
+                        return curryFn.apply(this,args.concat(newargs))
+                    }
+                }
+            }
+            return curryFn // 返回柯里化的函数
+        }
+
+        var fooCurry = hyCurrying(foo)
+        fooCurry(10)(20)(30)
+        
+    </script>
+</body>
+</html>

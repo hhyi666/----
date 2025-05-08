@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(name,age,h){
+            console.log(this)
+            console.log(name,age,h)
+        }
+
+        var obj = {name : "huuyii"}
+
+        //要求 ： 调用foo函数总是绑定到obj对象身上（不希望obj函数身上有函数）
+        //bind绑定obj对象，创建一个新的绑定函数
+        //绑定函数对象 怪异函数对象
+        //1.基本使用
+        // var bar = foo.bind(obj)
+        // bar()
+
+
+        //2.bind函数的其他参数（了解）
+        //直接进行绑定
+        var bar = foo.bind(obj,"huuyii",18,1.9)
+        bar()
+
+    </script>
+</body>
+</html>

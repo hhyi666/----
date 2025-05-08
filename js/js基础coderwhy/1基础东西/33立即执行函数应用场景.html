@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class = "btn">1</button>
+    <button class = "btn">2</button>
+    <button class = "btn">3</button>
+    <button class = "btn">4</button>
+
+    <script>
+        //拿到html元素
+        // var btnEL = document.querySelector(".btn");
+        // console.log(btnEL);
+        //发生点击的时候
+        // btnEL.onclick = function(){
+        //     console.log('点击1')
+        // }
+
+        //2 获取所有的按钮
+        var btnELs = document.querySelectorAll(".btn");
+        for(var i = 0;i<btnELs.length;i++){
+            //此时i已经加到4了
+            //并且之前的i不会传进function函数
+            //let有自己的块级作用可以访问
+            var btnel = btnELs[i];
+            //没有点击，代码不会执行
+            // btnel.onclick = function(){
+                
+            //     console.log(`按钮${i+1}发生点击`)
+            //     //找不到i就去全局里面找
+            // }
+            (function(m){
+                btnel.onclick = function(){
+                    console.log(`${m+1}dianji`);
+                    //这样每一个i都会被传进去，这样进会有对应的输出
+                    //上面的函数只会传进i == 4；
+                }
+            })(i)
+        }
+
+    </script>
+</body>
+</html>

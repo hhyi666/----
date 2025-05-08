@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function double(num){
+            return num*2
+        }
+        function pow(num){
+            return num ** 2
+        }
+
+        //封装的函数：闯入多个函数，我自动将多个函数组合在一起
+        function composeFn(...fns){
+            var length = fns.length
+            if(length <= 0)return 
+            //边界判断
+            for (var i = 0;i<length;i++) {
+                var fn = fns[i]
+
+                if(typeof fn != "function"){
+                    throw new Error(`indexposition ${i} must be funtion`)
+                }
+            }
+            //2。返回的新函数
+            return function(...args){
+                var result = fns[0].apply(this,args)
+                for(var i = 1;i<length;i++){
+                    var fn = fns[i]
+                    result = fn.apply(this,[result])
+                }
+                return result
+            }
+        }
+        var newFn = composeFn(double,pow)//可以直接将clg转入函数，这样就能够直接进行打印
+        console.log(newFn(100)) 
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "why",
+            age : 18
+        }
+
+        function createObject(o){
+            function F(){}
+            F.prototype = o
+            return new F()
+        }
+
+        //寄生式函数
+        function createInfo(o,name,age,height){
+            var newObj = createObject(o)
+            newObj.name = name
+            newObj.age = age
+            newObj.height = height
+            return newObj
+        }
+
+        // var info = {}
+        // info.__proto__ = obj//直接在obj里面寻找 不能加__proto__这样就在obj的原型里面寻找
+        // console.log(info.name)
+    
+        var info1 = createInfo(obj,"aaa",18,1.88)
+        console.log(info1)
+    </script>
+
+</body>
+</html>

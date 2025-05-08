@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- arrtribute属性  class id title ....-->
+     <div class="box" id = "asd" title = "box" age = "12" height = "1.33">box</div>
+     <!-- arrrtribute 分类
+      1标准
+      2自定义 age height.....
+       -->
+     <a href="http://www.baidu.com"></a>
+
+     <script>
+
+        //大小写不敏感 
+        //值总是字符串类型
+
+
+        var divEI = document.querySelector(".box")
+        console.log(divEI)
+        //所有的arrtribute操作
+        console.log(divEI.hasAttribute("age"))//鉴别
+        console.log(divEI.getAttribute("age"))//获取
+        divEI.setAttribute("id","aff")//更改
+        console.log(divEI.getAttribute("id"))
+        divEI.removeAttribute("id")//删除操作
+        console.log(divEI.getAttribute("id"))
+
+        var divattrrbute = divEI.attributes//获取所有的属性
+        for (const attr of divattrrbute) {
+            console.log(attr.name,attr.value)
+        }
+
+        
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 第一种选择具有title属性的元素 */
+        /* [title]{
+            color : red;
+        } */
+        /* 第二种 选择title且加上信息*/
+        /* [title = "@@@"]{
+            color : red;
+        } */
+        /* 第三种 以什么开头的标题*/
+        /* [title ^= "a"]{
+            color : red;
+        } */
+        /* 第四种 以什么结尾的标题 */
+        /* [title $= "d"]{
+            color : red;
+        } */
+        /* 第五种写法 查找里面有什么*/
+        [title *= "w"]{
+            color : red;
+        }
+    </style>
+</head>
+<body>
+    <div title = "@@@">1</div>
+    <div title = "awdasd">2</div>
+</body>
+</html>

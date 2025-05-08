@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width : 500px;
+            background-color: skyblue;
+            border : 1px solid black;
+            padding: 20px;
+        }
+        .box{
+            width : 200px;
+            height : 200px;
+        }
+        .box1{
+            background-color: #888;
+        }
+        /* 定位后的元素层级更大 */
+        /* 会被放在最上边 */
+        .box2{
+            background-color: orange;
+            position: relative;
+            left : 100px;
+            /* left : 200px; */
+            /* 位置移动正好相反 */
+            /* 定位发生在相对原来的位置 */
+            /* 没有离开文档流 (没飘)*/
+        }
+        /* 两个元素同时开启定位,后写的元素层级更高 */
+        /* 相对定位的元素:
+        1.有助于元素微调
+        2.和绝对定位共同使用 */
+        .box3{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+    </div>
+</body>
+</html>

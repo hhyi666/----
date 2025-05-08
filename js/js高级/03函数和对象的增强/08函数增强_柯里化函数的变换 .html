@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        
+        function foo1(x,y,z){
+            console.log(x + y + z)
+        }
+        // foo(1,2,3)
+        
+        //foo不是柯里化的函数
+
+        //从上面转化成下面就是函数柯里化的过程
+        function foo2(x){
+            return function(y){
+                return function(z){
+                    console.log(x + y + z)
+                }
+            }
+        }
+
+        foo2(1)(2)(3)
+
+        var foo3 = x => y => z => console.log(x+y+z)
+        foo3(10)(29)(30)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 400px;
+            height: 400px;
+            background-color: gray;
+            overflow: hidden;
+        }
+        .inner{
+            width : 200px;
+            height : 100px;
+            background-color: yellow;
+            border : 5px solid red;
+            padding : 5px;
+            margin-left: 100px;
+            margin-top : 140px;
+            /* 让文本放在中间 */
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        .outer2{
+            width : 400px;
+            height : 400px;
+            background-color: skyblue;
+            text-align: center;
+            line-height: 400px;
+        }
+        .inner2{
+            background-color: yellow;
+            font-size: 20px;
+        }
+
+        .outer3{
+            width : 400px;
+            height : 400px;
+            background-color: gray;
+            text-align: center;
+            line-height: 400px;
+            font-size: 0px;
+        }
+        img{
+            vertical-align: middle;
+        }
+        span{
+            font-size: 40px;
+            vertical-align: middle;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class = "outer">
+        <div class = "inner">inner</div>
+    </div>
+    <hr>
+    <div class = "outer2">
+        <span class = "inner2">出来玩啊</span>
+    </div>
+    <hr>
+    <div class="outer3">
+        <div class = "inner3">
+            <span>出来耍</span>
+            <!-- 出来玩啊! -->
+            <img src = "/images/eff6141e-ff38-4fd7-9266-83d4f51eb4af.png">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;height: 200px;
+            /* background-color: red; */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // var boxEl = document.querySelector(".box")
+        // boxEl.style.backgroundColor = "red"
+
+        //注册事件监听(加载完成才会执行)（所有）
+        window.onload = function(){
+            var boxEl = document.querySelector(".box")
+            boxEl.style.backgroundColor = "red"
+        }
+
+        //监听 html加载完成并且Dom树构建完成（样式可能未加载）
+        window.addEventListener("DOMContentLoaded",function(){
+            //可以操作box
+
+            //获取img的h w(不行)
+            
+        })
+    </script>
+    <div class = "box"></div>
+    <a href="#">百度</a>
+</body>
+</html>

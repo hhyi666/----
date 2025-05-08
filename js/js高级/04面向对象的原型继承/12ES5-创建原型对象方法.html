@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*满足的条件
+        1.创建出来一个对象
+        2.这个对象隐式原型必须执行父类的显式原型
+        3.将这个对象赋值给子类的显式原型
+        */
+
+        function createObject(){
+
+        }
+
+        function Person(){}
+        function Student(){}
+
+        //1.之前的做法 
+        var p = new Person()
+        Student.prototype = p
+
+
+        //方案1 ： 
+        var obj = {}
+        //增加新的属性
+        Object.setPrototypeOf(obj,Person.prototype)
+        Student.prototype = obj//新函数的原型指向创建对象的隐式原型
+        //我这样可以保证Student的原型的更改不会影响Person
+
+
+
+
+
+
+        //两种方法都可以
+        //方案2 ： 不会产生兼容性问题
+        //封装工具函数 创建新对象，是的新对象隐式是父类函数显式原型
+        function createObject(o){
+            function F(){}
+            F.prototype = o
+            return new F()
+        }
+        // function F(){}
+        // F.prototype = Person.prototype
+        // Student.prototype = new F()
+
+        //方案3 ： 
+        //直接将隐式原型绑定到显式原型上
+        var obj = Object.create(Person.prototype)
+        Student.prototype = obj
+
+
+        //寄生式函数
+        //真实开发环境会进行封装 直接调用就行 
+        //最终方案
+        function inherit(Subtype,Supertype){
+            // var obj = Object.create(Supertype.prototype)
+            // Subtype.prototype = obj
+            Subtype.prototype = Object.create(Subtype.prototype)
+            //记得传入constructor
+            //把自己对应的constructor拿回来
+            Object.defineProperty(Subtype.prototype,"constructor",{
+                enumerable : false,
+                configurable : true,
+                writable : true,
+                value : Subtype
+            })
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //箭头函数的使用 arrow function
+        //ES6之后增加的编写方法，更加简洁
+        //箭头函数不会绑定this argument属性
+        //箭头函数不能作为构造函数使用（不能和new一起使用）
+        
+        //1.之前的函数定义方式
+        function foo1() {}
+        var foo2 = function(name,age){
+            console.log("函数体")
+            console.log(name,age)
+        }
+
+        //2.箭头函数
+        var foo3 = (name,age) => {
+            console.log("箭头函数函数体")
+            console.log(name,age)
+        }
+
+        //3。箭头函数的练习
+        //3.1forEach
+        var names = ["huuyii","aaa","bbb"]
+        // names.forEach(function(item){
+        //     console.log(item)
+        // })
+        names.forEach( (item,index,arr) => {
+            console.log(item,index,arr)
+        })
+
+        //3.2setTimeout
+        setTimeout( () => {
+            console.log("jihshi")
+        },1000)
+
+
+    </script>
+</body>
+</html>

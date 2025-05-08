@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = "huuyii"
+        var age = 18
+        var height = 1.99
+        var address = "四川"
+
+        //闭包：作用域链
+        //一个函数只要能够访问外层作用域的自由变量，那么这函数和周围环境就是一个闭包
+        //广义 ： js中的函数都是闭包
+        //狭义 ： js中的函数访问外层变量，就是闭包
+        function foo(){
+            var message = "hello world"
+            console.log(name,age,height,address)
+        }
+
+
+    </script>
+</body>
+</html>

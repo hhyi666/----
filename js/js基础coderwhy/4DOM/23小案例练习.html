@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>动态列表的建立</h1>
+    <ul class = "list">
+        
+    </ul>
+    <script>
+        var ulEL = document.querySelector(".list")
+        var isflag = true
+        while(isflag){
+            var message = prompt("请输入")
+            if(!message){
+                isflag = false;
+            }else{
+                var liEL = document.createElement("li")
+                liEL.textContent = message
+                ulEL.append(liEL)
+                //创建增加
+            } 
+        }
+       
+    </script>
+</body>
+</html>

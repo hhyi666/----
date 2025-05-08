@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+        .outer{
+            width: 500px;height: 900px;
+            background-color: #888;
+            margin: 0 auto ;
+            display: flex;
+            flex-direction: row;
+
+            /* 是否换行 */
+            /* flex-wrap: wrap; */
+            /* 主轴的对齐方式 */
+            justify-content: flex-start;
+
+            /* 侧轴对齐方式 */
+            align-content: flex-start;
+        }
+        .inner{
+            width: 200px;height: 200px;
+            background-color: skyblue;
+            border : 1px solid black;
+            box-sizing: border-box;
+            /* 设置基准长度之后还可以拉伸 */
+            /* flex-grow: 1; */
+            /* 多的平均分 */
+            /* 每个子元素平分总空间 */
+
+            /* flex-shrink: 1; */
+            /* 少的平均分 */
+
+            /* 可以拉伸 压缩 设置基准查长度 */
+            /* flex : 1 1 100px; */
+            /* 简写 */
+            flex : auto;
+        }
+        /* .inner2{
+            width: 300px;
+        } */
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner inner2">2</div>
+        <div class="inner inner3">3</div>
+    </div>
+    
+</body>
+</html>

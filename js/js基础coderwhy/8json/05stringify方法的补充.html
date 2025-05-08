@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        obj = {
+            name : "why",
+            age : 18,
+            friend : {
+                name : "kobe"
+            },
+            toJSON:function(){
+                return "123"
+            }
+        }
+
+        //1.replace参数
+        // var objJSON = JSON.stringify(obj,function(key,value){
+        //     if(key === "name"){
+        //         return "coderwhy"
+        //     }
+        //     return value
+        // },"")
+
+        //2.加上space更好读
+        // var objJSON = JSON.stringify(obj,null,4)
+        // console.log(objJSON)
+
+        //3.对象本身有toJSON方法,到时候直接用
+        var objJSON = JSON.stringify(obj,null,4)
+        console.log(objJSON)
+    </script>
+</body>
+</html>

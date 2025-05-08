@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 注意这些都有顺序！！！！！！！！ */
+        /* 不是类（class），仅仅是描述元素状态 */
+        /* 选中没有访问的元素 */
+       a:link{
+        color : red;
+       } 
+       a:visited {
+        color : red;;
+       }
+       /* 选中鼠标悬浮状态的a元素 */
+       a:hover{
+        color : skyblue
+       }
+       /* 选中的是激活状态的元素 */
+       a:active{
+        color : green;
+       }
+       span:hover{
+        color : green;
+       }
+       span:active{
+        color : red;
+       }
+       input:focus,select:focus{
+        color : red;
+        background-color: green;
+       }
+
+    </style>
+</head>
+<body>
+    <a href = "https://www.jd.com" target = "_blank" >京东</a>
+    <a href = "https://www.baidu.com">百度</a><br>
+    <span>hahahahah</span><br>
+    <input type = "text">
+    <select>
+        <option value = "b">北京</option>
+    </select>
+</body>
+</html>

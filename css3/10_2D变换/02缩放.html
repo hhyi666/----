@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border : 2px solid black;
+            margin : 0 auto;
+            margin-top: 100px;
+        }
+        .inner{
+            width: 200px;height: 200px;
+            background-color: deepskyblue;
+            /* 这里是放大多少倍 */
+            /* 写一个值可以代表两个方向 */
+            transform: scale(1.5,1.1);
+        }
+        /* 转化为块级元素就能够使用 */
+        span{
+            display: inline-block;
+            font-size: 12px;
+            transform: scale(0.5);
+        }   
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+
+    </div>
+    <span>好</span>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border : 2px solid black;
+            margin : 0 auto;
+            margin-top: 100px;
+            position: relative;
+        }
+        .inner{
+            width: 200px;height: 200px;
+            background-color: deepskyblue;
+            /* transform: translateX(-100px); */
+            /* 可以用百分比自己的宽高的百分比 */
+            /* transform: translateY(100px); */
+            /* 不脱离文档流 */
+            /* 但是对span的元素不起作用 */
+            /* 用dispaly:block转换就行 */
+            transform: translate(10px,10px);
+        }
+        .inner2{
+            width: 60px;height: 60px;
+            background-color: orange;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+
+    </div>
+    <div class="outer">
+        <div class="inner2">你好啊</div>
+    </div>
+    
+</body>
+</html>

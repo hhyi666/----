@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var date = new Date()
+        console.log(date)
+
+        //获取想要的时间
+        var y = date.getFullYear()//获取四位数
+        console.log(y)
+        var m = date.getMonth()//从0开始
+        console.log(m)
+        var day = date.getDate()
+        console.log(day)
+        var h = date.getHours()
+        console.log(h)
+        var dd = date.getDay()//一周的第几天
+        console.log(dd)
+
+        console.log(date)
+        date.setFullYear(2033)//设置年份
+        console.log(date)
+
+    </script>
+</body>
+</html>

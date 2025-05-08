@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width : 500px;
+            background-color: skyblue;
+            border : 1px solid black;
+            padding: 20px;
+            position: relative;
+
+        }
+        .box{
+            width : 200px;
+            height : 200px;
+        }
+        .box1{
+            background-color: #888;
+        }
+        .box2{
+            background-color: orange;
+            /* !绝对定位和浮动不能同时使用 */
+            position: absolute;
+            top : 220px;
+            left: 20px;
+            /* transition: 1s all linear; */
+            /* 开启绝对定位就会脱离文档流 */
+            /* 参考点是包含块 */
+            /* 1.没有脱离文档流的元素就是父元素 */
+            /* 2.脱离文档流的元素,第一个开启定位的祖先元素就是包含快 */
+            /* 最好将父元素开启相对定位,让子元素以他来调整位置 */
+            /* 子绝父相 两者配合使用*/
+        }
+        .box3{
+            background-color: green;
+        }
+        .outer:hover .box2 {
+            left:220px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+    </div>
+</body>
+</html>

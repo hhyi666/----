@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding : 0;
+        }
+        body{
+            height: 2000px;
+        }
+        .page_header{
+            height : 100px;
+            background-color: orange;
+            font-size: 20px;
+            /* 调整文字的位置 */
+            text-align: center;
+            line-height: 100px;
+        }
+        .item { 
+            background-color: gray;
+        }
+        .first{
+            font-size: 40px;
+            background-color: skyblue;
+            position: sticky;
+            top : 0px;
+            /* 参考点距离最近的能滚动的祖宗元素 */
+            /* 到达某个位置将元素进行固定 */
+        }
+        .content{
+            height: 200px;
+            overflow: auto;
+            /* 建立content的滚动条 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="page_header">头部</div>
+    <!-- 内容区 -->
+    <div class="content">
+        <!-- 每一项 -->
+        <div class="item">
+            <div class="first">A</div>
+            <h2>A1</h2>
+            <h2>A2</h2>
+            <h2>A3</h2>
+            <h2>A4</h2>
+            <h2>A5</h2>
+            <h2>A6</h2>
+            <h2>A7</h2>
+            <h2>A8</h2>
+        </div>
+        <div class="item">
+            <div class="first">B</div>
+            <h2>B1</h2>
+            <h2>B2</h2>
+            <h2>B3</h2>
+            <h2>B4</h2>
+            <h2>B5</h2>
+            <h2>B6</h2>
+            <h2>B7</h2>
+            <h2>B8</h2>
+        </div>
+        <div class="item">
+            <div class="first">C</div>
+            <h2>C1</h2>
+            <h2>C2</h2>
+            <h2>C3</h2>
+            <h2>C4</h2>
+            <h2>C5</h2>
+            <h2>C6</h2>
+            <h2>C7</h2>
+            <h2>C8</h2>
+        </div>
+    </div>
+</body>
+</html>

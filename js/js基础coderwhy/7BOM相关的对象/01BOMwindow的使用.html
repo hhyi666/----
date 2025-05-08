@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://baidu.com" target="_blank">百度</a>
+    <button>点击</button>
+    <button class = "close">关闭</button>
+    <script>
+        //window 当成全局对象
+        //全局对象-> (globalThis)所有看成
+        //node -> global
+        // 浏览器 -> window
+        console.log(globalThis)
+
+        //浏览器的窗口对象
+        console.log(globalThis.screenX)
+
+        //window1.包含大量属性
+        //2.包含大量方法
+        //EventTaget的方法都可以用
+
+        //补充的方法
+        var op = document.querySelector("button")
+        op.onclick = function(){
+            window.open("./text.html","_blank")
+            
+            // self当前窗口打开
+            //window内置函数,直接用
+        }
+
+        //关闭当前窗口
+        var close = document.querySelector(".close")
+
+        close.onclick = function(){
+            window.close()
+            // 通过window的open才能关闭
+        }
+
+        //常见事件
+        // window.onfocus = function(){
+        //     console.log("获取焦点")
+        // }
+
+        window.onblur = function(){
+            console.log("失去焦点")
+        }
+
+        window.onhashchange = function(){
+            console.log("hashchange")
+        }
+    </script>
+</body>
+</html>

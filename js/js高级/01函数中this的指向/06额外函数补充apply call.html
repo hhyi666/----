@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(name , age , height){
+            console.log(this)
+            console.log(name,age,height)
+        }
+
+        foo("huuyii",18,1.88)
+
+        //apply
+        //第一个参数 ： 绑定this
+        //第二个参数 ： 传入额外的实参，以数组的形式
+        foo.apply("huuyii",["huuyii",19,1.11])
+
+
+        //call
+        //第一个参数 ： 绑定this
+        //参数列表的形式传递，会作为实参 
+        foo.call("why","ddd",25,2.22)
+
+        
+    </script>
+</body>
+</html>

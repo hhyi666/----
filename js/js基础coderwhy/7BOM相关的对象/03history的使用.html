@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>修改history</button>
+    <button class = "back">back</button>
+    <script>
+
+        //前端路由核心 : 修改url 页面不刷新
+        //直接从一个网页发生变化,没有刷新
+        //1 修改hash值
+
+
+        //2 修改history
+
+        //1history的属性
+        console.log(history.length)
+        console.log(history.state)
+
+        //2修改history
+        var btnEl = document.querySelector("button")
+        btnEl.onclick = function(){
+            history.pushState({name : "why",age : "18"},"","/why")
+            //replace不能返回
+            //页面没有刷新
+        }
+        
+        document.querySelector(".back").onclick = function(){
+            history.back()//后退
+            history.forward()//前进
+            history.go()//前进几步
+        }
+        //react vue框架的底层原理
+    </script>
+</body>
+</html>

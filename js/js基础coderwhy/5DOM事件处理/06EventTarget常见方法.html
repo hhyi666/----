@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <script>
+        var btnEl = document.querySelector("button")
+
+        //移除监听
+        function foo(){
+            console.log("监听到按钮")
+        }
+        btnEl.addEventListener("click",foo)
+
+        //过5s将事件监听移除 
+        //不能使用匿名函数
+        setTimeout(function(){
+            btnEl.removeEventListener("click",foo)
+        },5000)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" style = "background-color: red;">
+        box
+    </div>
+    <script>
+        var boxEI = document.querySelector(".box")
+        console.log(boxEI)
+        console.log(boxEI.style.backgroundColor)
+        //css没有设置读取不到
+
+        //读取非内联样式
+        console.log(getComputedStyle(boxEI))
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li:hover{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>我是标题</h2>
+        <p>我是内容</p>
+    </div>
+    <ul>
+        <li>part1</li>
+        <li>part2</li>
+        <li>part3</li>
+        <li>part4</li>
+    </ul>
+    <input type="text">
+    <button name = "why">搜索</button>
+
+    <script>
+
+        //DOM将页面元素抽象成一个个对象,可以进行更改
+        //使用doucument可以直接使用
+        var box = document.body.children[0]
+        console.log(box)
+        box.style.color = "red"
+        
+
+        //在dom当中可以简单看成树元素
+        //元素之间的关系
+        box.children[0].style.fontSize = "50px"
+        box.children[0].nextElementSibling.style.color = "purple"
+
+        // DOM 链接 html和css
+        
+    </script>
+</body>
+</html>

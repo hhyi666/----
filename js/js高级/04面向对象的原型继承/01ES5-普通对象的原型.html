@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "huuyii",
+            age : 18,
+        }
+
+        //prototype 对象原型 特殊的内置属性，这个特殊的对象可以指向另一个对象
+        console.log(obj)
+
+        //获取对象的原型
+        console.log(obj.__proto__)//不是标准的
+        console.log(Object.getPrototypeOf(obj))
+        console.log(obj.__proto__ === Object.getPrototypeOf(obj))
+        
+        //原型的作用：
+        //当我们通过[[get]]方式获取一个属性对应的value时
+        //他会优先找到在自己对象中查找，
+        // 找不到，就会在对应原型中查找
+
+        console.log(obj.name)
+        console.log(obj.message)
+
+        //在原型中可以找到(开发中尽量不用)
+        obj.__proto__.message = "hello"
+        console.log(obj.message)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //属性
+        var num = 123
+        console.log(num.toFixed(2))
+        //number本身有自己的属性
+        console.log(Number.MAX_VALUE)
+        //最大整数
+        console.log(Number.MAX_SAFE_INTEGER)
+        //最小整数
+        console.log(Number.MIN_SAFE_INTEGER)
+
+        var num = 3.1414234
+        console.log(num.toString(),typeof num.toString())
+        console.log(num.toString(2))
+        //转换成2进制
+
+        console.log(123..toString())
+        //转化字符串
+
+        //格式化数字，保留小数位
+        var p = 3.14217932509
+        console.log(p.toFixed(5))
+        //实例方法
+        //保留对应位小数
+
+        //类的方法
+        var num1 = "123.312"
+        console.log(typeof num1)
+        console.log(Number.parseInt(num1))
+        //转化成整数类型
+
+        //在window上面也有,可以直接使用
+        console.log(parseInt(num1))
+        //类方法
+        console.log(parseFloat(num1))
+    </script>
+</body>
+</html>

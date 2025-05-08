@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = "coderwhy";
+        var address = "成都";
+        var intro = "简简单单";
+
+        //别的引号的使用
+        var message1 = 'headsome';
+        console.log(message1);
+        //双引号和单引号相同
+        
+        //反引号 拼接东西
+        var me = `反引号,${name},${2+3}`;
+        console.log(me);
+
+        //字符串本身包含引号
+        var message = "my name is 'coderwhy'";
+        console.log(message);
+
+        // \转义字符
+        //也有\n \t \' \" .....
+        var message4 = 'my name \'\'if "coderwh\ny"';
+        console.log(message4);
+
+        // 字符串的本身属性和方法
+        var message = "hello world";
+        // 属性:length获取就是属性
+        console.log(message.length);
+
+        //字符串操作
+        var nickname = "coderwhy";
+        var info = "my name if";
+        var infoStr = `my name is ${nickname}`;
+        var infoStr2 = info + nickname;
+        console.log(infoStr,infoStr2);
+        // 更加推荐第一种(记住)
+         
+        var define = true;
+        console.log(define);
+    </script>
+</body>
+</html>

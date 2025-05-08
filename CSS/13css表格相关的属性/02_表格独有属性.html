@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 直接调整表格的样式 */
+        table {
+            /* border-width : 2px;
+            border-color : skyblue;
+            border-style: solid; */
+            border : 2px solid skyblue;
+            width : 500px;
+            /* 控制列宽 */
+            /* 调整某一列的宽 */
+            table-layout: fixed;
+
+            /* 调整边框距离(生效不能合并边框) */
+            /* border-spacing: 0px; */
+
+            /* 合并相邻的单元格的边框 */
+            /* border-collapse: collapse; */
+
+            /* 隐藏没有内容的单元格 */
+            empty-cells: hide;
+
+            /* 设置表格标题的位置 */
+            caption-side: top;
+        }
+        td,th {
+            border: 2px solid red;
+        }
+
+        h2{
+            border : 2px double purple;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>边框相关的属性,不仅仅是表格能用</h2>
+    <table>
+        <caption>人员信息</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>政治面貌</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class = "san">张三</td>
+                <td>男</td>
+                <td>18</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class = "san">六三</td>
+                <td>女</td>
+                <td>18</td>
+                <td>群众</td>
+            </tr>
+            <tr>
+                <td class = "san">五三</td>
+                <td>男</td>
+                <td>28</td>
+                <td>党员</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

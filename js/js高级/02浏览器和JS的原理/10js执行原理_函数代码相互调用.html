@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var message = "Global Message"
+        
+        //函数会建立相应的对象
+        //调用生成AO对象
+        //函数执行完后会在上下文栈当中被弹出
+        function bar(){
+            console.log("bar")
+            var address = "bar"
+        }              
+        
+        //这些对象 age height 。。都会放在VO对象里面
+        function foo(name){
+            var age = 18
+            var height = 1.22
+            var message = "Foo Message"
+            console.log(bar)
+            bar()
+        }
+        
+        foo(123)
+
+        var num1 = 10
+        var num2 = 20
+        var res = num1 + num2
+        console.log(res)
+
+    </script>
+</body>
+</html>

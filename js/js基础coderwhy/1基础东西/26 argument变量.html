@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="show()">点我看美女</button>
+    <script>
+        function foo(name,age){
+            console.log("我转入的",name,age);
+
+            //argument在含函数中都存在
+            // console.log(arguments);
+            // 是一个对象，不是数组
+            //包含所有的传入参数
+            // console.log(arguments[0]);
+
+            for(var i = 0;i<arguments.length;i++){
+                console.log(arguments[i]);
+            }
+        }
+        foo("why",18);
+        // arguments传入值都可以被存进去
+        function sum(){
+            var total = 0;
+            for(var i = 0;i<arguments.length;i++){
+                total += arguments[i];
+            }
+            return total;
+        }
+        console.log(sum(10,20));
+        console.log(sum(10,20,30));
+
+        function show(){
+            alert("想屁呢");
+        }
+
+        function pow(a,t){
+            if(t == 0){
+                return 1;
+            }
+            return a * pow(a,t-1);
+        }   
+        console.log(pow(2,4));
+        console.log(Math.pow(2,4));
+
+        //计算斐波那契数列
+        function f(a){
+            if(a === 1)return 1;
+            else if(a === 2)return 1;
+            return f(a-1)+f(a-2);
+        }
+        console.log(f(6));
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width : 800px;
+            height: 400px;
+            background-color: gray;
+            position: relative;
+        }
+        .inner{
+            width : 400px;
+            height: 100px;
+            background-color: orange;
+            font-size: 20px;
+            position: absolute;
+            /* 开定位找位置 */
+            /* 方案一 (记得定位设置宽高)*/
+            top: 0;bottom: 0;left: 0;right: 0;
+            margin: auto;
+            /* 方案二 */
+            /* top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -50px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">666</div>
+    </div>
+</body>
+</html>

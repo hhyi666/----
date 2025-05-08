@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "app">app</div>
+    <div id = "title">title</div>
+    <div id = "nav">nav</div>
+    <div id = "product">product</div>
+
+    <!-- 1.下载需要很长的时间，执行也需要时间 -->
+    <!-- 加上defer之后，js文件的下载和执行不会影响后面DOMtree的构建-->
+    <!-- 脚本会由浏览器进行下载，但是不会阻塞DIOM tree的构建过程 -->
+    <!-- 脚本提前下载完毕，就会等待DOM tree构建完成，再DOMContentLoaded中先执行defer中的代码 -->
+    <script src="./js/index.js" defer></script>
+    <script>
+        window.addEventListener("DOMContentLoaded",() => {
+            console.log("DOMContentLoaded")
+        })
+    </script>
+    <h1>hhhhhaaa</h1>
+
+    <!-- 多个带defer的脚本可以保证正确的执行顺序
+         defer可以提高页面的性能，推荐放进head当中
+         让浏览器提前下载
+         ！！只是用外部脚本
+    -->
+
+</body>
+</html>

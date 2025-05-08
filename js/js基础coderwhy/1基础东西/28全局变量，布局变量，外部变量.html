@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 全局变量
+        // 在哪都可以访问到
+        var message = "hello world";
+        // 外部变量函数之外可以访问到
+        function say(){
+            console.log(message);
+            var nick = "11";
+            // 局部变量，外面不能访问
+        }
+        say();
+        console.log(message);
+
+        // 访问顺序
+        // 先访问属于自己区间的有没有相关的元素
+        // 没有往前一层寻找直到找到
+        //没有找到 报错
+
+    </script>
+</body>
+</html>

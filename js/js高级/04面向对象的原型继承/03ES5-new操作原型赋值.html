@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Foo(){
+            //1.创建空对象
+            //2.函数显式对象赋值给对象的隐式原型
+        }
+
+        console.log(Foo.prototype)
+
+        var f1 = new Foo()
+        console.log(f1.__proto__ === Foo.prototype)//相等
+    </script>
+</body>
+</html>

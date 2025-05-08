@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //工厂函数
+        //js提供更加好的创建方式
+        //使用this进行调用
+        //构造函数（类）
+        function Student(name,age,height){
+            //创建新对象
+            this.name= name
+            this.age = age
+            this.height = height
+            this.running = function(){
+                console.log("running")
+            }
+        }
+        //直接在外面用new进行调用直接创建
+        //new会在函数里面直接创建对象并且返回
+        //让this指向这个对象
+        //没有明确返回，那么this指向对象自动返回
+        var stu1 = new Student("why",18,1.88)
+        var stu2 = new Student("jjb",18,1.9)
+        console.log(stu1,stu2)
+
+        //类和对象
+        //对象可以用类创建出来
+    </script>
+</body>
+</html>

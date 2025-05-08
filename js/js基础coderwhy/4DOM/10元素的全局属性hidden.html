@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class = "btn">切换</button>
+    <div id = "aaa" class = "da" title = "sadd" style = "color: red;" >askdjasjdkas</div>
+    <script>
+        //获取元素
+        var boxEI = document.querySelector("#aaa")
+        var btnEI = document.querySelector(".btn")
+
+        //监听btn点击onclick
+        btnEI.onclick = function(){
+            boxEI.hidden = !boxEI.hidden
+            //直接取反就可以进行切换
+        }
+    </script>
+</body>
+</html>

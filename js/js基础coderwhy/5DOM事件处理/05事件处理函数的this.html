@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button>按钮</button>  
+    </div>
+    
+    <script>
+        var btnEL = document.querySelector("button")
+        var divEL = document.querySelector("div")
+        divEL.onclick = function(){
+            console.log(this)
+            //this绑定处理元素h
+        }
+    </script>
+</body>
+</html>

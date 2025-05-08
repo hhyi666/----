@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border : 2px solid black;
+            margin : 0 auto;
+            margin-top: 100px;
+            transform-style: preserve-3d;
+            /* 开启3d效果 */
+            perspective: 100px;
+            /* 设置景深效果 */
+            /* 给父元素加上3d效果 */
+        }
+        .inner{
+            width: 200px;height: 200px;
+            background-color: deepskyblue;
+            transform: rotatex(30deg);
+        }
+  
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+    </div>
+</body>
+</html>

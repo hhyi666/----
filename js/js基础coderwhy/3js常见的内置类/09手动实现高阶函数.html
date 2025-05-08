@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var names = ["asd","as","jfl"]
+
+        //forEach函数(高级函数)，帮助遍历数组
+        // names.forEach(function(item,index,arr){
+        //     console.log(item,index,arr)
+        // })
+        // 手写forEach
+        //函数作为对象传入函数，并且在函数中不断被调用
+        //回调函数
+        function hyForEach(fn){
+            for(var i = 0;i<names.length;i++){
+                fn(names[i],i,names)
+            }
+        }
+        hyForEach(function(item,index,names){
+            console.log("---")
+            console.log(item,index,names)
+        })
+        // forEach函数默认回调length次数
+        //就是函数作为对象传入函数，再次在函数当中被调用
+
+        //第三种
+        // names作为对象 直接定义属性
+        //高级函数直接将函数作为对象进行使用
+        names.hyForEach = function hyForEach(fn){
+            for(var i = 0;i<this.length;i++){
+                fn(this[i],i,this)
+            }
+        }
+        names.hyForEach(function(item,index,names){
+            console.log("----")
+            console.log(item,index,names)
+        })
+
+        //第四种 hyfe版本4
+        // 手动实现回调函数
+        Array.prototype.hyForEach = function(fn){
+            for(var i = 0;i<this.length;i++){
+                fn(this[i],i,this)
+            }
+        }
+        names.hyForEach(function(item,index,names){
+            console.log(item,index,names)
+        })
+
+    </script>
+</body>
+</html>

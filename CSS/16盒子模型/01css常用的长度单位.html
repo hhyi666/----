@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 40px;
+        }
+        #d1{
+            width : 200px;
+            height : 200px;
+            font-size: 20px;
+            background-color: skyblue;
+        }
+
+        #d2{
+            width : 10em;
+            height : 10em;
+            font-size: 30px;
+            background-color: orange;
+        }
+
+        /* rem对应根元素的font-size的大小 */
+        #d3{
+            width : 10rem;
+            height : 10rem;
+            font-size: 20px;
+            background-color: orange;
+        }
+        /* 第四种继承父辈元素大小的fs值 */
+
+
+        .W{
+            font-size: 20px;
+            /* 缩进 */
+            text-indent: 40px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+      <div id = "d1">1</div>  
+      <hr>
+      <div id = "d2">2</div>
+      <hr>
+      <div id = "d3">3
+        <p>1</p>
+      </div>
+      <hr>
+      <div class = "W">好好学习</div> 
+</body>
+</html>

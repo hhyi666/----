@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #text #wowowo{
+            color : purple;
+        }
+        #wowowo{
+            color : orange;
+        }
+        /* .slogan{
+            color : red;
+        } */
+
+
+        /* 多个选择器选择同一个元素 计算权重 */
+        .container span.slogan{
+            color : green;
+        }
+        div>p>span:first-child{
+            color : green;
+        }
+
+        /* !important最强的选择器 */
+        .slogan{
+            color : skyblue !important;
+            font-size : 40px
+        }
+    </style>
+    
+</head>
+<body>
+    <div class = "container" id = "text">
+        <p>
+            <span class = "slogan" id = "wowowo">hahahah</span>
+            <span>huhuhu</span>
+        </p>
+    </div>
+</body>
+</html>

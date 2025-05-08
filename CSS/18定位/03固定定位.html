@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 500px;
+            background-color: skyblue;
+            border: 1px solid black;
+            padding: 20px;
+            /* position: relative; */
+
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            font-size: 20px;
+        }
+
+        .box1 {
+            background-color: #888;
+        }
+
+        .box2 {
+            background-color: orange;
+            /* 固定定位 */
+            /* 直接用视口进行定位,和父元素基本没关系 */
+            /* 对于行内元素仍然奏效 */
+            position: fixed;
+            bottom: 0px;
+            right: 20px;
+            margin-right: 100px;
+            margin-bottom: 100px;
+        }
+
+        .box3 {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="box box1">1</div>
+        <div class="box box2">点我</div>
+        <div class="box box3">3</div>
+    </div>
+    <!-- 固定定位跟随视口一定，不会随着移动栏移动，意思是你一直能够看见 -->
+    <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, pariatur odit. Fugiat nam tenetur accusamus
+        quidem nemo accusantium suscipit dicta minima iusto, ratione similique! Sunt dolor quas qui, neque distinctio
+        laboriosam nostrum quisquam voluptatibus eligendi ducimus doloribus consequuntur temporibus impedit iste enim
+        repellat adipisci eveniet sequi odio a iusto? Corrupti omnis quis nemo eius? Vitae libero a dolore eius
+        explicabo iure fugiat, nisi, quaerat quos impedit reiciendis odio esse quo nemo quas. Accusamus quidem nemo,
+        atque porro, inventore tempora iusto ipsa doloremque tenetur harum molestias nostrum voluptas cumque! Nemo eius,
+        a magni animi optio deleniti quaerat error labore eum autem temporibus accusamus, officiis, nesciunt praesentium
+        sit aliquid exercitationem distinctio adipisci corporis voluptates cum quo? Dolorum in distinctio odit repellat
+        quos, autem atque tempore repudiandae. Aperiam, ea distinctio. Consequuntur, explicabo ducimus. Numquam
+        assumenda laboriosam necessitatibus blanditiis doloribus autem velit est asperiores dignissimos, itaque eveniet
+        recusandae veritatis perferendis quaerat accusamus magnam error! Natus dolores numquam iusto doloribus.
+        Explicabo magnam, neque cumque est officiis repellendus? Laboriosam beatae omnis neque architecto odio! Hic,
+        voluptas praesentium! Cum, temporibus reprehenderit inventore in sequi minima odit excepturi et consectetur vero
+        vel aut asperiores corporis dolores ab sunt at, quia eaque quis sed ex amet assumenda? Voluptates, in!</div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数中有this变量
+        //指向一个对象
+
+        //情况1：普通函数被默认调用 this指向window
+        function foo(name,age){
+            console.log(arguments)
+            console.log(this)
+        }
+        foo("abc",123)
+
+        function say(name){
+            console.log(name)
+        }
+        say("he")
+
+        //情况2：如果函数被一个对象引用并且调用，this指向这个对象
+        //这里指向obj
+        var obj = {
+            name : "why",
+            running : function(){
+                console.log(this)
+                console.log(this === obj)
+            }
+        }
+        obj.running()
+        var fn = obj.running
+        fn()
+        //这里函数被默认调用，this指向window
+        
+    </script>
+</body>
+</html>

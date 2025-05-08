@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //调试技巧
+        function foo(name){
+            console.log(name)
+        }
+
+        function bar(){
+            console.log('bar执行')
+            foo("xxxx");
+        }
+        // debugger
+        //打断点
+        bar();
+
+        //settimeout
+        //高级函数,会主动调用函数
+        //函数内部进不去
+        //异步操作
+        setTimeout(function() { 
+            console.log("匿名函数2s后执行");
+        },2000);
+    </script>
+</body>
+</html>

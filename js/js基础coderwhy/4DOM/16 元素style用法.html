@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" style="background-color: red;">box</div>
+
+    <script>
+        var boxEI = document.querySelector(".box")
+        // boxEI.style是一个对象
+
+        //在property使用驼峰
+        console.log(boxEI.style.backgroundColor)
+
+        //将一个属性设置空字符串,设置使用默认值
+
+        //设置多个样式
+        boxEI.style.cssText = "font-size : 30px ; color : red"
+    </script>
+</body>
+</html>

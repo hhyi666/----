@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //代码执行之前就会创建的自己的AO 没有进行赋值
+        //n就是undefined
+        // var n = 100
+        //变量会进行提升，但是赋值操作不会
+        //声明的过程会存在但是赋值的过程暴不会提升 ，就是说变量提升之前，变量就已经存在作用域当中
+        // function foo(){
+        //     console.log(n)
+        
+        //     var n = 200
+        //     console.log(n)
+        // }
+
+
+        //作用域只和定义的位置有关
+        // var n = 100
+
+        // function foo1(){
+        //     console.log(n)//自己的作用域中没有找到n
+        //     //去上层作用域进行寻找
+        // }
+        
+        // function foo2(){
+        //     var n = 200
+        //     // console.log(n)
+        //     foo1()
+        // }
+        // foo2()
+
+
+        // var n = 100
+        // //只要自己的里面有定义就不需要去外面进行寻找
+        // function foo(){
+        //     console.log(n)
+        //     var n = 200
+        // }
+        // foo()
+
+        // message = "Hello world"//不定义直接写，相当于全局变量
+        // console.log(message)
+
+        function foo(){
+            var a = b = 100
+        }
+        foo()
+        //找不到a 但是b是全局变量
+        console.log(b)
+    </script>
+</body>
+</html>

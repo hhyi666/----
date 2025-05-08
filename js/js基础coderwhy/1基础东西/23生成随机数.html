@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Math.random();生成0-1的随机数
+        // for(var i = 1;i<10;i++){
+        //     var rande = Math.random()*100;
+        //     rande = Math.floor(rande);
+        //     // 向下取整
+        //     // console.log(Math.random());
+        //     console.log(rande);
+        // }
+        // console.log(-1);
+        // var rann = Math.floor(Math.random()*100);
+        // console.log(rann);
+
+        // 随机数字
+        var t = false;
+        var rannumber = Math.floor(Math.random()*100);
+        for(var i = 1;i<=7;i++){
+            var temp = Number(prompt("请输入数字"));
+            if(temp === rannumber){
+                alert("恭喜你猜对了");
+                t = true;
+            }else if(temp > rannumber){
+                alert("大了");
+            }else if(temp < rannumber){
+                alert("小了");
+            }
+            if(i === count){
+                alert("chance is out")
+            }
+        }
+        if(t === true)alert("nb");
+        else alert("continue");
+    </script>
+</body>
+</html>

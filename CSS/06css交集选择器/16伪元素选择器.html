@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 选中div第一个元素 */
+        div::first-letter{
+            color : red;
+            font-size : 50px;
+        }
+        div::first-line{
+            color : purple;
+            background-color: skyblue;
+        }
+        /* 被鼠标选中的文字 */
+        div::selection{
+            background-color: blue;
+            color : white;
+        }
+        /* 选中的是input元素中的提示子 */
+        input::placeholder{
+            color : skyblue;
+        }
+
+        /* 选中p元素最开始的位置随后写出这个元素 */
+        p::before{
+            content: "￥";
+        }
+        /* 最后的位置,写出这个元素 */
+        p::after{
+            content: ".00";
+        }
+    </style>
+</head>
+<body>
+    <!-- 伪元素 -->
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta ut ipsum numquam reprehenderit debitis sequi temporibus, earum cumque veritatis quaerat tempora. Enim totam dicta optio veniam pariatur nisi quidem eligendi ea error voluptas tempora fugit maiores rem, cupiditate ipsum. Accusantium, in soluta? Maxime rerum voluptatem nostrum vel pariatur, excepturi laborum ea. Ipsam vel temporibus nam ab in at quasi asperiores.</div>
+    <br>
+    <input type = "text" placeholder="请输入你的用户名">
+    <p>199</p>
+    <p>299</p>
+    <p>399</p>
+</body>
+</html>

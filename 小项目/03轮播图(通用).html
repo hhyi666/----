@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 12px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 500px;
+            height: 230px;
+            position: relative;
+            border: 1px solid red
+        }
+
+        .ul1 {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ul1>li {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .left-button {
+            width: 35px;
+            height: 70px;
+            background-color: #ccc;
+            line-height: 70px;
+            text-align: center;
+            color: white;
+            position: absolute;
+            top: 85.5px;
+            left: 0;
+            font-size: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .right-button {
+            width: 35px;
+            height: 70px;
+            background-color: #ccc;
+            line-height: 70px;
+            text-align: center;
+            color: white;
+            position: absolute;
+            font-size: 20px;
+            top: 85.5px;
+            right: 0;
+            border-radius: 10px 0 0 10px;
+        }
+
+        .ul2 {
+            position: absolute;
+            bottom: 20px;
+            right: 50px;
+        }
+
+        .ul2>li {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            text-align: center;
+            line-height: 20px;
+            float: left;
+            margin-right: 10px;
+            border-radius: 20px;
+        }
+
+        .ul2>li:hover {
+            background-color: red;
+            color: #fff
+        }
+
+        .ul2>li:nth-child(1) {
+            background-color: red;
+            color: #fff;
+        }
+
+        .ul1>li:nth-child(1) {
+            z-index: 100;
+        }
+
+        .indexs {
+            z-index: 10000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="ul1" id="ul1">
+            <li><img src="./图片/喜羊羊.jpg" alt="" width="500" height="230"></li>
+            <li><img src="./图片/奥特曼.jpg" alt="" width="500" height="230"></li>
+            <li><img src="./图片/灰太狼.jpg" alt="" width="500" height="230"></li>
+            <li><img src="./图片/怪兽.jpg" alt="" width="500" height="230"></li>
+        </ul>
+        <div class="left-button indexs" id="left-button">&lt;</div>
+        <div class="right-button indexs" id="right-button">&gt;</div>
+        <ul class="ul2 indexs" id = "ul2">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <script>
+        var imgs = document.getElementById("ul1").children
+        var button = document.getElementById("ul2").children
+        var leftbutton = document.getElementById("left-button")
+        var rightbutton = document.getElementById("right-button")
+        var index = 0
+        var dingshiqi
+        congqi()
+        function congqi() {
+            dingshiqi = setInterval(function () {
+                index++
+                if (index === imgs.length - 1) {
+                    index = 0
+                }
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].style.cssText = "z-index:0;"
+                }
+                imgs[index].style.cssText = "z-index:100;"
+            }, 2000)
+        }
+
+        leftbutton.onclick = function () {
+            clearInterval(dingshiqi)
+            index--
+            if (index < 0) {
+                index = imgs.length - 1
+            }
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.cssText = "z-index:0;"
+            }
+            imgs[index].style.cssText = "z-index:100;"
+            congqi()
+        }
+        rightbutton.onclick = function () {
+            clearInterval(dingshiqi)
+            index++
+            if (index > imgs.length-1) {
+                index = 0
+            }
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.cssText = "z-index:0;"
+            }
+            imgs[index].style.cssText = "z-index:100;"
+            congqi()
+        }
+
+        button[0].onclick = function(){
+            clearInterval(dingshiqi)
+            index = 0;
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.cssText = "z-index:0;"
+                button[i].style.cssText = "background-color:#fff;color:#000;"
+            }
+            imgs[index].style.cssText = "z-index:100;"
+            button[index].style.cssText = "background-color:red;color:#fff;"
+            congqi()
+        }
+        button[1].onclick = function(){
+            clearInterval(dingshiqi)
+            index = 1;
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.cssText = "z-index:0;"
+                button[i].style.cssText = "background-color:#fff;color:#000;"
+            }
+            imgs[index].style.cssText = "z-index:100;"
+            button[index].style.cssText = "background-color:red;color:#fff;"
+            congqi()
+        }
+        button[2].onclick = function(){
+            clearInterval(dingshiqi)
+            index = 2;
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.cssText = "z-index:0;"
+                button[i].style.cssText = "background-color:#fff;color:#000;"
+            }
+            imgs[index].style.cssText = "z-index:100;"
+            button[index].style.cssText = "background-color:red;color:#fff;"
+            congqi()
+        }
+        button[3].onclick = function(){
+            clearInterval(dingshiqi)
+            index = 3;
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.cssText = "z-index:0;"
+                button[i].style.cssText = "background-color:#fff;color:#000;"
+            }
+            imgs[index].style.cssText = "z-index:100;"
+            button[index].style.cssText = "background-color:red;color:#fff;"
+            congqi()
+        }
+    </script>
+</body>
+
+</html>

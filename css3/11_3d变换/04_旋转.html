@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width: 200px;
+            height: 200px;
+            border : 2px solid black;
+            margin : 0 auto;
+            margin-top: 100px;
+            transform-style: preserve-3d;
+            /* 开启3d效果 */
+            perspective: 500px;
+            /* 设置景深效果 */
+            /* 给父元素加上3d效果 */
+
+            /* 设置透视点的位置 */
+            /* 就是观察者的位置 */
+            /* perspective-origin: 100px 100px; */
+            /* 左右和上下 */
+        }
+        .inner{
+            width: 200px;height: 200px;
+            background-color: rgba(0, 191, 255, 0.26);
+            transform: rotatex(45deg);
+            /* 记住rotate会导致xy轴的变化 */
+        }
+  
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">你好啊</div>
+    </div>
+</body>
+</html>

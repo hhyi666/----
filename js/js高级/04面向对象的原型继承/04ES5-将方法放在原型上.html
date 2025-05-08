@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student(name,age,sno){
+            this.name = name
+            this.age = age
+            this.sno = sno
+
+            //方式1 ： 编写函数会创建很多个函数对象
+            // this.running = function(){
+            //     console.log("running")
+            // }
+            // this.eating = function(){
+            //     console.log("eating")
+            // }
+            // this.studying = function(){
+            //     console.log("studying")
+            // }
+        }
+
+        //当我们存在多个值的时候，可以将他们的构造函数放在函数对象的显式原型上
+        //构造的所有对象，都会拥有这些属性
+        //直接使用原型
+        Student.prototype.running = function(){
+            console.log(this.name + "running")
+        }
+        //创建学生
+
+        //隐式原型的应用
+        //1.stu1的隐式原型就是 Student的显式原型
+        //2.现在自己身上查找，但是u没找到，只能在原型上找到
+        var stu1 = new Student("aaa",18,111)
+        var stu2 = new Student("bbb",11,222)
+        var stu3 = new Student("ccc",12,333)
+        
+        console.log(stu1.running())
+        //会创建多个running对象
+        //其实时不需要的
+
+
+        //为什么属性不放在原型上 ： 每个人属性是不同的就不放在一起
+    </script>
+</body>
+</html>

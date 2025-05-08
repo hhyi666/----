@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <input type="text">
+    <button>搜索</button>
+
+    <script>
+        var inputEl = document.querySelector("input")
+        var btnEl = document.querySelector("button")
+        //键盘按下
+        // inputEl.onkeydown = function(){
+        //     console.log("key")
+        // }
+
+        // inputEl.onkeypress = function(){
+        //     console.log("press")
+        // }
+        // //键盘松开
+        // inputEl.onkeyup = function(event){
+        //     console.log("up")
+        //     console.log(event.key , event.code)
+        //     //key 键值 code key+键值
+        //     //非字符值通常相同
+        // }
+
+        //搜索功能
+        btnEl.onclick = function(){
+            console.log("搜索" ,inputEl.value)
+        }
+        //实现enter搜索
+        inputEl.onkeyup = function(event){
+            if(event.code === "Enter"){
+                console.log("搜索" + inputEl.value)
+            }
+        }
+
+        //按下s自动获取焦点
+        document.onkeyup = function(event){
+            // console.log("dou 键盘事件",event.code,event.key)
+            if(event.code === "KeyS"){
+                inputEl.focus()//自动获取焦点
+            }
+        }
+    </script>
+</body>
+</html>

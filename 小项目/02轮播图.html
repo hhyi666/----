@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 230px;
+            position: relative;
+        }
+
+        .box-img {
+            position: absolute;
+            /* 设置图片的绝对位置 */
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: all 1.5s;
+            /* 设置动画 */
+        }
+
+        .box-img:nth-child(1) {
+            opacity: 1;
+        }
+
+        .box-left {
+            width: 35px;
+            height: 70px;
+            color: #ccc;
+            position: absolute;
+            top: 87.5px;
+            border-radius: 0 5px 5px 0;
+            line-height: 70px;
+            text-align: center;
+            font-size: 27px;
+        }
+
+        .box-right {
+            width: 35px;
+            height: 70px;
+            color: #ccc;
+            position: absolute;
+            top: 87.5px;
+            right: 0;
+            border-radius: 0 5px 5px 0;
+            line-height: 70px;
+            text-align: center;
+            font-size: 27px;
+
+        }
+
+        .box-left:hover,
+        .box-right:hover {
+            background-color: #00000050;
+            transition: 0.5s;
+            color: white;
+        }
+
+        .box-zhiding>ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .box-zhiding li {
+            width: 7px;
+            height: 7px;
+            border-radius: 100%;
+            background-color: #ccc;
+            float: left;
+            margin-right: 7px;
+
+        }
+
+        .box-zhiding li:nth-child(1){
+            background-color: white;
+        }
+        
+        .box-zhiding {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        .box-zhiding li:hover {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box-img"><img src="./图片/lun1.webp" alt="" width="500" height="230"></div>
+        <div class="box-img"><img src="./图片/lun2.webp" alt="" width="500" height="230"></div>
+        <div class="box-img"><img src="./图片/lun3.webp" alt="" width="500" height="230"></div>
+        <div class="box-img"><img src="./图片/lun4.webp" alt="" width="500" height="230"></div>
+        <div class="box-img"><img src="./图片/lun5.webp" alt="" width="500" height="230"></div>
+        <div class="box-img"><img src="./图片/lun6.webp" alt="" width="500" height="230"></div>
+        <div class="box-left">&lt;</div>
+        <div class="box-right">&gt;</div>
+        <div class="box-zhiding">
+            <ul>
+                <li class = "button"></li>
+                <li class = "button"></li>
+                <li class = "button"></li>
+                <li class = "button"></li>
+                <li class = "button"></li>
+                <li class = "button"></li>
+            </ul>
+        </div>
+    </div>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            var index = 0//标记当前图片
+            var f//全局变量不会发生冲突
+            
+            dingshiqi()
+            function dingshiqi() {
+                f = setInterval(function () {
+                    if (index === $(".box-img").length - 1) {
+                        index = 0
+                        $(".box-img").css("opacity", "0")//找到图片并执行
+                        $(".box-img").eq(index).css("opacity", "1")
+                        $(".button").css("background-color","#ccc")
+                        $(".button").eq(index).css("background-color","#fff")
+                    } else {
+                        index++
+                        $(".box-img").css("opacity", "0")//其他图片隐藏
+                        $(".box-img").eq(index).css("opacity", "1")//eq相当于索引
+                        //轮流找到图片的索引
+                        $(".button").css("background-color","#ccc")
+                        $(".button").eq(index).css("background-color","#fff")
+                    }
+                }, 4000)
+            }
+
+            $(".box-left").click(function () {
+                clearInterval(f)//清除变量
+                if (index === 0) {
+                    index = $(".box.img").length - 1
+                    $(".box-img").css("opacity", "0")
+                    $(".box-img").eq(index).css("opacity", "1")
+                    $(".button").css("background-color","#ccc")
+                    $(".button").eq(index).css("background-color","#fff")
+                    dingshiqi()
+                } else {
+                    index--
+                    $(".box-img").css("opacity", "0")
+                    $(".box-img").eq(index).css("opacity", "1")
+                    $(".button").css("background-color","#ccc")
+                    $(".button").eq(index).css("background-color","#fff")
+                    dingshiqi()
+                }
+            })
+            $(".box-right").click(function () {
+                clearInterval(f)//清除变量
+                if (index === $(".box-img").length - 1) {
+                    index = 0
+                    $(".box-img").css("opacity", "0")
+                    $(".box-img").eq(index).css("opacity", "1")
+                    $(".button").css("background-color","#ccc")
+                    $(".button").eq(index).css("background-color","#fff")
+                    dingshiqi()
+                } else {
+                    index++
+                    $(".box-img").css("opacity", "0")
+                    $(".box-img").eq(index).css("opacity", "1")
+                    $(".button").css("background-color","#ccc")
+                    $(".button").eq(index).css("background-color","#fff")
+                    dingshiqi()
+                }
+            })
+
+
+            //这里存在bug 快速切换的时候
+            //可能导致切换和按钮同时放生
+
+            $(".button").click(function(){
+                clearInterval(f)//关闭计时器
+                var indexx = $(this).index();//获取点击按钮的索引
+                index = indexx
+                $(".box-img").css("opacity", "0")
+                $(".box-img").eq(index).css("opacity", "1")
+                $(".button").css("background-color","#ccc")
+                $(".button").eq(index).css("background-color","#fff")
+                dingshiqi()//打开计时器
+            })
+        })
+    </script>
+</body>
+
+</html>

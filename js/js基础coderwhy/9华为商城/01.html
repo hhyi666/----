@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="./index.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- 轮播图
+    <div class="banner">
+        <ul class="banner-list">
+
+        </ul>
+        <ul class="indicator">
+            
+        </ul>
+    </div> -->
+
+    <!-- 商品展示 -->
+    <div class="wrapper">
+        <!-- 导航 -->
+        <div class="crumbs">
+            <span class="item">首页</span>
+            <span class="split">&gt;</span>
+            <span class="item">笔记本</span>
+        </div>
+
+        <!-- 操作 -->
+        <div class="operation">
+            <ul class="category row">
+                <li class="item">分类:</li>
+                <li class="item">笔记本</li>
+                <li class="item">台式机</li>
+                <li class="item">智慧屏</li>
+            </ul>
+            <ul class="discount row">
+                <li class="item">服务优惠:</li>
+                <li class="item active">仅看有货</li>
+                <li class="item">分期免息</li>
+                <li class="item">优惠商品</li>
+            </ul>
+            <ul class="sort row">
+                <li class="item">排序:</li>
+                <li class="item active">综合</li>
+                <li class="item">最新</li>
+                <li class="item">评论数</li>
+                <li class="item">价格</li>
+            </ul>
+        </div>
+        
+        <!-- 商品列表部分 -->
+        <ul class = "products">
+            <li class = "item">
+                <a href="#">
+                    <img class = "album"src="./image/01.png" alt="">
+                    <div class = "name">Mate 70</div>
+                    <div class="discount">鸿蒙AI|红枫原色影像|超可靠玄武架构</div>
+                    <div class="price">￥6499</div>
+                    <div class="service">
+                        <span class = "tip">分期免息</span>
+                        <span class = "tip">赠送积分</span>
+                    </div>
+                    <div class="commont">
+                        <span>9999+评论</span>
+                        <span>96%好评</span>
+                    </div>
+                </a>
+            </li>
+            <li class = "item">
+                <a href="#">
+                    <img class = "album"src="./image/01.png" alt="">
+                    <div class = "name">Mate 70</div>
+                    <div class="discount">鸿蒙AI|红枫原色影像|超可靠玄武架构</div>
+                    <div class="price">￥6499</div>
+                    <div class="service">
+                        <span class = "tip">分期免息</span>
+                        <span class = "tip">赠送积分</span>
+                    </div>
+                    <div class="commont">
+                        <span>9999+评论</span>
+                        <span>96%好评</span>
+                    </div>
+                </a>
+            </li>
+            <li class = "item">
+                <a href="#">
+                    <img class = "album"src="./image/01.png" alt="">
+                    <div class = "name">Mate 70</div>
+                    <div class="discount">鸿蒙AI|红枫原色影像|超可靠玄武架构</div>
+                    <div class="price">￥6499</div>
+                    <div class="service">
+                        <span class = "tip">分期免息</span>
+                        <span class = "tip">赠送积分</span>
+                    </div>
+                    <div class="commont">
+                        <span>9999+评论</span>
+                        <span>96%好评</span>
+                    </div>
+                </a>
+            </li>
+            <li class = "item">
+                <a href="#">
+                    <img class = "album"src="./image/01.png" alt="">
+                    <div class = "name">Mate 70</div>
+                    <div class="discount">鸿蒙AI|红枫原色影像|超可靠玄武架构</div>
+                    <div class="price">￥6499</div>
+                    <div class="service">
+                        <span class = "tip">分期免息</span>
+                        <span class = "tip">赠送积分</span>
+                    </div>
+                    <div class="commont">
+                        <span>9999+评论</span>
+                        <span>96%好评</span>
+                    </div>
+                </a>
+            </li>
+            <li class = "item">
+                <a href="#">
+                    <img class = "album"src="./image/01.png" alt="">
+                    <div class = "name">Mate 70</div>
+                    <div class="discount">鸿蒙AI|红枫原色影像|超可靠玄武架构</div>
+                    <div class="price">￥6499</div>
+                    <div class="service">
+                        <span class = "tip">分期免息</span>
+                        <span class = "tip">赠送积分</span>
+                    </div>
+                    <div class="commont">
+                        <span>9999+评论</span>
+                        <span>96%好评</span>
+                    </div>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+
+    <!-- <script src="./000.json"></script> -->
+    <!-- 获取js文件 -->
+    <!-- <script> -->
+        //1动态链表的引入
+        //服务器的地址用来引入图片
+        // var baseurl = "https://res8.vmallres.com/"
+
+        // console.log()
+        // var productsEl = document.querySelector(".products")
+        // for(var i = 0 ;i<res.length;i++){
+        //     var ress = res[i]
+        //     //获取数据
+
+        //     //转化成为item
+        //     //最外层的
+        //     var itE = document.createElement("li")
+        //     itE.classList.add("item")//加上class
+
+        //     //创建a元素加入
+        //     var aEl = document.createElement("a")
+        //     aEl.href=  "a"
+        //     itE.append(aEl)
+
+        //     //添加img
+        //     var imgEl = document.createElement("img")
+        //     imgEl.classList.add("album")
+        //     imgEl.src = `${baseurl}...`//都要加上用来引入图片需要拼接
+        //     aEl.append(imgEl)
+
+            //添加name
+            // var nameEl = document.createElement("div")
+            // nameEl.classList.add("name")
+            // nameEl.textContent = ress.name
+            // aEl.append(nameEl)
+
+            //添加discount
+            // var discount = document.querySelector("div")
+            // discount.classList.add("discount")
+            // discount.textContent = ress.discount
+            // aEl.append(discount)
+
+            //添加价格
+
+            //添加评论
+            // var commentEl = document.createElement("div")
+            // commentEl.classList.add("comment")
+            // commentEl.textContent = `${ress.comment}人评论`
+            //一个一个创建
+            
+            //2
+            // <li class = "item">
+            //     <a href="#">
+            //         <img class = "album"src="拼接的图片的地址" alt="">
+            //         <div class = "name">{{item.name}}</div>
+            //         <div class="discount">{{item....}}</div>
+            //         <div class="price"><{{item....}}/div>
+            //         <div class="service">
+            //             <span class = "tip">分期免息</span>
+            //             <span class = "tip">赠送积分</span>
+            //         </div>
+            //         <div class="commont">
+            //             <span>9999+评论</span>
+            //             <span>96%好评</span>
+            //         </div>
+            //     </a>
+            // </li>
+
+            //3
+            //只做数据展示
+            // var itemEl = document.createElement("li")
+            // itemEl.classList.add("item")
+            // //一个一个放就行
+            // itemEl.innerHTML = `
+            //     <a href="#">
+            //         <img class = "album"src="./image/01.png" alt="">
+            //         <div class = "name">${ress.name}</div>
+            //         <div class="discount">鸿蒙AI|红枫原色影像|超可靠玄武架构</div>
+            //         <div class="price">￥6499</div>
+            //         <div class="service">
+            //             <span class = "tip">分期免息</span>
+            //             <span class = "tip">赠送积分</span>
+            //         </div>
+            //         <div class="commont">
+            //             <span>9999+评论</span>
+            //             <span>96%好评</span>
+            //         </div>
+            //     </a>
+            // `
+
+    //     }
+    // 
+    <!--  </script> -->
+
+    <!-- <script>
+
+        var info = [
+            {name : "why",friends :["asd","sdas"]},
+            {name : "kobe",friends : ["wqew","we"]}
+        ]
+        //服务优惠的筛选
+        var operationEl = document.querySelector(".operation")
+        var discountEl = document.querySelector(".discount")
+        var disfliters = []
+        for(var i = 1;i<discountEl.children.length;i++){
+            // console.log(discountEl.children[i])
+            var discountElItem  = discountEl.children[i]
+            discountElItem.onclick = function(){
+                this.classList.toggle("active")
+                
+                //判断是否将active移除
+                if(this.classList.contains("active")){
+                    disfliters.push(this.textContent.trim())
+                }else{
+                    var filterItem = this.textContent.trim()
+                    var index = disfliters.findIndex(function(item){
+                        return item === filterItem
+                    })
+                    disfliters.splice(index,1)
+                }
+                console.log(disfliters)
+                //过滤
+                // console.log('first')
+                filterRes()
+            }
+        }
+        
+        //封装过滤操作
+        function filterRes(){//拿到过滤相应的数据
+            var show = res.fliter(function(item){
+                var isf = true
+                for(var t of disfliters){
+                    if(!item.services.includes(filterItem)){
+                        isf = false
+                        break
+                    }
+                }
+                return isf
+            })
+        }
+
+        //最后得到新数据在进行输出就是上边建立来链表的过程
+        //下边有空的
+        //一般进行设置让也页面更加美观
+
+    </script> -->
+</body>
+
+</html>

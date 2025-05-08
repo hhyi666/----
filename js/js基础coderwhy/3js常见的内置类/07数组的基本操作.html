@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var names = ["abs","add","ads","dasd","asdajlks","inih"]
+
+        //访问
+        console.log(names[0])
+        console.log(names.at(0))
+
+        //修改
+        names[0] = "mmmm"
+        
+        //新增元素不常用
+        // names[3] = "lll"
+        // console.log(names[3])
+
+        //删除操作不常用
+        // delete names[1]
+
+        //新增到尾部 
+        names.push("asd")
+        console.log(names[names.length-1])
+        //删除尾部
+        names.pop()
+
+        //新增到头部
+        names.unshift("uuu")
+        console.log(names[0])
+        //shift删除头部元素
+        names.shift();
+        console.log(names)
+        
+        //中间任意的添加和删除 splice
+        //开始位置，
+        names.splice(1,2)//从第一个开始删除两个
+        console.log(names)
+        names.splice(1,0,"why","kobe")//新增第二个数是0，第一个数是位置
+        console.log(names)
+        names.splice(1,2,"asda","sjdikls")//替换
+        console.log(names)
+
+        //属性
+        var namess = ["aaa","ddd","asda","sdas"]
+        console.log(namess.length)
+        //length属性可写
+        // namess.length = 10//扩容
+        console.log(namess.length)
+        //设置长度小于原来长度，进行截取
+        //直接设置0 清空数组
+
+        //数组遍历
+        // for(var i = 0;i<namess.length;i++)console.log(namess[i])
+        // for (var i in namess) {
+        //     console.log(namess[i])//索引
+        // }
+        // for (var i of namess) {
+        //     console.log(i)
+        // }
+
+        //数组slice不会对数组进行改变,新建数组进行改变st和ed不包括ed
+        var nename = namess.slice(2,4)
+        console.log(nename)
+
+        //数组concat连接数组
+        var nn = nename.concat(namess)
+        console.log(nn)
+        //其他的方法
+
+        //join数组 split合并数组
+        console.log(names.join("-"))
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            /* 子元素都会快化 */
+        }
+        .outer{
+            width: 1000px;height: 600px;
+            background-color: #888;
+            /* 将元素变为伸缩容器 */
+        }
+        .inner{
+            width: 200px;height: 200px;
+            background-color: skyblue;
+            border : 1px solid black;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+    </div>
+    <div class="outer">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+    </div>
+</body>
+</html>

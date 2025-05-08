@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 200px;width: 200px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        //获取鼠标
+        var boxEl = document.querySelector(".box") 
+        boxEl.onclick = function(){
+            console.log("click")
+        }
+
+        boxEl.oncontextmenu = function(event){
+            console.log("右键点击")
+            event.preventDefault()
+            //阻止后续产生新东西
+        }
+
+        //记录鼠标是否按下
+        var isdown = false;
+        //鼠标按下
+        boxEl.onmousedown = function(){
+            console.log("shubiao aaaa")
+            isdown = true;
+        }
+        //鼠标抬起
+        boxEl.onmouseup = function(){
+            console.log("shubiao ttt")
+            isdown = false;
+        }   
+        //鼠标移动
+        boxEl.onmousemove = function(){
+            if(isdown)console.log("shubiao move")
+        }
+    </script>
+</body>
+</html>

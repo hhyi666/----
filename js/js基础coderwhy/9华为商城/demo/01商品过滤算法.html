@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var info = [
+            {name : "why",friends :["asd","sdas"]},
+            {name : "kobe",friends : ["wqew","we"]},
+            {name : "james",friends : ["cxxdas","jaskda"]}
+        ]
+
+        var filters = ["asd"]
+
+        //找到相对应的值
+        var show = info.filter(function(item){
+            var friends = item.friends
+            var isf = true
+            for(var i of filters){
+                if(!friends.includes(i)){
+                    isf = false
+                    break
+                }
+            }
+            return isf
+        })
+        console.log(show)
+    </script>
+</body>
+</html>

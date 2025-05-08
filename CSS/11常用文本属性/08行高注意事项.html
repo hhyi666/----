@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 行高不要过小 */
+        #d1{
+            background-color: skyblue;
+            line-height: 1.5;
+            font-size: 90px;
+            
+        }
+        /* 有继承性 */
+        #d2{
+            background-color: orange;
+            font-size: 40px;
+            line-height: 1.5;
+        }
+        
+        /* 注意height和lh的关系 */
+        /* 设置height就是height
+        没有设置就是lh*行数 */
+        span {
+            font-size: 200px;
+        }
+        #r4{
+            font-size: 100px;
+            background-color: skyblue;
+            line-height: 50px;
+            height : 200px;
+        }
+        /* 行高的应用场景：
+        1调整多行文字的间距
+        2单行文字的垂直居中 （lh和h相同就行）*/
+    </style>
+</head>
+<body>
+    <p id = "d1">我爱你，让天下充满爱isdjfasjfdasjfasld;killllllciopaWESJFFFFFOfppppKSDLJ;AFKLSAFJASLKDFJLA;KSJDF;LKASDFJAS;LDKFJSD;LAFJ;ALSDKFJAS;DLKFJ</p>
+    <p id = "d2">kaj<span>sf</span>aksdklfajsdlkfjsdklmnvclksajdflkmsdkxcvsakdljfvcsdmvckfasdjkfvcsfkdjfskldfjjainglijsdehsnem,e sjogfoudals';dflasf</p>
+    <div id = "r4">sajlkfkdjadflkjaskld</div>
+</body>
+</html>

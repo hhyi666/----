@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function foo(){
+        //     console.log(this)
+        // }
+
+
+        //1.显示绑定的优先级高于隐式绑定
+        //测试一
+        // var obj = {foo : foo}
+        // obj.foo.apply("aaa")
+
+        //测试二
+        // var bar = foo.bind("aaa")
+        // var obj = {
+        //     name : "why",
+        //     baz : bar
+        // }
+        // obj.baz()//还是显示绑定高
+
+
+        //2.new绑定高于隐式绑定
+        // var obj = {
+        //     name : "huuyii",
+        //     foo : function(){
+        //         console.log(this)
+        //     }
+        // }
+        // //默认创建空对象
+        // new obj.foo()
+
+        //3.new不可以和call apply一起使用
+        //可以和bind一起使用
+        //new优先级更高
+        // function foo(){
+        //     console.log(this)
+        // }
+        // var bindFn = foo.bind("aaa")
+        // new bindFn()
+
+        //4.bind apply call 优先级比较
+        //bind的优先级更高
+        function foo(){
+            console.log(this)
+        }
+        var obj1 = foo.bind("aaa")
+        var obj2 = obj1.apply("bbb")
+
+        //new
+        //bind call apply
+        //隐式绑定
+        //默认绑定
+    </script>
+</body>
+</html>

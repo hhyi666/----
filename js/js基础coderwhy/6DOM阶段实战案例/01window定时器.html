@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button>取消st定时器</button> -->
+    <button>取消恩特</button>
+    <script>
+        // function foo(){
+        //     console.log("foo------")
+        // }
+        // //计划调用
+        // //1settimeout
+        // // setTimeout(foo ,2000);
+        // //取消方法
+        // var timeoutBtn = document.querySelector("button")
+        // var timeoutID = setTimeout(foo,2000)
+        // timeoutBtn.onclick = function(){
+        //     //取消调用
+        //     clearTimeout(timeoutID)
+        // }
+
+        // 2setInterval间隔时间重复执行
+        function bar(){
+            console.log("___bar")
+        }
+        var btn = document.querySelector("button")
+        var tid = setInterval(bar,2000)
+        btn.onclick = function(){
+            //取消
+            clearInterval(tid)
+        }
+
+    </script>
+</body>
+</html>

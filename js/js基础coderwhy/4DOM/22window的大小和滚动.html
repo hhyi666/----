@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 5500px;
+        }
+        .scrollbtn{
+            position: fixed;
+            /* 固定窗口 */
+            right : 20px;
+            bottom : 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+    <button class = "scrollbtn">回到顶部</button>
+    <script>
+
+        // //window大小
+        // console.log(window.outerHeight)
+        // console.log(window.outerWidth)
+        // //整个
+
+        // console.log(window.innerWidth)
+        // console.log(window.innerHeight)
+        // //单单窗口
+
+        // console.log(document.documentElement.offsetHeight)
+        // console.log(document.documentElement.offsetWidth)
+        // //获取html的大小
+
+        // //获取window的滚动区域
+        // window.onclick = function(){
+        //     // console.log(window.scrollx)
+        //     console.log(window.scrollY)
+        // }
+
+        var scrollbtnEL = document.querySelector(".scrollbtn")
+        // 实时获取滚动距离
+        //判断滚动的位置大小
+        window.onscroll = function(){
+            var scrolly = window.scrollY
+            if(scrolly>600){
+                //使用opcity可以更改动画
+                scrollbtnEL.style.display = "block"
+            }else scrollbtnEL.style.display = "none"
+        }
+
+        // 点击按钮滚动位置
+        scrollbtnEL.onclick = function(){
+            // window.scrollBy(0,100)
+            window.scrollTo(0,0)
+            // 滚动到
+        }
+
+    </script>
+</body>
+</html>

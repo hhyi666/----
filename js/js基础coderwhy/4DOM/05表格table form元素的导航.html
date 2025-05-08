@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+           <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>身高</th>
+           </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>hhy</td>
+                <td>19</td>
+                <td>1.7</td>
+            </tr>
+            <tr>
+                <td>why</td>
+                <td>1.8</td>
+                <td>18</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form action="">
+        <!-- name向服务器提供信息 -->
+        <input name = "account"type="text">
+        <input name = "password"type="password">
+        <input name = "hobbies"type="checkbox" checked>
+        <select name="fruits">
+            <option value="apple">苹果</option>
+            <option value="orange">橙子</option>
+        </select>
+    </form>
+
+    <script>
+        //拿table
+        var tableEI = document.body.children[0]
+        console.log(tableEI)
+
+        console.log(tableEI.children)
+        console.log(tableEI.rows)
+        console.log(tableEI.tBodies)
+        var rowEI = tableEI.rows[2]
+        console.log(rowEI.cells[0])
+        console.log(rowEI.sectionRowIndex)
+
+
+        //form索引
+        var formEI = document.forms[0]
+        //直接通过doucument.forms拿到
+        //获取子元素
+        var inputEI = formEI.elements.account
+        console.log(inputEI)
+
+        setTimeout(function(){
+            console.log(inputEI.value)
+        },5000)
+
+
+    </script>
+</body>
+</html>

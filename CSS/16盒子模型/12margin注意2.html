@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .one{
+            background-color: skyblue;
+            margin-bottom : 10px;
+            margin-left: 100px;
+        }
+
+        
+        .wwww{
+            margin-top : -20px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 上和左margin影响自身
+    右和下margin影响兄弟元素 -->
+    <div>什么意思</div>
+    <img src = "/images/eff6141e-ff38-4fd7-9266-83d4f51eb4af.png">
+    <hr>
+
+    <!-- 行内元素没有上下margin,有左右margin -->
+    <span class = "one">人之初</span>
+
+    <hr>
+    <!-- margin的值也可以是auto 设置左右位置能够使水平居中 -->
+    <div>你好啊</div>
+
+    <hr>
+    <!-- margin可以是负数能够调整向上 -->
+    <div class = "wwww">shen,easfdas</div>
+
+</body>
+</html>

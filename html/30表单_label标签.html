@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form action = "https://search.jd.com/search">
+        <label>
+            账户：
+            <input id = "zhanghu"type = "text"name = "acount" maxlength = "10"><br>
+        </label>
+        <label>
+            密码：
+            <input id = "mima" type = "password"name = "pwd" maxlength = "10"><br>
+        </label>
+        性别：
+        <input type = "radio" name = "gender" value = "male"id = "nan">
+        <label for = "nan" >男</label>
+        <input type = "radio" name = "gender" value = "female"id = "nv">
+        <label for = "nv">女</label>
+        <br>
+        爱好：
+        <label>
+            <input type = "checkbox"name = "hobby" value = "smoke">抽烟
+        </label>
+        <label>
+            <input type = "checkbox"name = "hobby" value = "drink">喝酒
+        </label>
+        <label>
+            <input type = "checkbox"name = "hobby" value = "perm">烫头
+        </label>
+        <br>
+        <label for = "qita">其他：</label>
+        <textarea id = "qita"name="other" cols = "22" rows = "3"></textarea>
+        <input type = "hidden" name = "from" value = "toutiao">
+        <br>
+        <label>
+            籍贯：
+            <select name = "place">
+                <option value = "冀">河北</option>
+                <option value = "鲁">山东</option>
+                <option value = "晋">山西</option>
+                <option value = "豫">河南</option>
+            </select>
+        </lable>
+        <br>
+        <br>
+        <input type = "submit"value = "确认">
+
+        <button type = "reset">重置</button>
+
+        <button type = "button">检测是否被注册</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div classs = "box"></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var bodyEI = document.body
+
+        //获取子元素
+        var clildElement = bodyEI.children
+        console.log(clildElement)
+
+        //获取box元素
+        var boxele = bodyEI.firstElementChild
+        var b1 = bodyEI.children[0]
+        console.log(boxele,b1)
+
+        //获取ul
+        var ulEI = boxele.nextElementSibling
+        console.log(ulEI)
+
+        //获取li
+        var lis = ulEI.children
+        console.log(lis)
+    </script>
+</body>
+</html>

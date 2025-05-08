@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = "jjbwhy"
+        console.log(name.length)
+        //访问某一位置的字符
+        console.log(name[0])
+        console.log(name.charAt(4))//访问字符
+        //没东西返回ud 返回“ ”
+        console.log(name[20])
+        console.log(name.charAt(20))
+
+        for(var i = 0;i<name.length;i++){
+            console.log(name[i])
+        }
+        //和auto for差不多
+        for (var i of name) {
+            console.log(i)
+        }
+        // string字符数组可迭代
+        //对象是不可以迭代的
+
+        //修改字符串
+        //字符串不可修改
+        var message = "hello coderwhy"
+        //1严格修改字符串 红叉
+        // message[2] = "a"
+        // console.log(message)
+        var m1 = message.toUpperCase()//大写
+        //不会在原来的身上进行修改只会生成新的字符串并且返回
+        var m1 = console.log(m1)
+
+        var m2 = "gsfAJSKLDJf"
+        m1 = m2.toLowerCase(m2)//小写
+        console.log(m1)
+
+    </script>
+</body>
+</html>

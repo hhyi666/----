@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //独立函数调用
+        // function foo(){
+        //     console.log(this);
+        // }
+        // foo();
+
+
+        //定义再对象中，独立调用
+        var obj = {
+            name : "why",
+            bar : function foo(){
+                console.log(this);
+            }
+        }
+        obj.bar();
+        var bb = obj.bar//指向obj
+        bb();//还是window
+
+
+        //独立函数调用
+        //高阶函数
+        //传入函数并且运行函数
+        function text(fn){
+            fn()
+        }
+        text(obj.bar)
+
+
+        //严格模式下，独立调用函数this指向undefined
+
+    </script>
+</body>
+</html>

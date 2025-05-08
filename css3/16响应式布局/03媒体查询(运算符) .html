@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            height: 200px;
+            background-color: gray;
+            text-align: center;
+            line-height: 200px;
+            font-size: 100px;
+        }
+
+        /* @media (min-width:700px) and (max-width:800px) {
+            h1{
+                background-color: red;
+            }
+        } */
+        /* @media screen and (min-width:700px) and (max-width:800px) {
+            h1{
+                background-color: red;
+            }
+        } */
+        /* 或者 */
+        /* @media (max-width : 700px) or (min-width : 800px){
+            h1{
+                background-color: red;
+            }
+        } */
+         /* 否定运算符 */
+        @media only screen{
+            h1{
+                background-color: wheat;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>nihao</h1>
+</body>
+</html>

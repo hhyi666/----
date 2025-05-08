@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var names = ["asd","aswwe","asjkd"]
+
+        // var a = names.find(function (item,index,names){
+        //     console.log(item,index,names)
+        //     //没有返回值直接返回und
+        //     return item == "asd"
+        // })
+        // console.log(a)
+
+        var stu = [
+            {name : "n1",age : 12},
+            {name : "n2",age : 11},
+            {name : "n3",age : 10},
+        ]
+
+        var fna = stu.find(function(item){
+            return item.age == 11
+        })
+        console.log(fna)
+
+        //第三和自己实现hyfind
+        //fn相当于判别函数
+        Array.prototype.hyfind = function(fn){
+            for(var i = 0;i<this.length;i++){
+                var isFlag = fn(this[i],i,this)
+                if(isFlag){
+                    return this[i]
+                }
+            }
+        }
+        var find = stu.hyfind(function(item,index,names){
+            return item.age === 11
+        })
+        console.log(find)
+    </script>
+</body>
+</html>

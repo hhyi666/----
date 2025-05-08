@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "why",
+            age : 18,
+            height : 1.88
+        }
+        
+        //新增的方法
+        //直接设置多个
+        Object.defineProperties(obj,{
+            name : {
+                configurable : true,
+                enumerable : true,
+                writable : false,
+            },
+            age : {
+                configurable : true,
+                enumerable : true,
+            }
+        })
+    </script>
+</body>
+</html>

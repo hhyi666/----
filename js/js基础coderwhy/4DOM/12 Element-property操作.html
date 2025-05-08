@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 标准的attribute都有对应的property -->
+    <div class="box" id = "asd" title = "不不不">
+        我是box
+    </div>
+    <input type="checkbox"  checked > 
+
+    <br>
+    账号:<input type = "text" class = "account" value = "sadjlkasd">
+    <button class = "btn">设置</button>
+    <script>
+        // 对象的属性成为property
+        // var obj = {
+        //     name : "why"
+        // }
+
+        var boxEI = document.querySelector(".box")
+        console.log(boxEI)
+        console.log(boxEI.id,boxEI.title)
+        //这里的id就是property
+        //不标准的拿不到
+        var inputEI = document.querySelector("input")
+        
+        //这样不行不能用getatt
+        if(inputEI.checked){
+            console.log("YES")
+        }else console.log("No")
+
+        //2 attribute property相互影响
+        boxEI.id = "sadas"
+        console.log(boxEI.getAttribute("id"))
+        boxEI.setAttribute("title","asjkld")
+        console.log(boxEI.title)
+
+        //特殊情况 input设置值
+        var account = document.querySelector(".account")
+        console.log(account)
+
+        var btn = document.querySelector(".btn")
+        btn.onclick = function(){
+            // account.setAttribute("value","dklfjs")优先级更高(标准形式)
+            account.value = "why"
+            //这两个都可以设置
+        }
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "huuyii"
+        }
+
+        //对obj对象中的name添加描述符（存取属性描述符）
+        var _name = ""
+        Object.defineProperty(obj,"name",{
+            configurable : true,
+            enumerable : false,
+
+            //精准的控制两个属性
+            //存取属性符
+            set : function(value){
+                console.log("set函数被调用",value)
+                _name = value
+            },
+            get : function(){
+                return _name
+            }
+        })
+
+        obj.name = "kobe"
+        obj.name = "james"
+    </script>
+</body>
+</html>

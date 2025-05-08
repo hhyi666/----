@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .box{
+
+        } */
+        .box button{
+            cursor: pointer;
+        }
+        .box  .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button class = "active">red</button>
+        <button>yellow</button>
+        <button>blue</button>
+    </div>
+    <div class="list">
+    </div>
+    <script>
+        var stu = [
+            {name:"aa",colors :["red","yellow","green"]},
+            {name:"bb",colors:["orange","yellow","red"]},
+            {name:"cc",colors:["red","purple","white"]}
+        ]
+
+        //点击按钮，按钮选中
+        var fiters = []
+        var newstu = stu
+        var btnELs = document.querySelector(".box")
+        for(var i = 0;i<btnELs.children.length;i++){
+            var btnEL = btnELs.children[i]
+            btnEL.onclick = function(){
+                this.classList.toggle("active")
+
+                if(this.classList.contains("active")){
+                    fiters.push(this.textContent.trim())
+                }else{
+                    var fItem = this.textContent.trim()
+                    var index = fiters.indexOf(fItem)
+                    fiters.splice(index,1)
+                }
+                // console.log(fiters)
+                //进行过滤
+                // debugger
+                //将要保留的元素放进这个数组进行筛选
+                newstu = []
+                for(var st of stu){
+                    var fg = true
+                    for(var filterItem of fiters){
+                        if(!st.colors.includes(filterItem)){
+                            fg = false
+                            break
+                        }
+                    }
+                    if(fg){
+                        newstu.push(st)
+                    }
+                }
+                shownewstu()
+            }
+        }
+
+        //进行过滤，最新的fiters
+        function shownewstu(){
+            var listEl = document.querySelector(".list")
+            listEl.innerHTML = ""
+            for(var i = 0;i<newstu.length;i++){
+                var newss = newstu[i]
+                var divEL = document.createElement("div")
+                divEL.textContent = newss.name
+                listEl.append(divEL)
+            }
+        }
+    </script>
+</body>
+</html>

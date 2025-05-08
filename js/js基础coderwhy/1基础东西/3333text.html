@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>打印</button>
+
+    <script>
+        var btn = document.querySelector("button");
+        for(var i = 0;i<5;i++){
+            console.log("------");
+            //放在这里就不会执行，但是上层代码会进行
+            btn.onclick = function(){
+            console.log(i);
+            }
+            //此时如果打印那么i就会变成5
+
+            
+        }
+        // console.log(i);
+        //放在函数里面i不会执行
+        // btn.onclick = function(){
+        //     console.log(i);
+        // }
+
+        
+    </script>
+</body>
+</html>

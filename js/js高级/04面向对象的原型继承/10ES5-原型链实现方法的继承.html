@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name,age){
+            this.name = name
+            this.age = age
+        }
+
+        Person.prototype.running = function(){
+            console.log("running")
+        }
+        Person.prototype.eating = function(){
+            console.log("eating")
+        }
+        
+        //自己没有的继承父亲
+        function Student(name,age,sno,score){
+            this.name = name
+            this.age = age
+            this.sno = sno
+            this.score = score
+        }
+
+        //方法一 ： 直接子类共享父类的prototype(错误)
+
+        //方式二 ： 创建一个父类的实例对象作为子类的原型对象
+        //子类原型上直接加上方法
+        var p = new Person("yyy",18)
+        Student.prototype = p
+        //弊端 ： 
+        //1.可能
+
+
+        //方法三 ： 
+
+
+        // Student.prototype.running = function(){
+        //     console.log("running")
+        // }
+        // Student.prototype.eating = function(){
+        //     console.log("eating")
+        // }
+        Student.prototype.studying = function(){
+            console.log("studying")   
+        }
+
+        var stu1 = new Student("huuyii",18,1.88,100)
+        stu1.running()
+        stu1.studying()
+
+        console.log(stu1.name,stu1.age)
+    </script>
+</body>
+</html>

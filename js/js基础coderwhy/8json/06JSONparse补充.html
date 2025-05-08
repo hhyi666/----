@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name : "why",
+            age : 18,
+        }
+        var objJSON = JSON.stringify(obj)
+        console.log(objJSON)
+
+        //支持特殊处理
+        var newobj = JSON.parse(objJSON,function(key,value){
+            if(key === "age"){
+                return value+2
+            }
+            return value
+        })
+        console.log(newobj)
+    </script>
+</body>
+</html>

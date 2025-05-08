@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(n,m){
+
+            //arguments类数组对象，但是不是数组，拥有数组的属性，但是没有数组的方法
+            console.log(arguments)
+            //可以通过索引访问
+            
+            // for(var i = 0;i<arguments.length;i++){
+            //     console.log(arguments[i])
+            // }
+        
+            // for (const aa of arguments) {
+            //     console.log(aa)
+            // }
+
+            //获取所有参数中的偶数
+            // for (const aa of arguments) {
+            //     if(aa % 2 === 0) console.log(aa)
+            // }
+            
+
+            // 2.1argument转化数组,直接新建数组push进去
+            var newnums = []
+            for (const aa of arguments) {
+                newnums.push(aa)
+            }
+            for (const aa of newnums) {
+                console.log(aa)
+            }
+
+            //2.2方法2,直接使用
+            var newnums = Array.from(arguments)
+            console.log(newnums)
+            var newnum2 = [...arguments]
+            console.log(newnum2)
+
+            //2.3将argument转化数组 使用slice方法
+            //直接调用应用在argument
+            var nums = [].slice.apply(arguments)
+            var nnns = Array.prototype.slice.apply(arguments)
+            //两种方法一样
+            console.log(nnns)
+            console.log(nums)  
+        }
+        //可以传进去
+        foo(10,20,40,30)
+
+        var names = ["asd","ccc","asas","ooo","ppp"]
+        var newname = names.slice(0,4)//从哪里到哪里
+        console.log(newname)
+        
+    </script>
+</body>
+</html>
