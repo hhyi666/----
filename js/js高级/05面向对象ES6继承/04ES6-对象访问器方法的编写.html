@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //针对对象
+        //方式一：描述符
+        var obj = {
+            name : "huuyii"
+            
+        }
+
+        //用来监听访问什么时候访问什么时候设置新的值
+        Object.defineProperty(obj,"name",{
+            configurable : true,
+            enumerable : true,
+            set : function(){
+                
+            },
+            get : function(){
+
+            }
+        })
+
+        //方式二 ： 直接在对象里面定义访问器
+        //可以直接访问
+        var obj = {
+            _name : "why",
+
+            //setter方法 //可以监听访问和更改的过程
+            set name(value){
+                this._name = value
+            },
+            get name(){
+                return this._name
+            }
+        }
+    </script>
+</body>
+</html>

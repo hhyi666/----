@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class Person{
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            running(){console.log("running")}
+            eating(){console.log("eating")}
+        }
+
+        //直接实现继承
+        class Student extends Person{
+            constructor(name,age,sno,score){
+                
+                super(name,age)//将父类传进来  ！！！！！！！！！！！！！
+                //！！！！！！！！！！！使用this之前调用super
+                this.sno = sno
+                this.score = score
+            }
+            studying(){console.log("studying")}
+        }
+
+        var stu1 = new Student("huuyii",18,111,100)
+        console.log(stu1)
+
+
+        class Teacher extends Person{
+            constructor(name,age,title){
+                super(name,age)
+                this.title = title
+            }
+            teaching(){console.log("teaching")}
+        }
+
+        //很多重复的代码
+        //将共同的类写到一个类里面
+        
+    </script>
+</body>
+</html>

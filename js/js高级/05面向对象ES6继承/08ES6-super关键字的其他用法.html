@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class Animal{
+            running(){console.log("running")}
+            eating(){console.log("eating")}
+
+            static sleep(){
+                console.log("animal sleep")
+            }
+        }
+
+        class Dog extends Animal{
+            //子类对父类的方法不满意 可以重新写  父类方法的重写
+            running(){
+                console.log("dog")
+                super.running()//子类能够通过super调用父类的方法
+            }
+            static sleep(){
+                console.log("pazhe")
+                super.sleep() // super应用父类的方法
+            }
+        }
+
+        var d1 = new Dog()
+        d1.running()
+        Dog.sleep()
+    </script>
+</body>
+</html>

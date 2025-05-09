@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+
+        }
+
+        //1.创建内置类进行扩展
+        //使用内置类进行使用
+        class HuuArray extends Array{
+
+            get lastItem(){
+                return this[this.length-1]
+            }
+            get firstItem(){
+                return this[0]
+            }
+        }
+
+        var arr = new HuuArray(10,20,30)
+        //拓展可以自己写函数方法
+        console.log(arr.lastItem)
+        console.log(arr.firstItem)
+
+        //2.直接对Array进行扩展
+        Array.prototype.lastItem = function(){
+            return this[this.length-1]
+        }
+        //直接对显式原型进行更改
+
+        //函数的call aooly bind方法 -> Funtion prototype
+
+        
+    </script>
+</body>
+</html>

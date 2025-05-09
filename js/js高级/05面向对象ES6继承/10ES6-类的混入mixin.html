@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+
+        //1.Js只支持单继承，不支持多继承
+        // class Animal{
+        //     running(){}
+        // }
+
+        // class Flyer{
+        //     flying(){}
+        // }
+        // class Bird extends Animal{
+            
+        // } 
+        function mixinAnimal(Baseclass){
+            return class extends Baseclass{
+                running(){console.log("running")}
+            }
+        }
+
+        function mixinRunner(Baseclass){
+            return class extends Baseclass{
+                flying(){console.log("flying")}
+            }
+        }
+
+        class Bird{
+            eating(){
+                console.log("eating")
+            }
+        }
+        //实现多继承的方法
+        var NewBird = mixinAnimal(mixinRunner(Bird))
+        //多层继承，来增加新方法
+        var bird = new NewBird()
+        bird.flying()
+        bird.eating()
+
+
+    </script>
+</body>
+</html>

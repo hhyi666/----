@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        class Person{
+            //约定： 下划线开头的属性和方法不在外界进行访问
+            constructor(name,age){
+                this._name = name
+                this._age = age
+            }
+            set name(name){
+                this._name = name
+            }
+
+            get name(){
+                return this._name
+            }
+        }
+        var p1 = new Person("huuyii",12)
+
+        //通过访问器进行修改name访问name
+        p1.name = "aaa"
+        console.log(p1.name)//这样的访问时通过setter进行访问
+
+
+        //应用场景
+        class Rectangle{
+            constructor(x,y,weight,height){
+                this.x = x
+                this.y = y
+                this.weight = weight
+                this.height = height
+            }
+            
+            get position(){
+                return {x:this.x,y:this.y}
+            }
+
+            get size(){
+                return {x:this.weight,y:this.height}
+            }
+        }
+        var rect1 = new Rectangle(10,20,100,200)
+        console.log(rect1.position)
+        console.log(rect1.size)
+
+    </script>
+</body>
+</html>

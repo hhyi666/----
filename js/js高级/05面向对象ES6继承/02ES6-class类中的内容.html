@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var obj = {
+            running : function(){
+
+            }
+        }
+        class Person{
+            //1.类中的构造函数
+            //通过new关键字调用Person函数时默认调用class中的constructor方法
+            //固定写法
+            constructor(name,age){
+                //this赋值给新对象
+                this.name = name
+                this.age = age
+            }
+
+            //2.实例方法
+            //本质放在prototype上面
+            running(){
+                console.log(this.name,"running")
+            }
+            eating(){
+                console.log("eating")
+            }
+        }
+        var p1 = new Person("huuyii",11)
+        console.log(p1)
+        p1.running()
+        console.log(Person.prototype === p1.__proto__)//true
+
+        console.log(Person.running)
+        
+        
+    </script>
+</body>
+</html>

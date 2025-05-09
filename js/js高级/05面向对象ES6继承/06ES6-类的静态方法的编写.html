@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Person(){}
+
+        // //实例方法
+        // Person.prototype.running = function(){}
+        // //类方法
+        // Person.randomPerson = function(){}
+
+        // var p1 = new Person()
+        // p1.running()
+        // Person.randomPerson()
+
+
+        var names = ["aaa","vvv","ddd","ooo"]
+        class Person{
+
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            //实例方法 放在显式原型上面
+            running(){}
+            eating(){}
+
+            //类方法（静态方法） //放在对象上面
+            static randomPerson(){
+                console.log(this) //Person调用的
+                var randomName = names[Math.floor(Math.random() * names.length)]
+                return new this(randomName,Math.floor(Math.random() * 100))
+            }
+        }
+
+        var p1 = new Person()
+        p1.running()
+        var randomPerson = Person.randomPerson()
+        console.log(randomPerson)
+    </script>
+</body>
+</html>

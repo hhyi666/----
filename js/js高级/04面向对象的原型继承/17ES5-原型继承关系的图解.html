@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数有自己的隐式原型显式原型 constructor
+        //最初有一个Function对象
+        var obj = {}
+        obj.__proto__  //指向Object的显式原型
+
+        function foo(){//是用new function创建的 proto指向function prototype
+
+        }
+        console.log(foo.length,foo.name)
+        console.log(foo.__proto__)
+        
+        function Person(){
+            
+        }
+        
+        console.log(foo.__proto__ === Person.__proto__)
+        console.log(Person.__proto__ === Function.prototype)
+        console.log(Function.__proto__ === Function.prototype)
+        //p1的隐式原型指向person的显式原型
+        var p1 = new Person() // p1是Person的实例 Person是Function的实例
+        var p2 = new Person()
+
+        //1.p1是Person的实例 
+        //2.obj是Object的实例
+        //3.Function / Object 都是 Function的实例对象
+        //4.原型对象默认创建时，隐式原型都是指向Object的显式原型的 Object指向null
+        //  *Person__proto__指向Object Person继承自Object 是子类
+        //  *Object也是Function的父类 但是Function是Object的构造函数 用来创造相应的对象类型
+        //都指向 Object的 prototype 
+        // Funtion 和 Object 的prototype互相指向
+
+        
+
+    </script>
+</body>
+</html>

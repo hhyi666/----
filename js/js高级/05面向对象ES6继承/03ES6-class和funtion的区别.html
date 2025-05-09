@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        
+        function Person1(name,age){
+            this.name = name
+            this.age = age
+        }
+        Person1.prototype.running = function(){
+            console.log("running")
+        }
+        var p1 = new Person1("why",18)
+        console.log(p1)
+        console.log(Person1.prototype.constructor)
+
+        //不同点
+        Person1("aaa",100)//可以作为普通函数直接调用
+
+        //语法糖
+        class Person2{
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+
+            running(){
+                console.log("running")
+            }
+        }
+        console.log(Person2.prototype.constructor)
+        console.log(typeof Person2)
+
+        //不能直接调用
+        Person2("aaa",111)
+    </script>
+</body>
+</html>

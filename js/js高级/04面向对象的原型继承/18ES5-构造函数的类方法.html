@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- ES5之前还是比较麻烦的 -->
+    <script>
+        function Person(name,age){
+            this.name = name
+            this.age = age
+        }  
+
+        //是实例方法 需要通过实例对象进行调用
+        Person.prototype.running = function(){
+            console.log("running```")
+        }
+        Person.prototype.eating = function(){
+            console.log("eating~~~")
+        }
+
+        //添加到Person本身的方法就是类方法 可以自己调用
+        Person.teaching = function(){
+            console.log("teaching")
+        }
+
+        //创建实例对象
+        var p1 = new Person("aaa",11)
+        var p2 = new Person("bbb",22)
+
+        p1.running()
+        // Person.running()//这里面没有相应的方法
+        // Person.__proto__ === Function.prototype
+        Person.prototype.running()
+        Person.teaching()
+        
+    </script>
+</body>
+</html>
