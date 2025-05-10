@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //解构
+        const obj = {name : "huuyii"}
+        const {name = "kobe",age = 18} = obj
+
+        //函数的默认值也是一个对象！！！
+        //进行解构
+
+        //没有默认值
+        // function foo({name,age} = { name : "huuu",age : 18}){
+        //     console.log(name,age)
+        // }
+
+
+        //这样可以设定默认值
+        function foo({name = "huu",age = 18} = {}){
+            console.log(name,age)
+        }
+
+        foo()
+    </script>
+</body>
+</html>

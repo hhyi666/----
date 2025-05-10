@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 class = "card"></h1>
+    <script>
+        //padstart
+        const minute = "15".padStart(2,"0")//在前面进行填充，保证有两位
+
+        //padEnd向后填充
+        const second = "33".padEnd(2,"0")
+        console.log(`${minute}:${second}`)
+        //但是我想要两位数怎么搞？进行填充
+
+
+        //应用场景2；对敏感数据进行格式化 身份证 银行卡。。。
+        let IDcard = "132345200607895639"
+        const sliceID = IDcard.slice(-4)//进行截取
+        IDcard = sliceID.padStart(IDcard.length,"*")
+        const cardEl = document.querySelector(".card")
+        cardEl.textContent = IDcard
+        
+
+
+    </script>
+</body>
+</html>

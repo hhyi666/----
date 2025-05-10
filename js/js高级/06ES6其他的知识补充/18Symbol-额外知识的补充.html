@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const s1 = Symbol()
+        const s2 = Symbol()
+
+        //1.加入到对象里面
+        const obj = {
+            name : "huu",
+            age : 18,
+            [s1] : "aa",
+            [s2] : "bb"
+        }
+
+        const obj1 = {}
+        obj1[s1] = "aaa",
+        obj1[s2] = "bbb"
+
+        const obj2 = {}
+        Object.defineProperty(obj2,"[s1]",{
+            value : "aaa"
+        })
+        
+        //2.获取symbol对应的key ，获取属性的名字 第一种不能获取symbol包装的kay 
+        console.log(Object.keys(obj))
+        //能够获取Symbl对应的key
+        console.log(Object.getOwnPropertySymbols(obj))
+        const Symkeys = Object.getOwnPropertySymbols(obj)
+        for (const key of Symkeys) {
+            console.log(key)
+        }
+
+        //Symbol（）生成独一无二的值
+        //description
+        //？？我们想生成相同的Symbol?
+        const s3 = Symbol("aaa")//传入描述
+        console.log(s3.description)//拿到对应的描述
+        const s4 = Symbol(s3.description)
+        console.log(s3 === s4)//false
+
+        //相同的key 通过Symbol。for可以生成相同的Symbol值
+        const s5 = Symbol.for(s3.description)
+        const s6 = Symbol.for(s3.description)
+        console.log(s5 === s6) // 这种情况下生成的Symbol是相等的
+
+        //获取传入的key 这个函数反向回去到对应的key
+        console.log(Symbol.keyFor(s5))
+
+
+    </script>
+</body>
+</html>

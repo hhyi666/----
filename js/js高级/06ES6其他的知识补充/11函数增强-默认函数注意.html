@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.规范：想要进行设置默认参数的元素尽量往后面放
+        //2.有默认参数的形参是不会计算在length之内的，并且后面的都不会计算在内 不会计算name
+        //3。剩余参数放在默认参数的后面
+        function foo(age,name = "huuyii"){
+            console.log(name,age)
+        }
+
+        foo(18)
+        console.log(foo.length)
+
+    </script>
+</body>
+</html>

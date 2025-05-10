@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // ！！！！展开运算符实际上是一种浅拷贝
+        const names = ["hhh","uuu","iii","pppp","ooo"]
+        const str = "hello"
+
+        //展开运算符
+        console.log(...names)
+        function foo(name1,name2,...othernames){
+            console.log(name1,name2,...othernames)
+        }
+        foo(...str)//字符串也可以传进来
+
+
+        //ES9之后
+        const obj = {
+            name : "huu",
+            age : 18
+        }
+
+
+        //不可以这样使用
+        // foo(...obj) // 函数调用的时候，使用展开运算符，将对应的展开数据进行迭代
+        //可迭代对象 ： 数组/string/arguments
+        //对象默认不是可迭代
+        
+        //只有构建对象自变量才能够使用对象展开运算符
+        const info = {
+            ...obj
+            ,height : 1.88
+            ,address : "chengdu"
+        }
+        console.log(info)
+
+
+    </script>
+</body>
+</html>

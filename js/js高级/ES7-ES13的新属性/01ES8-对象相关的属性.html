@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ES5引入的是Object.keys方法，返回的是一个数组，成员是所有可遍历（enumerable）的属性的key
+        const obj1 = {foo : `bar`,baz : 42}
+        const obj2 = {100:"a",2:"b",7:"c"}
+        console.log(Object.values(obj1))//这个是返回values
+        //注意如果属性名为数值的属性，是按照数值大小，从小到大进行遍历，
+        console.log(Object.values(obj2))
+
+        console.log(Object.entries(obj2))
+        //返回的是键值对数组，每一对是一个元素
+        //能排序的就是排序进行输出
+        
+    </script>
+</body>
+</html>

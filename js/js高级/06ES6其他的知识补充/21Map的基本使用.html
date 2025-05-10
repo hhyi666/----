@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const info = {name : "why"}
+        const info2 = {age : 133}
+
+
+        //1.对象类型的局限性
+        const obj = {
+            address : "chengdu",
+            [info] : "hhhh",//key自动转换成字符串
+            [info2] : "123"
+            //这里的[info] === [info2]
+        }   
+        console.log(obj)
+
+        //2.Map映射类型
+        const map = new Map()
+        //key - value
+        map.set(info,"aaa")
+        console.log(map)
+
+        //3.属性和方法
+        //set size get(key)
+        console.log(map.get(info))
+        map.set(123,"ccc")
+        //delete
+        // map.delete(info)
+        //has
+        console.log(map.has(info))//true
+        //clear
+        // map.clear()
+        //forEach 直接获取对应的value
+        map.forEach(item => console.log(item))
+
+        //支持forof遍历
+        for (const item of map) {//直接拿到数组
+            const [key,value] = item//解构
+            console.log(key,value)
+        }
+
+    </script>
+</body>
+</html>

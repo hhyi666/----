@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        const set = new Set()//通过构造函数进行新建。元素不能重复
+        //注意js中的set没有自动排序
+        //可以储存不同的数据类型
+        set.add(11)
+        set.add(11)
+        set.add(8)
+        set.add(111)
+        console.log(set)
+
+
+        const obj = {}
+        const info = {}
+        set.add(info)
+
+        //应用场景：数组的去重
+        //手搓去重
+        const names = ["aaa","bbb","ddd","ddd"]
+        // const newnames = []
+        // for (const content of names) {
+        //     if(!newnames.includes(content)){
+        //         newnames.push(content)
+        //     }
+        // }
+        // console.log(newnames)
+
+        //直接使用set
+        const newnames = new Set(names)//这是set类型
+        const nname = Array.from(newnames)//转换成为数组类型 //数以“可迭代对象”转换成数组才能这么写
+        console.log(nname)
+
+
+        //Set的其他的属性和方法
+        //size
+        console.log(set.size)
+        //delete has clear forEach遍历
+       console.log(set.has(11))
+    //    set.clear()
+        set.forEach(item  => console.log(item))
+        //forEach传入函数clg
+
+        for (const item of set) {
+            console.log(item)
+        }
+
+        
+    </script>
+</body>
+</html>

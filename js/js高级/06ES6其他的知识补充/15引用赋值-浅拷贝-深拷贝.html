@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            name:"why",
+            age : 18,
+            height : 1.88,
+
+            ruinning(){
+                console.log("first")
+            }
+        }
+
+        //引用赋值，。直接给地址
+        //就是将obj的地址复制给info1
+        // const info1 = obj
+        //更改inifo1的值obj的值对应的也会更改
+
+        
+        //2.浅拷贝 展开运算符是浅拷贝
+        //这样更改info2不会更改原来obj的值
+        //我的info2会创建新的地址，用来从obj复制来的值
+        //深层次的引用的对象不会进行改变 深层次的地址
+        const info2 = {
+            ...obj
+        }
+        info2.name = "ooo"
+        console.log(info2.name)
+        console.log(obj.name)
+
+        //3.深拷贝（没有现成的）但是函数还是拷贝不了
+        //方法一；第三方库
+        //方法二；自己实现
+        //方式三；利用现有的js机制实现。JSON
+        const info3 = JSON.parse(JSON.stringify(obj))//obj先转换成JSON文件，
+        // 在转换回来，都是重新生成的，都是新的地址用来存储原来的声明
+        console.log(info3.name)
+        
+    </script>
+</body>
+</html>

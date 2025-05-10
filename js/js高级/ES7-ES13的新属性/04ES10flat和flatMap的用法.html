@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.flat的使用
+        //将一个数组按照指定的递深度，将遍历到的元素和子数组中的元素组成一个新的数组，进行返回
+        const nums = [10,20,[111,222,333],[[123,123],[222,333],777],888]
+        const newNum1 = nums.flat(1)//指定深度，进行平坦化
+        //这里的深度就是展开几层嵌套，就是消除等级相同的括号
+        console.log(newNum1)
+        // const newNum2 = nums.flat(2)
+        // console.log(newNum2)
+
+        //2.flatMap
+        //先进行map映射，再做flat操作 
+        //flatMap中的flat的深度是1
+        //1>对于数组中的每一个元素应用一次传入的Map对应的函数
+        const messages = ["Hello world","aaa ccc","bbb daada"]
+        //通过空格进行切割，再次放进这个数组
+
+        //手搓
+        // const newMess = []
+        // for (const item of messages) {
+        //     const infos = item.split(" ")
+        //     for (const info of infos) {
+        //         newMess.push(info)
+        //     }
+        // }
+        // console.log(newMess)
+
+        //先进行Map操作，然后在进行flat操作 map就是创建新的数组，将对应的对象放进去
+        // const newMessage = messages.map(item => item.split(" "))
+        // console.log(newMessage)
+        // const finalMessage = newMessage.flat(1)
+        // console.log(finalMessage)
+
+        //flatMap操作
+        const finalMessage = messages.flatMap(item => item.split(" "))
+        console.log(finalMessage)
+    </script>
+</body>
+</html>

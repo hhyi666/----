@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES6之前
+        const name = "huy"
+        const age = 11
+
+        // const info = "my name is " + name + " age is " + age//很麻烦
+        // console.log(info)
+
+
+        //基本用法
+        //1.ES6之后新增的语法，字符串模板
+        const info = `my name is ${name}, age is ${age}`
+        console.log(info)
+        function foo(){
+            return "YES"
+        }
+        //这样也可以进行嵌套
+        console.log(`foo : ${foo()}`)
+
+        //2。标签模板字符串的用法
+        function foo(...args){
+            console.log(args)
+        }
+
+        // foo("111","222","333")
+        //调用,这样也能够直接传入字符串
+        //使用$传入的参数会往后放在函数的对象里面 自己也是一个对象
+        //这样就能直接调用
+        foo`my name is ${name},age is ${age},height is ${1.88}`
+        //模板字符串进行拆分
+        //第一个元素是数组，是被拆分的字符串组合
+        //后面是传入的内容
+
+        //后面能够使用这个标签模板字符串进行css in js all in js都会用到
+        //直接堆对css进行更改
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const obj = {
+        //     name : "why"
+        // }
+        
+        // //添加新的属性 name 有时候不知道有没有对应的变量
+        // obj.name = "kkk"
+        
+        // function foo(){
+            
+        // }
+
+        //ES6 Symbol可以生成一个独一无二的值 可以让原来的不被覆盖
+        const s1 = Symbol()
+        const obj = {
+            [s1] : "aaa"
+            //将名字准转成字符串作为key
+        }
+        console.log(obj)
+        console.log(obj[s1])
+
+        function foo(){
+            const kk = Symbol()
+            obj[kk] = function(){}
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.对象
+        const obj = {
+            name : "huu",
+            age : 18,
+            height : 1.88
+        }
+        console.log(Object.entries(obj))
+        const objEntries = Object.entries(obj)
+        console.log(objEntries)
+        console.log(Object.fromEntries(objEntries))//使用这个还能够转换回来
+        //相互转换
+
+        //应用
+        const searchString = "?name=why&age=18&height=1.88?"
+        const params = new URLSearchParams(searchString)//解析字符串
+        console.log(params.get("name"))
+        console.log(params.get("age"))
+        console.log(params.entries())//可迭代对象
+        //使用的时候默认就是entries 两个是等价的
+        //默认就是对象类型
+        for (const item of params) {
+            console.log(item)
+        }
+    </script>
+</body>
+</html>

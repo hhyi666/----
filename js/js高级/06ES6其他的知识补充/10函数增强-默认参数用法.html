@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //注意：不会对null进行判断
+        function foo(arg1 = "morenzhi",arg2 = "morenzhi"){
+            // console.log(arg1,arg2)//默认undefined很危险
+
+
+            //不严谨
+            //默认值写法1；这个也不行
+            // arg1 = arg1?arg1:0
+            // console.log(arg1,arg2)
+
+            //默认写法2；，但是不能判断0 
+            // arg1 = arg1 || 0
+
+
+            //默认写法3；严谨的写法 三元运算符
+            // arg1 = (arg1 === undefined || arg1 === null) ? "默认值" : arg1
+            // console.log(arg1)
+
+
+            //默认写法4；新增语法 ？？
+            // arg1 = arg1 ?? "默认值"
+            
+            //写法4：默认值直接在传入参数的时候定义默认值
+
+            console.log(arg1,arg2)
+        }
+
+        // foo(123,312)
+        foo()
+        foo(false)
+        foo(123,312)
+        foo(null)
+    </script>
+</body>
+</html>

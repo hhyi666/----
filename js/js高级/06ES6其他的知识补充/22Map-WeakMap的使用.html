@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //弱引用可以销毁
+        const obj1 = {name : "why"}
+        const obj2 = {name : "kobe"}
+
+        const weakmap = new WeakMap()
+        weakmap.set(obj1,"aaa")
+        weakmap.set(obj2,"bbb")
+
+        console.log(weakmap)
+        //还是不能遍历 可以实现响应式
+    </script>
+</body>
+</html>

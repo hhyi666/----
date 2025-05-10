@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //1.function定义的函数有两个原型
+        function foo(){}
+        console.log(foo.prototype)//指向Object父类
+        console.log(foo.__proto__)//记住指向Function.protytype
+
+
+        //2.箭头函数没有显式原型 也没有this，super，argument 访问this会去上层寻找
+        //在ES6之后使用class定义类
+        var bar = ()=>{}
+        console.log(bar.__proto__)////记住指向Function.protytype
+        console.log(bar.prototype)//没有显式原型
+        
+    </script>
+</body>
+</html>
