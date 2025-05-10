@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var names = ["aaa","bbb","qwe","ddd"]
+        var obj = {name:"huuyii",age:18,height:1.75,address : "Japan"}
+
+        //1.1 基本使用 数组的解构
+        // var name1 = names[0]
+        var [name1,name2,name3,name4] = names
+        console.log(name1,name2)
+
+        //1.2严格的顺序 不要的需要空出来
+        var names = ["aaa","bbb","qwe","ddd"]
+
+        //1.3解构数组
+        var [name1,name2,...newnames] = names
+        console.log(newnames)
+ 
+        //1.4解构的默认值 没有（undefined）就是这个值
+        var [name1,name2,name3 = "defalut"] = names
+        console.log(name3)
+
+        //2.1对象的解构
+        // var {name,age,height} = obj
+        // console.log(name,age,height)
+
+        //2.2对象的解构是没有顺序的
+        // var {age,name,height} = obj
+        // console.log(age)
+
+        //2.3重命名的问题 使用：进行重命名
+        var {height : www,name,age} = obj
+        console.log(www)
+
+        //2.4默认值
+        var {
+            height : wheight,
+            name : wname,
+            age : wage,
+            address : waddress = "China",
+        } = obj
+        console.log(waddress)
+
+        //2.5对象的剩余内容
+        var {
+            name,
+            age,
+            ...newobj
+        } = obj
+        console.log(newobj)
+
+
+        //应用：在函数中（其他的类似的地方）
+        //进行解构
+        function getPosition({x,y}){
+
+        }
+        getPosition({x:10,y:20})
+        getPosition({x:20,y:100})
+
+        
+    </script>
+</body>
+</html>

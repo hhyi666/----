@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <script>
+        //形成词法环境
+        // var message = "Hello world!"
+        // var age = 18
+        // function foo(){}
+        // let address = "chengdu"
+
+        // {
+        //     var height = 1.88
+
+        //     let name = "huuyii"
+        //     let info = "new huu"
+        // }
+        /* 代码块形成自己的词法环境 outer指向外层环境 */
+
+        const btnEls = document.querySelectorAll("button")
+
+        //使用let ，执行四次，有四个词法环境，形成4个值，通过闭包存下来
+        //里面有函数对象，不能够消除
+        //具有[[scope]]有引用，所以不会销毁
+        for (let i = 0; i < btnEls.length; i++) {
+            var btnEl = btnEls[i];
+            // btnEl.index = i+1//绑定index
+
+            //使用立即执行函数
+            //每个btn形成自己的闭包
+            //就是形成自己的作用域能够找到相对应的i值
+            btnEl.onclick = function () {
+                console.log(`${i}点击`)
+            }
+        }
+
+        
+    </script>
+</body>
+
+</html>

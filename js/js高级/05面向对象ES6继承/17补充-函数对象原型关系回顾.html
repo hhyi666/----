@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(name,age){
+            console.log(this,name,age)
+        }
+
+        foo("huuyii",20)
+        
+        //第一个就是apply的地方
+        //把foo看成对象 获取apply的方法
+        foo.apply("abc",["huuyii",20])//来自Function
+        //foo.__proto__ === Funtion.prototype
+        console.log(Function.prototype.apply === foo.apply)
+
+        //在funtion中添加的属性和方法，可以被所有的函数获取
+        Function.prototype.info = "hello,huuyii"
+        Function.prototype.bar = function(){
+            console.log("bar ~~~")
+        }
+        console.log(foo.info)
+        foo.bar()
+    </script>
+</body>
+</html>

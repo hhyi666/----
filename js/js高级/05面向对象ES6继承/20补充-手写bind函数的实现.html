@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function foo(name,age,height){
+            console.log(this,name,age,height)
+        }
+        //来自原型
+        //返回新函数设置新的函数
+        // var newFoo = foo.bind({name:"why"},"why",18)
+        // newFoo(1.88)
+        
+        Function.prototype.hybind = function(thisArg,...otherArgs){
+            console.log(this) // 这个this直接绑定foo
+            thisArg = (thisArg === null || thisArg === undefined)?window:Object(thisArg)
+
+            //进行绑定
+            Object.defineProperty(thisArg,"fn",{
+                enumerable:false,
+                configurable:true,
+                writable:false,
+                value:this
+            })
+
+            return (...newArgs) => {
+                // var allArgs = otherArgs.concat(newArgs)//拼接在一起
+                var allArgs = [...otherArgs,...newArgs]//这样也可以
+                thisArg.fn(...allArgs)
+                //后面不能删除，还要用
+            } // 使用箭头函数因为箭头函数不绑定this还是foo
+        }
+
+        var newFoo = foo.hybind({name:"why"},"huuyii",18)
+        newFoo(1.88,"chengdu")
+    </script>
+    
+</body>
+</html>

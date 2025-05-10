@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let const作用域的提升
+
+        //var 存在作用域的提升
+        console.log(message) // 能够进行访问，但是没有进行赋值 undefined
+        var message = "hello"
+
+        //使用let const 声明的变量
+        console.log(address) //没有进行作用域的提升，不能直接访问
+
+        //词法环境已经处理创建了这两个变量，提前创建
+        //let const 虽然不能够访问，但是已经创建出来了 不能够进行访问，直到被绑定值
+        let address = "chengdu"
+        const info = {}
+        console.log(address)
+
+
+        //？但是是不是作用域的提升吗？？
+        // answer ： 没有作用域的提升 
+        //变量声明之前能够被访问
+
+        //暂时性死区
+        function foo(){
+            //不能够进行访问变量的就是暂时性死区
+            console.log(bar)
+            console.log("huuyii")
+
+            let bar = "aaa"
+            let aaa = "bbb"
+            
+        }
+        
+        
+        
+    </script>
+</body>
+</html>

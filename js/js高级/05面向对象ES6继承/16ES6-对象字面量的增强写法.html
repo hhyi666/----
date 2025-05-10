@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //1.属性的增强
+        //2.方法的增强
+        //3.计算属性增强
+        //也是语法糖
+        var name = "why"
+        var age = 11
+        var key = "address" + "city"
+        var obj = {
+            name,age,
+            running : function(){
+                
+            },
+            //上面写法的简写
+            swimming(){
+                console.log(this)
+            },
+
+            //箭头函数不绑定this
+            eating : ()=>{},
+
+
+            //计算属性名 这样就能直接写属性
+            [key] : "chengdu"
+        }
+
+        obj.swimming()
+        
+        //这里我们想要直接将name，age拿下来 key完全一样的情况下可以进省略
+        console.log(obj.name)
+
+        function foo(){
+            var message = "Hello"
+            var info = "my name is why"
+            
+            return {message,info}
+        }
+        var result = foo()
+        console.log(result)
+        
+    </script>
+</body>
+</html>

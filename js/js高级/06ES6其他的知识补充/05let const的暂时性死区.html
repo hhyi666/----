@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.暂时性死区
+        function foo(){
+            //不能够进行访问变量的就是暂时性死区
+            console.log(bar)
+            console.log("huuyii")
+
+            let bar = "aaa"
+            let aaa = "bbb"
+            
+        }
+
+
+        //2.暂时性死区和定义位置没有关系，和代码的执行顺序有关系
+        // function foo(){ // 函数已经建立好了，所以可以访问到直接就可以进行访问
+        //     console.log(message)
+        // }
+        // let message = "hello"
+        // console.log(message)
+        // foo()//先赋值在调用函数的可以进行访问
+
+
+        //3.暂时性死区形成之后，在该区域内的标识符不能够进行访问
+
+        let message = "Hello world"
+        function foo(){//自己里面有就不能够被访问到
+            //会形成暂时性死区
+            console.log(message)
+
+            let message = "hhhhh"
+        }
+        foo()
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        //继承是多态的前提
+        class Shape{
+            getArea(){}
+
+        }
+
+        class Rectangle extends Shape{
+            constructor(weight,height){
+                super()
+                this.weight = weight
+                this.height = height
+            }
+            //需要进行重写
+            getArea(){
+                return this.height*this.weight
+            }
+        }
+
+        class Circle extends shape{
+            constructor(radius){
+                super()
+                this.radius = radius
+            }
+            getArea(){
+                return 3.14*radius*radius
+            }
+        }
+        var rect1 = new Rectangle(100,200)
+        var rect2 = new Rectangle(10,20)
+        var c1 = new Circle(10)
+        var c2 = new Circle(20)
+
+
+        //静态语言的多态
+        //表现形式就是多态
+        /*
+            条件：
+                1.必须有继承（实现接口）
+                2.必须有父类引用指向子类对象 这里相当于赋值给父类对象，使得更加广泛
+        */
+        function getShapeArea(shape){
+            console.log(shape.getArea())
+        }
+        getShapeArea(rect1)
+        getShapeArea(c1)
+
+        //注意： 这里传入不正确也可以传进去！！注意
+    </script>
+</body>
+</html>

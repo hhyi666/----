@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(){
+            console.log("foo function")
+        }
+        var t = foo
+        t()
+        var message = "Hello"
+        //生成自己的词法环境 指向自己的环境记录 + outer 环境记录指向自己的Global Environment Record
+        //一个词法环境是由环境记录和一个外部次词法环境组成
+        //一个词法环境经常用来关联一个函数声明 代码块语句 代码执行的时候，词法环境被创造出来
+
+
+        //LE词法环境处理使用let const，执行代码的时候就被创建，但是不能被访问，除非绑定值的时候
+        //形成暂时性死区，不允许进行访问
+
+        //VE用于处理var function，能够进行访问。但是绑定值之前是undefined
+
+
+        //环境记录
+        //声明式环境记录 var let const
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //1.ES5之前只有全局和函数会形成自己的作用域，其他的不会形成自己的作用域
+        //代码块
+        function foo(){
+            console.log("Hello , world!")
+        }
+        
+        //这样是没有形成自己的作用域的
+        {
+            var message = "aaa"
+        }
+
+        console.log(message)
+    
+        //2.ES6开始，let const声明的变量，是有块级作用域的,外界访问不到
+        //let const class funtion
+        foo()//但是不能再上方进行访问
+        {
+            let age = 18
+            const height = 1.88
+
+            class Person{}
+
+            function foo(){console.log("foo")}
+        }
+        // console.log(age)
+        // const p = new Person()
+        // console.log(p)
+
+        //允许访问块级作用域的函数
+        foo()//但是函数是可以进行访问的
+    </script>
+</body>
+</html>

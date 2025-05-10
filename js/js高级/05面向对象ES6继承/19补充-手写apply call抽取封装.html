@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //代码一样的时候，记得考虑可以进行封装
+        //对于相同的可以进行抽取
+        //但是也不需要过度抽取
+
+
+        function foo(name, age) {
+            console.log(this, name, age)
+        }
+
+        Function.prototype.hyExec = function (thisArg, otherArgs) {
+            thisArg = (thisArg === null || thisArg === undefined) ? window : Object(thisArg)
+
+            //主要是这里还要进行this的绑定
+            Object.defineProperty(thisArg, "fn", {
+                enumerable: false,
+                configurable: true,
+                value: this
+            })
+            thisArg.fn(...otherArgs)
+            delete thisArg.fn
+        }
+
+
+        //直接封装到原型当中，更加的方便
+        Function.prototype.hyapply = function (thisArg, otherArgs) {
+            this.hyExec(thisArg, otherArgs)
+        }
+
+        //apply
+        //封装到原型当中，可以直接调用
+        foo.hyapply({ name: "why" }, ["yiii", 20])
+        foo.hyapply(123, ["huuyii", 18])
+
+
+        //call
+        Function.prototype.hycall = function (thisArg, ...otherArgs) {
+            this.hyExec(thisArg, otherArgs)
+        }
+        foo.hycall({ name: "huuyii" }, "yiii", 20)
+    </script>
+</body>
+
+</html>

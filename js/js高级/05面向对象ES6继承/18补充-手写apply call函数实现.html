@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //代码一样的时候，记得考虑可以进行封装
+        
+        function foo(name,age){
+            console.log(this,name,age)
+        }
+        
+        //通过apply call进行调用
+        // foo.apply("aaa",["huuyii",18]) //后面合起来写
+        // foo.call("bbb","huuyii",10) //后面分开写
+
+        //1。手写apply
+        Function.prototype.hyapply = function(thisArg,otherArgs){
+            // console.log(this) //->指向调用的函数对象
+            //这里需要将this绑定到thisArg身上
+            // this.apply(thisArg)
+
+
+            //这个函数必须是包装类型才能够进行操作
+            //1.获取thisArg 并且确保是对象类型 转换成包装类型
+            thisArg = (thisArg === null || thisArg === undefined) ? window : Object(thisArg)
+
+            //进行绑定，不进行绑定对象是window
+            // thisArg.fn = this
+            // thisArg.fn()
+
+            // delete thisArg.fn
+            Object.defineProperty(thisArg,"fn",{
+                enumerable:false,
+                configurable:true,//对象属性描述符 con是否可以配置 wr是否可以修改值 enm是否可以枚举值 
+                value : this//属性的值
+            })
+            thisArg.fn(...otherArgs)//展开运算
+            delete thisArg.fn
+            //带不带括号就是运行不运行
+        }
+        //函数调用函数
+        foo.hyapply({name:"why"},["yiii",20])
+        foo.hyapply(123,["huuyii",18])
+
+        //2.手写call方法
+        //记得参数列表怎么写 。。。otherArgs
+        Function.prototype.hycall = function(thisArg,...otherArgs){
+            thisArg = (thisArg === null || thisArg === undefined)?window:Object(thisArg)
+            
+            Object.defineProperty(thisArg,"fn",{
+                enumerable:false,
+                configurable:true,
+                value:this
+            })
+            thisArg.fn(...otherArgs)//直接进行展开就行
+            delete thisArg.fn
+        }
+        foo.hycall({name:"huuyii"},"yiii",20)
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var message1 = "huu"
+        message1 = "aaa"
+
+        let message2 = "aaa"
+        message2 = "bbb"
+        console.log(message2)
+
+        const a = "bbb"//声明的变量不能够改变
+        console.log(a)
+        // a = "ttt"
+        // console.log(a)
+
+
+        //赋值引用类型
+        const info = {
+            name : "huu",
+            age : 18
+        }
+        // info = {} // 创建了一个新对象
+
+        info.name = "hhyy"
+        console.log(info.name)//不能修改地址，但是能偶修改内部的东西
+    </script>
+</body>
+</html>
