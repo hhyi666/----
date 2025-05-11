@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            //实例属性
+            //公有属性：
+            //也是对象属性 所有创建出来的对象都有这个属性
+            //就是 public instance fields
+            height = 1.88
+
+            //对象属性：私有属性 程序员约定的
+            #intro = "uuu"//使用下划线便是都不使用这个进行访问 ，但是也可以进行访问
+            //ES13新增的私有属性 使用#进行区分
+
+            //2.类属性（static） public
+            static totalCount = 70
+            //类属性 private 加上#
+            static #mantotal = 10
+
+            constructor(name,age){ // 对象的属性
+                this.name = name
+                this.age = age
+                this.address = "chengdu"
+            }
+            running(){console.log("running")}
+
+            //3.静态代码块
+            //只有第一次加载这个类的时候才会执行一次！就一次!!
+            static {
+                console.log("Hello world")
+                console.log("uuuu")
+            }
+        }
+        
+        const p = new Person()
+        console.log(p.height)
+        console.log(p.intro)
+        console.log(Person.totalCount)
+        console.log(Person.mantotal)
+        const p1 = new Person()
+    </script>
+</body>
+</html>

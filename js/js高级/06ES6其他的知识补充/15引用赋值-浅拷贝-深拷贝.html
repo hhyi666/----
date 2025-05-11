@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         const obj = {
-            name:"why",
-            age : 18,
-            height : 1.88,
+            name: "why",
+            age: 18,
+            height: 1.88,
 
-            ruinning(){
+            ruinning() {
                 console.log("first")
             }
         }
@@ -22,7 +24,7 @@
         // const info1 = obj
         //更改inifo1的值obj的值对应的也会更改
 
-        
+
         //2.浅拷贝 展开运算符是浅拷贝
         //这样更改info2不会更改原来obj的值
         //我的info2会创建新的地址，用来从obj复制来的值
@@ -41,7 +43,8 @@
         const info3 = JSON.parse(JSON.stringify(obj))//obj先转换成JSON文件，
         // 在转换回来，都是重新生成的，都是新的地址用来存储原来的声明
         console.log(info3.name)
-        
+
     </script>
 </body>
+
 </html>

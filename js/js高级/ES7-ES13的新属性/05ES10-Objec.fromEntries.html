@@ -22,6 +22,8 @@
         //应用
         const searchString = "?name=why&age=18&height=1.88?"
         const params = new URLSearchParams(searchString)//解析字符串
+        //直接将searchString转换成为对应的对象的值
+        console.log(typeof params) //是一个可迭代对象 ,后面就需要使用get进行访问相对应的值
         console.log(params.get("name"))
         console.log(params.get("age"))
         console.log(params.entries())//可迭代对象
@@ -30,6 +32,9 @@
         for (const item of params) {
             console.log(item)
         }
+        const paramsObj = Object.fromEntries(params) //转化成为对象类型
+        console.log(paramsObj)
+        console.log(paramsObj.name)
     </script>
 </body>
 </html>

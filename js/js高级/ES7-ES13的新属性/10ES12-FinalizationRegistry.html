@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        //就是监听是否被回收
+        let obj = {
+            name : "huu",
+            age : 18
+        }
+        let info = {}
+
+        const finalRegistry = new FinalizationRegistry((value)=>{
+            console.log(`${value}被回收触发这个机制`)//回收触发这个回调函数
+        })//创建对象
+
+        finalRegistry.register(obj,"obj")//给对象注册这个监听
+        finalRegistry.register(info,"info")
+        obj = null
+        info = null
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const obj = {
+        //     name : "huu",
+        //     age : 18,
+        //     __proto__:{
+        //         address : "chengdu"
+        //     }
+        // }
+        
+        // console.log(obj.name)
+        // console.log(obj.address)        
+
+        // //判断自己是不是存在
+        // console.log(obj.hasOwnProperty("name"))//区别一：这种方法可以重写，下面的方法可以防止重写
+        // console.log(obj.hasOwnProperty("address"))
+
+        // //ES13新增加的属性用来替换上面的属性 应用更加广泛 这个方法再显式原型上面
+        // //上面的属性已经很老了，直接用下面新的属性
+        // console.log(Object.hasOwn(obj,"name"))
+        // console.log(Object.hasOwn(obj.__proto__,"address"))
+
+        
+        //2.区别二
+        const info = Object.create(null)//创建新的对象，新对象的隐式原型指向这个对象
+        info.name = "huu"
+        // console.log(info.hasOwnProperty("name"))//自己的隐式原型就是null。所以就没有这个方法
+        console.log(Object.hasOwn(info,"name"))
+    </script>
+</body>
+</html>

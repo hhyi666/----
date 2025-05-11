@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let info = {name : "huu",age : 18}
+        // let obj = info //引用赋值
+        let obj = new WeakRef(info)//使用弱引用进行赋值
+
+        // info = null
+        //不会销毁，有引用
+        const finalRegistry = new FinalizationRegistry(() => {
+            console.log("对象被回收")
+        })
+        finalRegistry.register(info,"info")
+        // console.log(obj.)
+
+
+        //想要拿到对应的ref值需要解析
+        // const infoRef = obj.deref()
+        // console.log(infoRef.name)
+        
+
+        //有的你以为回收了但是有的还是被强引用，不能被回收
+        setTimeout(() => {
+            info = null
+        },2000)
+        //对象被回收之后就不能访问到这个值info的值了
+
+        setTimeout(() => {
+            //解析进行获取
+            console.log(obj.deref().name)
+        },5000)
+        //所以我们有时候就需要使用弱引用WeakRef
+        //弱引用就能够直接被回收
+        //GC内部看是否有强引用，判断是否回收
+        
+    </script>
+</body>
+</html>

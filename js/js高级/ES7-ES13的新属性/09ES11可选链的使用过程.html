@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            name : "why",
+            age : 18,
+            friend : {
+                name : "aaa",
+                running :  function(){
+                    console.log(" running ")
+                }
+            }
+        }
+
+        //1.直接调用
+        // obj.friend.running()
+        //真实开发不一定有这个函数
+        //需要加上一个判断
+
+        //2.if判断，（麻烦）
+        // if(obj.friend && obj.friend.running){
+        //     obj.friend.running()
+        // }
+
+        //3.可选链的写法
+        //?.有这个东西就进行执行,注意调用也得加上
+        obj?.friend?.running?.() //减少if语句的使用
+        //如果不存在 表达式会短路 返回undefined
+
+    </script>
+</body>
+</html>
