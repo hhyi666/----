@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const promise = new Promise((resolve,reject) => {
+            reject()
+        })
+        //这些都会进行回调
+        promise.catch(err => {console.log(err)})
+        promise.catch(err => {console.log(err)})
+        promise.catch(err => {console.log(err)})
+
+        //这里没有监听错误的情况，就会导致错误，一般都要监听（细节处理）
+        promise.then(res => {
+            console.log("成功：",res)
+        })
+    </script>
+</body>
+</html>

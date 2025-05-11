@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(10)
+            }, 2000)
+        })
+        const promise = new Promise((resolve, reject) => {
+
+            //三种不同的回传值
+            //1。回传的值 普通值
+            // resolve(10)
+            //数组
+            // resolve([
+            //     {name:"huuyii",price:9999,info:"hhh"},
+            //     {name:"aaa",price:999,info:"sss"},
+            //     {name:"bbb",price:99,info:"nnn"}
+            // ])
+
+
+            //2.resolve(promise)  更加灵活
+            //如果resolve的值的本身是promise对象，那么当前的promise的状态由传入的promise的状态决定
+            // resolve(p)
+
+
+            //3，resolve(thenable) 了解
+            resolve({ // 如果返回的是对象并且队形里面由实现then方法，那么就会执行then方法
+                    //并且根据then方法的结果来决定Promise的状态
+                name: "huuyii",
+                then: function (resolve) { 
+                    resolve(111)
+                }
+            })
+        })
+        promise.then((res) => {
+            console.log("then中拿到结果", res)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            name : "huu",
+            age : 19,
+            height : 1.88
+        }
+
+        //1.创建一个代理proxy对象
+        const objproxy = new Proxy(obj,{
+            //添加捕获器
+            get : function(target,key){
+                console.log(`监听：监听${key}的获取`)
+                return target[key]
+            },
+            set : function(target,key,value){
+                console.log(`监听：设置${key}的值`)
+                target[key] = value
+            }
+        })
+        
+        //对obj的所有的操作。应该与操作objproxy
+        console.log(objproxy.name)
+        objproxy.name = "huuyii"
+        console.log(objproxy.name)
+        // console.log(obj)//原来的对象也被改掉
+        console.log(objproxy.age)
+
+        //Vue2的弊端，新对象监听很麻烦
+        objproxy.address = "chengdu"//原来没有的对象也可以进行监听
+    </script>
+</body>
+</html>

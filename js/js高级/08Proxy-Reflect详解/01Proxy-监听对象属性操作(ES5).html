@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2 class="name"></h2>
+    <script>
+        const obj = {
+            name : "huu",
+            age : 18,
+            height : 1.88
+        }
+
+        //需求：监听对象属性的操作
+
+        //监听属性操作
+
+
+        //1.监听了一个属性
+        // let _name = obj.name
+        // //但是这样就只能给一个属性增加操作
+        // Object.defineProperty(obj,"name",{
+        //     set : function(newValue){
+        //         console.log("监听name设置了新的值：",newValue)
+        //         _name = newValue
+        //     },
+        //     get : function(){
+        //         console.log("监听访问了name的值：",_name)
+        //         return _name
+        //     }
+        // })
+        // console.log(obj.name)
+        // obj.name = "huuyii"
+        // console.log(obj.age)
+        // obj.age = 10
+        
+        //2.监听了所用的属性，遍历所有的属性，设置defineproperty
+        //Vue2 的响应式实现原理 使用defineProperty
+        const keys = Object.keys(obj)
+        for (const key of keys) {
+            let value = obj[key]
+            Object.defineProperty(obj,key,{
+                set : function(newValue){
+                    console.log(`监听：${key}设置了新的值:${newValue}`)
+                    value = newValue
+                },
+
+                get : function(){
+                    console.log(`监听：${key}被访问`)
+                    return value
+                }
+            })
+        }
+        //|| 使用forEach进行实现
+        // Object.keys(obj).forEach(() => {
+        //     let value = obj[value]
+        //     //set get 和上面的一样
+        // })
+        console.log(obj.name)
+        obj.name = "huuyii"
+        obj.age = 19
+        console.log(obj.age)
+
+        //缺点： 
+        //1.这个属性的初衷并不是这个
+        //2.但是只能监听访问和改变的属性，新增的属性不能进行访问，很有局限性，不能监听完整的对象
+
+        //监听属性的变化，并且做出相应的反应
+        //什么是响应式
+        // const nameEl = document.querySelector(".name")
+        // nameEl.textContent = obj.name
+
+        // obj.name = "kobe"//我这里name更改 自动刷新 进行更改 （响应式）
+    </script>
+</body>
+</html>

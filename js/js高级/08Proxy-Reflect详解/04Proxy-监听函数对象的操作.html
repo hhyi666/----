@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(num1,num2){
+            console.log(this,num1,num2)
+        }
+
+        const fooProxy =  new Proxy(foo,{
+            apply : function(target,thisArg,otherArgs){//监听apply
+                console.log("监听：apply操作")
+                target.apply(thisArg,otherArgs)
+            },
+
+            construct : function(target,otherArgs){//监听new
+                console.log("监听了new操作")
+                console.log(target,otherArgs)
+                return new target(...otherArgs)
+            }
+        })
+        
+        fooProxy.apply("huu",[111,222])
+        new fooProxy("aaa","bbb")
+    </script>
+</body>
+</html>

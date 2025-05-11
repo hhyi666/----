@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function execCode(counter, successCallback,failCallback) {
+
+            //异步任务 延迟执行
+            setTimeout(() => {
+                console.log("Hello world")
+                console.log("999")
+                if (counter <= 0) { // 失败的情况
+                    failCallback(`${counter}有问题`)
+                } else {
+                    let sum = 0
+                    for (let i = 1; i < 10; i++) {
+                        console.log(i)
+                        sum += i
+                    }
+                    //在某个时刻只需要回调传入的函数 内部的做完了，告诉外界做完了
+                    successCallback(sum)
+                }
+
+            }, 3000)
+        }
+
+        //ES5 之前都是这样进行封装
+        execCode(-1,(value) => {//能将内部的代码传回来
+            console.log("外界监听到内部代码执行完毕")
+            console.log(value)
+        }, (err) => {
+            console.log("this time error : " , err)
+        })
+    </script>
+</body>
+
+</html>

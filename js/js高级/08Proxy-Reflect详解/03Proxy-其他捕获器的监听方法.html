@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            name: "huu",
+            age: 19,
+            height: 1.88
+        }
+
+        //1.创建一个代理proxy对象
+        const objproxy = new Proxy(obj, {
+            //添加捕获器
+            get: function (target, key) {
+                console.log(`监听：监听${key}的获取`)
+                return target[key]
+            },
+            set: function (target, key, value) {
+                console.log(`监听：设置${key}的值`)
+                target[key] = value
+            },
+
+            deleteProperty : function(target,key){
+                console.log(`监听：删除${key}属性`)
+                delete target.name
+            },
+
+            has : function(target,key){
+                console.log(`监听：判断${key} in 属性`)
+                return key in target
+            }
+        })
+
+        delete objproxy.name
+        // console.log(objproxy.name)
+        console.log("age" in objproxy)
+    // </script>
+</body>
+
+</html>

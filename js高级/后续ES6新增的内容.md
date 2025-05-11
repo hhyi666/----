@@ -101,7 +101,7 @@ ES6之后能够使用模板字符串就好很多
 - 对象字符串的创建也可以使用展开运算符
 - 还可以进行字符串的复制
 
-### 1.4引用赋值/浅拷贝/深拷贝
+### 1.4引用赋值/浅拷贝/深拷贝（一定掌握）
 
 - 引用赋值
   ![image-20250511094009390](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250511094009390.png)
@@ -198,6 +198,8 @@ symbol函数每次能够生成独一无二的值
         })
 ```
 
+`Symbol.for()`
+
 Symbol有description能够生成相同的值，但是必须使用`Symbol.for()`进行生成
 
 ```js
@@ -212,11 +214,41 @@ Symbol有description能够生成相同的值，但是必须使用`Symbol.for()`�
         console.log(s5 === s6) // 这种情况下生成的Symbol是相等的··
 ```
 
-`Symbol.keyFor()`能够传入`Symbol`返回设置的description
 
-```
+
+`Symbol.keyFor()`
+
+能够传入`Symbol`返回设置的description
+
+```js
 console.log(Symbol.keyFor(s5))
 ```
+
+
+
+Symbol不能使用for in 或者 for of进行遍历
+
+```js
+let symbol = Symbol("test")
+let obj = {
+	name : "huu",
+	[symbol] ; "test"
+}
+
+//这样就只能访问到name
+for(const key of obj)console.log(key)
+
+//也是只能访问到name
+for(const key in obj)console.log(key)
+```
+
+
+
+`Object.getOwnPropertySymbols`
+
+可以使用这个获取Symbol的属性
+
+不想要被遍历的对象可以使用Symbol进行保护
 
 ### 1.7Set/WeakSet
 
@@ -420,3 +452,65 @@ console.log(Symbol.keyFor(s5))
   
 
 - for in 标准化遍历对象的key值
+
+### 2.5ES12
+
+- FinalizationRegistry
+  就是监听是否被回收
+
+  ```js
+  let obj = {
+  	name : "huuyii"
+  	age : 12
+  }
+  let info = {}
+  const finalRegistry = new FinalizationRegistry((value) => {
+  	console.log(`${value}被回收触发这个机制`)
+  })
+  finalRegistry.register(obj,"obj")//给对象注册这个监听
+  finalRegistry.register(info,"info")
+  obj = null
+  info = null//当被回收的时候就会执行上面的代码
+  ```
+
+  
+
+- WeakRef（弱引用）
+
+  ```js
+  let info = {name : "huuyii",age : 18}
+  let obj = new WeakRef(info)
+  setTimeout(() => {	
+  	console.log(obj.deref().name)
+  })
+  ```
+
+  弱引用不能直接拿到对象的值
+
+  - objRef.deref(）
+    可以对弱引用进行解码来访问原来对象的值
+
+- 逻辑运算符
+
+  - ||= 
+  - ？？=
+  - &&=
+
+- replaceAll
+  字符串处理函数
+  能够替代字符串中所有的目标字符
+
+### 2.6ES13
+
+- at
+- Object.hasOwn
+  - Object.prototype,hasOwnProperty
+- class成员
+  - public instance of
+  - public static fields
+  - private instance fileds
+  - private static fields
+  - static block
+
+
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict"
+        const obj = {
+            name : "huuyii",
+            age : 19
+        }
+
+        //1。直接删除
+        // delete obj.name // 这样操作不好进行判断，操作是否已经成功了
+        
+        // Object.defineProperties 这种情况也不知道是定义成功还是失败 有局限
+        //我们可以使用Reflect 进行操作 
+        //这个会返回boolean类型，判断是否成功
+
+        //2.Reflect有些是和Object中的方法对应的
+        // 返回Boolean类型
+        if(Reflect.deleteProperty(obj,"name") ) console.log("delete sucess")
+        else console.log("delete false")
+
+
+    </script>
+</body>
+</html>

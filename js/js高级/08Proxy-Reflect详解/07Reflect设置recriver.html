@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            _name : "huuyii",
+            set name(newValue){
+                console.log(this)
+                this._name = newValue//这里this的改变也会调用代理对象里里面相应的函数
+            },
+            get name(){
+                return this._name
+            }
+        }
+
+        // console.log(obj.name)
+        // obj.name = "ddd"
+        
+        const objProxy = new Proxy(obj,{
+            set : function(target,key,value,receiver){
+                // console.log(receiver === objProxy)
+                console.log("proxy方法被调用")
+                
+                const sucess = Reflect.set(target,key,value,receiver)//相当于转换到代理对象上
+                //这里后面加上reveiver可以对原来对象的this绑定进行改变
+                //将上面的方法this绑定到代理对象上面，这样的活这个监听就会被触发两次
+                //1.调用原来的set函数时候调用 2，将this进行绑定赋值再次触发
+
+
+                if(!sucess)throw new Error("set false")
+
+                //好处三：
+                //receiver 就是 外层Proxy对象
+                //Reflect.set .get 最后一个参数可以决定对象访问器setter和getter中this的指向
+
+            },
+            get : function(target,key,receiver){
+                console.log("get方法被调用")
+                return Reflect.get(target,key,receiver) //同样的这里的get方法也会被调用两次
+            }
+        })
+
+        //操作代理对象
+        objProxy.name = "huu"
+        console.log(objProxy.name)
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //1.创建promise对象
+        const promise = new Promise((resolve,reject) => {
+            //这里的函数立即执行
+            resolve()//then回调
+            reject()//catch回调
+
+        })
+
+        //promise三个状态
+        //1.pending 待定状态 没有调用的时候
+        //兑现状态
+        //2.fulfilled 操作成功
+        //3.rejected 拒绝状态
+
+        //一旦promise的状态确定就不会更改 只有一次
+
+        promise.then(value => console.log("成功回调")).catch(err => console.log("失败回调"))
+
+
+        //第一个立即执行函数 Executor 传进两个回调参数 resolve reject
+        const promise2 = new Promise((resolve,reject) => {
+            
+        })
+    </script>
+</body>
+</html>

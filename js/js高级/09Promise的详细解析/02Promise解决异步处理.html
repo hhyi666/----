@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function execCode(counter) {
+
+            //创建promise //这里自动创建两个回调函数
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("Hello world")
+                    console.log("999")
+                    if (counter <= 0) { // 失败的情况
+                        // failCallback(`${counter}有问题`)
+
+                        //失败的回调
+                        reject(`${counter}有问题`)
+                    } else {
+                        let sum = 0
+                        for (let i = 1; i < 10; i++) {
+                            console.log(i)
+                            sum += i
+                        }
+                        //在某个时刻只需要回调传入的函数 内部的做完了，告诉外界做完了
+                        // successCallback(sum)
+
+
+                        //成功的回调
+                        resolve(sum)
+                    }
+
+                }, 3000)
+            })
+            return promise
+        }
+        // const promise = execCode(100)
+        // promise.then((value) => {
+        //     console.log("执行成功：",value)
+        // })
+        // promise.catch((err) => {
+        //     console.log("执行失败：",err)
+        // })
+        // const promise1 = execCode(-100)
+        // promise1.then((value) => {
+        //     console.log("成功：",value)
+        // })
+        // promise1.catch((err) => {
+        //     console.log("失败：",err)
+        // })
+
+        //更加清晰 固定写法
+        execCode(255).then(value => {
+            console.log("成功：",value)
+        }).catch(err => {
+            console.log("失败：",err)
+        })
+
+    </script>
+</body>
+
+</html>
