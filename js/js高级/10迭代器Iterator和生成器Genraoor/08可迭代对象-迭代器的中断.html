@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor(name, age, height, friends) {
+                this.name = name
+                this.age = age
+                this.height = height
+                this.friends = friends
+            }
+
+            //添加实例方法。直接添加到对象原型上面
+            [Symbol.iterator]() {
+                let index = 0
+                const iterator = {
+                    next: () => {
+                        if (index < this.friends.length) {
+                            return { done: false, value: this.friends[index++] }
+                        } else {
+                            return { done: true }
+                        }
+                    },
+                    //监听中断操作
+                    return: () => {
+                        console.log("监听到函数的中断")
+                        return { done: true }
+                    },
+                }
+                return iterator
+            }
+        }
+
+        const p1 = new Person("huuyii", 19, 1.7, ["huu", "aaaa", "nnn"])
+        const p2 = new Person("aaa", 10, 1.2, ["bbb", "vvv", "ccc", "lll"])
+
+        //写完迭代器就可以进行迭代
+        for (const friend of p2.friends) {
+            console.log(friend)
+            if (friend === "vvv") { //迭代器的中断
+                break
+            }
+        }
+
+        //对于对象的每个值想要进行迭代 直接使用entries就行
+    </script>
+</body>
+
+</html>

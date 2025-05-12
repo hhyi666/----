@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function* foo(name1){
+            console.log("执行内部代码：111",name1)
+            const name2 = yield "aaa" //能够作为value进行返回
+
+            //接受参数 是在上一次yeild中设置等于值 赋值给上一次的yeild的相关的值
+            //yeild可以传入相关的参数
+            console.log("执行内部代码：2",name2)
+            console.log("执行内部代码：133")
+            console.log("133")
+            console.log("133")
+            const name3 = yield "bbb"
+            console.log("133",name3)
+            console.log("133")
+            console.log("133")
+            const name4 = yield "bbb"
+            console.log("over",name4)
+            return undefined //最后done：true
+        }
+
+        //1.generator.return 提前结束函数
+        // const generator = foo("next1")
+        // console.log(generator.next()) //这一次调用不需要进行传值
+        // console.log(generator.return("next2")) // 直接就中断 done直接就是true了 并且自己快的代码也不执行 直接return
+        // //传进来的就是value的信息 后面都变成done了
+        // console.log("从这里中断了")
+        // console.log(generator.next("next3"))
+        // console.log(generator.next("next4"))
+
+
+        //2，抛出异常也能够结束
+        const generator = foo("next1")
+        console.log(generator.next())
+        console.log(generator.throw("我想停止"))//也不会执行。直接停止函数，但是下面的函数也不能执行
+        //没有捕获异常就会暂停
+        // console.log("从这里中断了")
+        console.log(generator.next("next3"))
+        console.log(generator.next("next4"))
+    </script>
+</body>
+</html>

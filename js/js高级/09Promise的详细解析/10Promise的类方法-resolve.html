@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //实例方法
+        const promise = new Promise((resolve,reject) => {
+
+        })
+        promise.catch()//在新创建的实例上调用的方法
+
+
+        //当我们已经有对应的结果 想要通过Promise传出去 直接就resolve出去
+        //类方法 ： 相当于原来构造函数就有的方法  
+        const studentList = []
+
+        Promise.resolve(studentList).then((value) => {//相当于new P操作直接执行resolve操作
+            console.log(value)
+        })//这里可以直接成功，可以直接拿到结果
+        // //相当于
+        // new Promise((resolve,reject) => {resolve("Hello")})
+
+        
+    </script>
+</body>
+</html>

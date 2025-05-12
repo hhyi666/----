@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        const promise = new Promise((resolve,reject) => {
+            resolve("aaa")//只要有结果了就会调用后面的then和catch
+        })
+        // promise.then((value) => {
+        //     console.log("成功：",value)
+        // }).catch((err) => {
+        //     console.log("失败：",err)
+        // })
+
+
+        //1.then是返回新的promise 等待新的有返回值在进行决议
+        //同理catch也会返回promise
+        // promise.then()//then的返回值的本身也是promise
+        //这是我们就能想到  链式进行访问 链式调用 一步一步进行访问
+        // promise.then(res => { // then返回新的promise方法 链式中的then时在等待新的决议
+        //     console.log("第一次then方法",res)
+        //     return "bbb" //这个return就是这个then的决议结果
+        //     //这里相当于又创建了一个new Promis来返回这个新的结果
+        //     //!!!是返回了新的promise
+
+        // }).then(res => {//每次都有对应的回调
+        //     //等待上面返回值的决议
+        //     console.log("第二次then方法",res)
+        //     return "vvv"
+        // }).then(res => {
+        //     console.log("第三次then方法",res)
+        //     return "lll"
+        // }).then((res) => {
+        //     console.log("第四次then方法",res)
+        // })
+
+        // promise.then(res => {
+        //     console.log("添加第二个then方法")
+        // })
+
+        //这时我们的同级的then方法会逐步的调用 一开始只会第一个then和添加会进行决议
+
+        //2.then方法传入的回调函数的返回值的类型
+        const newPromise = new Promise((resolve,reject) =>{
+            setTimeout(() => {
+                resolve()
+            },3000)
+        })  
+
+        promise.then(res => {
+            console.log("第一个Promise的then方法：",res)
+            //1，新的Promise
+            // return newPromise//等待决议成功在传递
+            //使用新的Promise进行返回
+            //这里默认返回undefined
+
+            //2.普通值
+            // return "bbb"
+
+            //3.返回对象 对象里面有then的值
+            return {
+                then : function(resolve){//这里传入resolve的方法
+                    resolve("返回的是对象")
+                }
+            }
+        }).then(res => {
+            console.log("第二个Promise的方法：",res)
+        })
+    </script>
+</body>
+</html>

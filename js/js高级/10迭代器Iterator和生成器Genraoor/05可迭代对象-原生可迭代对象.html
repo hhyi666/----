@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //1.数组
+        const names = ["aaa","bbb","vvv"]
+        for (const value of names){
+                console.log(value)
+        }
+
+
+        //迭代器调用的时候会返回迭代器
+        console.log(names[Symbol.iterator]())
+
+
+        //2。set
+        const set = new Set(["aaa","cvvcv","kaosd"])
+        for (const value of set) {
+            console.log(value)
+        }
+
+        console.log(set[Symbol.iterator]())//有迭代器就支持迭代
+        //自己调用nexy函数也可以
+
+
+        //3.arguments、
+        function foo(){
+            for (const value of arguments) {
+                console.log(value)
+            }
+            console.log(arguments[Symbol.iterator]()) //可迭代对象
+        }   
+
+        foo("123","23432","32o59")
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            生成器函数的特点：
+            1。function后面加上 *号
+            2.代码的控制可以使用yield控制
+            3.生成器函数默认在执行的时候返回生成器
+            精准控制函数
+
+            要想执行函数内部的代码 需要生成器对象 调用它的next操作
+            但是只能执行到yeild的地方 被中断
+        */
+        function* foo(name1){
+            console.log("执行内部代码：111",name1)
+            const name2 = yield "aaa" //能够作为value进行返回
+
+            //接受参数 是在上一次yeild中设置等于值 赋值给上一次的yeild的相关的值
+            //yeild可以传入相关的参数
+            console.log("执行内部代码：2",name2)
+            console.log("执行内部代码：133")
+            console.log("133")
+            console.log("133")
+            const name3 = yield "bbb"
+            console.log("133",name3)
+            console.log("133")
+            console.log("133")
+            yield "bbb"
+            console.log("over")
+            return undefined //最后done：true
+        }
+
+        //2。调用生成器函数返回生成器对象 自动生成的return 
+        //生成器是特殊的迭代器
+        const generator = foo("第一次调用")//将第一次传入的参数放在这里 
+        // console.log(generator)
+        // console.log(generator.next())//返回的就是迭代器对象 有done 和 value
+        // console.log(generator.next())
+        // console.log(generator.next())
+        // console.log(generator.next())
+
+        //3.在中间位置直接return 结果
+        console.log(generator.next()) //第一次就是 {value："aaa" ,done : false}
+        console.log(generator.next("第二次调用next")) // 第二就是返回的{value："bbb",done : true} 迭代结束 后面的就不会再进行访问了
+        console.log(generator.next("第三次调用next")) //value就是undefined done是true
+        console.log(generator.next()) 
+
+
+        //4，函数执行的时候传入参数
+
+        
+    </script>
+</body>
+</html>

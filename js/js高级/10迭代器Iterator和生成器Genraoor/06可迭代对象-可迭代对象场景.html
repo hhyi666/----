@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        //1.for of  。。。展开运算符 yield 解构赋值
+        //对象类型。。。obj是在后面的ES版本才能够继续使用
+        //但是需要手写迭代器
+        const names = ["aaaa","nnn","jad"]
+        const info = {
+            name : "huuyii",
+            age : 29,
+            height : 1.88,
+            [Symbol.iterator] : function(){
+                let index = 0
+                const entries = Object.entries(this)
+                const iterator = {
+                    next : function(){
+                        if(index <  entries.length){
+                            return {done:false,value:entries[index ++]}
+                        }else {
+                            return {done:true}
+                        }
+                    }
+                }
+                return iterator
+            }
+        }
+        function foo(...args){
+            console.log(args)
+            
+        }
+        foo(...info)
+
+
+        //2。创建对象的时候 new Map new WeakMap 要求传入的是可迭代对象
+        const set = new Set(["asdasd","djaskl","jias"]) //!传入的是可迭代对象
+        console.log(set)
+
+        //3.一些方法的调用传入的也是可迭代对象 Promise。all Array。from等都是可以传入可迭代对象
+        //阅读文档就能知道
+        const p1 = Promise.resolve("aaa")
+        const p2 = Promise.resolve("aaa")
+        const p3 = Promise.resolve("aaa")
+        const Pset = new Set()
+        //这里的可迭代对象都可以放进来
+        Pset.add(p1),Pset.add(p2),Pset.add(p3)
+        Promise.all(Pset).then( (res) => {
+            console.log(res)
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            生成器函数的特点：
+            1。function后面加上 *号
+            2.代码的控制可以使用yield控制
+            3.生成器函数默认在执行的时候返回生成器
+            精准控制函数
+
+            要想执行函数内部的代码 需要生成器对象 调用它的next操作
+            但是只能执行到yeild的地方 被中断
+        */
+        function* foo(){
+            console.log("111")
+            yield
+            console.log("2")
+            console.log("133")
+            console.log("133")
+            console.log("133")
+            yield
+            console.log("133")
+            console.log("133")
+            console.log("133")
+            console.log("over")
+        }
+
+        //调用生成器函数返回生成器对象 自动生成的return
+        const generator = foo()
+        // console.log(generator)
+        generator.next()
+        generator.next()
+        generator.next()
+    </script>
+</body>
+</html>

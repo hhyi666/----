@@ -17,7 +17,7 @@
                 target.apply(thisArg,otherArgs)
             },
 
-            construct : function(target,otherArgs){//监听new
+            construct : function(target,otherArgs){//监听
                 console.log("监听了new操作")
                 console.log(target,otherArgs)
                 return new target(...otherArgs)

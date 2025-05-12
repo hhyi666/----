@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1.实现特定函数 [symbol:Iterator]:
+        2.这个函数需要返回一个迭代器（用于迭代当前的可迭代对象）
+        */ 
+
+        //1.迭代对象中的数组
+        // const info = {
+        //     friends: ["kkk", "ooo", "ppp"],
+
+        //     //这个方法名字是固定的
+        //     [Symbol.iterator]() {
+        //         let index = 0
+        //         const infoIterator = {
+        //             next: () => { //这里不能直接调用this因为迭代器本身没有friends
+        //                 //使用箭头函数。让这里不绑定this 这样就会去上层寻找
+        //                 if (index < this.friends.length) {
+        //                     return { done: false, value: this.friends[index++] }
+        //                 } else return { done: true }
+        //             }
+        //         }
+        //         return infoIterator
+        //     }
+        // }
+
+        //2.迭代info中的key/value的值
+        const info = {
+            name : "huuyii",
+            age : 10,
+            height : 1.88,
+
+            //对对象的迭代
+            [Symbol.iterator] : function(){
+                const entries = Object.entries(this) //这里更改相应的值就可以进行迭代
+                let index = 0                        //这样就能将不可迭代的进行迭代
+                const iterator = {
+                    next : function(){
+                        if(index < entries.length){
+                            return {done : false,value : entries[index++]}
+                        }else {
+                            return {done : true}
+                        }
+                    }
+                }  
+                return iterator
+            }
+            
+        }
+
+        //可迭代对象可以进行forof操作 可以进行遍历
+        //对象本身不可以进行迭代
+        for (const item of info) {
+            console.log(item)
+        }
+        
+    </script>
+</body>
+
+</html>

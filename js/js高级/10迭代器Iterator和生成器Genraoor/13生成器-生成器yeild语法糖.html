@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const name1 = ["111", "222", "333", "444"]
+        const name2 = ["aaa", "bbb", "ccc", "ddd"]
+
+
+        //1.yeild* 替代之前的方案
+        function* createArrayIterator(arr) { //这里想要返回迭代器，可以使用生成器函数进行返回
+            // for(let i = 0;i<arr.length;i++)yield arr[i]
+
+            //语法糖 
+            yield* arr //后面跟着可迭代对象 自动对每个对象进行迭代 迭代其中的每一个值
+        }
+
+        const namesIterator = createArrayIterator(name1)
+        console.log(namesIterator.next())
+        console.log(namesIterator.next())
+        console.log(namesIterator.next())
+        console.log(namesIterator.next())
+        console.log(namesIterator.next())
+        console.log(namesIterator.next())
+
+        //2。自定义中类的实现
+        class Person {
+            constructor(name, age, height, friends) {
+                this.name = name
+                this.age = age
+                this.height = height
+                this.friends = friends
+            }
+
+            //添加实例方法。直接添加到对象原型上面
+            //前面加上* 代表生成器函数 转化成生成器函数
+            *[Symbol.iterator]() {
+                yield* this.friends  //直接加上想要进行迭代的对象的前面
+            }
+        }
+
+        const p1 = new Person("hhuuyioi",18,1.99,["aaa","bbb","bbca"])
+        // for (const friend of p1.friends) { //直接就能进行迭代
+        //     console.log(friend)
+        // }
+
+        //自己拿也行
+        const pIterator = p1[Symbol.iterator]()
+        console.log(pIterator.next())
+        console.log(pIterator.next())
+        console.log(pIterator.next())
+        console.log(pIterator.next())
+    </script>
+</body>
+
+</html>

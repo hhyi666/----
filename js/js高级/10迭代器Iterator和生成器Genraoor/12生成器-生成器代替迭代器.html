@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        //1.用生成器对之前的代码进行重构
+        // const name1 = ["111","222","333","444"]
+        // const name2 = ["aaa","bbb","ccc","ddd"]
+        
+        // function* createArrayIterator(arr){ //这里想要返回迭代器，可以使用生成器函数进行返回
+            //生成器返回的就是迭代器
+
+            //这个代码的实现很麻烦
+        //     let index  = 0
+        //     return {
+        //         next : function(){
+        //             if(inidex < arr.length){
+        //                 return {done:false,value:arr[index++]}
+        //             }else{
+        //                 return {done:true}
+        //             }
+        //         }
+        //     }
+
+
+            // yield arr[0] // 每次进行返回
+            // yield arr[1]
+            // yield arr[2]
+            // yield arr[3]
+            // return undefined
+
+        //     for(let i = 0;i<arr.length;i++)yield arr[i] //每次执行停止，返回对应的值
+        // }
+
+        // const name1Iterator = createArrayIterator(name1)
+        // console.log(name1Iterator.next())
+        // console.log(name1Iterator.next())
+        // console.log(name1Iterator.next())
+        // console.log(name1Iterator.next())
+        // console.log(name1Iterator.next())
+
+        // const name2Iterator = createArrayIterator(name2)
+        // console.log(name2Iterator.next())
+        // console.log(name2Iterator.next())
+        // console.log(name2Iterator.next())
+        // console.log(name2Iterator.next())
+        // console.log(name2Iterator.next())
+
+
+        //2。生成器函数能够生成某个范围的值
+        function* createRanger(start,end){
+            for(let i = start;i<=end;i++){
+                yield i
+            }
+        }
+
+        const rangeGen = createRanger(3,9)
+        console.log(rangeGen.next())
+        console.log(rangeGen.next())
+        console.log(rangeGen.next())
+        console.log(rangeGen.next())
+        console.log(rangeGen.next())
+        console.log(rangeGen.next())
+        console.log(rangeGen.next())
+        console.log(rangeGen.next())
+        //不断的生成
+    </script>
+</body>
+</html>

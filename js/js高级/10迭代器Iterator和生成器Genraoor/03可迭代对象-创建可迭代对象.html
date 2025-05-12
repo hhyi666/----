@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1.实现特定函数 [symbol:Iterator]:
+        2.这个函数需要返回一个迭代器（用于迭代当前的可迭代对象）
+        */ 
+        const info = {
+            friends: ["kkk", "ooo", "ppp"],
+
+            //这个方法名字是固定的
+            [Symbol.iterator]() {
+                let index = 0
+                const infoIterator = {
+                    next: function () { //这里不能直接调用this因为next的调用变了
+                        if (index < info.friends.length) {
+                            return { done: false, value: info.friends[index++] }
+                        } else return { done: true }
+                    }
+                }
+                return infoIterator
+            }
+        }
+
+        //给info创建一个迭代器，迭代friends
+
+
+        // console.log(infoIterator.next())
+        // console.log(infoIterator.next())
+        // console.log(infoIterator.next())
+        // console.log(infoIterator.next())
+
+        //但是我的迭代器想要和对象放在一起
+        //如果我的迭代器能够放在对象里卖就是可迭代对象
+
+        //可迭代对象具备下面的特点
+        // const iterator = info[Symbol.iterator]()
+        // console.log(iterator.next())
+        // console.log(iterator.next())
+        // console.log(iterator.next())
+        // console.log(iterator.next())
+
+        //可迭代对象可以进行forof操作 可以进行遍历
+        for (const item of info) {
+            console.log(item)
+        }
+        
+
+        //可迭代对象一定有symbol.iterator
+        //数组是一个可迭代对象 本身就有symbol.iterator
+        const stu = ["aaa","bbb","vvv"]
+        const stuIterator = stu[Symbol.iterator]() //可以拿到对应的迭代器
+        console.log(stuIterator.next())
+        console.log(stuIterator.next())
+        console.log(stuIterator.next())
+        console.log(stuIterator.next())
+    </script>
+</body>
+
+</html>

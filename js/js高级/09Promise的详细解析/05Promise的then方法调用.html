@@ -15,11 +15,11 @@
 
         //1.then参数的传递方式 可以传递两个参数
         ///将正确错误放在一起也可以
-        // promise.then(res => {
-        //     console.log("成功回调",res)
-        // },err => {
-        //     console.log("失败回调",err)
-        // })
+        promise.then(res => {
+            console.log("成功回调",res)
+        },err => {
+            console.log("失败回调",err)
+        })
 
         //可以一下监听多个函数
         promise.then(res => {

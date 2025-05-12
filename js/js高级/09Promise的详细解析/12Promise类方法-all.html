@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const p1 = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                reject("error")
+                resolve("p1 solve")},3000)
+        })
+        const p2 = new Promise((resolve,reject) => {
+            setTimeout(() => {resolve("p2 solve")},4000)
+        })
+        const p3 = new Promise((resolve,reject) => {
+            setTimeout(() => {resolve("p3 solve")},5000)
+        })
+        // p1.then(value => {
+        //     console.log(value)
+        // })
+
+        //我们希望全部的Promise都判断完成才会有结果
+        //由所有的Promise的状态共同决定 并且返回新的Promise
+
+        //全部都是resolve才是then
+        //只要有一个是reject就是reject
+        //缺陷：只要有一个是reject就直接reject了
+        Promise.all([p1,p2,p3]).then((res) => { //res是一个数组类型，保存每一个结果
+            console.log("all promise res",res)
+        }).catch((err) => {
+            console.log(err)
+        })
+        //实际上。，在我们收到多个网络请求的时候全部拿到才能进行
+    </script>
+</body>
+</html>

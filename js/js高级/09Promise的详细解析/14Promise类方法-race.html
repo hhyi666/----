@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("error")
+                resolve("p1 solve")
+            }, 3000)
+        })
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => { resolve("p2 solve") }, 4000)
+        })
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => { resolve("p3 solve") }, 5000)
+        })
+
+        //谁执行的快答案就是谁
+        //特点：等到一个promise有结果就会回调 无论结果是什么
+        Promise.race([p1,p2,p3]).then(res => console.log(res))
+        .catch(error => console.log(error))
+    </script>
+</body>
+</html>

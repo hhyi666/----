@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const promise = new Promise((resolve,reject) => {
+            //pending
+            // resolve("aaa")
+            reject("bbb")
+        })
+        promise.then((res) => {
+            console.log("then:",res)
+        }).catch((err) => {
+            console.log("catch:",err)
+        }).finally(() => { //ES9之后出现的在最后状态执行完之后一定会执行回调
+            //。注意这里不能传入参数
+            console.log("first")
+        })
+
+        console.log("后续的代码")//这里会最先进行
+    </script>
+</body>
+</html>

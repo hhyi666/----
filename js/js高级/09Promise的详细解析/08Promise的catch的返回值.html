@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const promise = new Promise((resolve,reject) => {
+            resolve("aaa")
+        })
+
+
+        //catch也会返回新的Promise 进行决议
+        // promise.catch(err => {
+        //     console.log(err)
+        //     return "bbb"
+        // }).then(res => {
+        //     console.log("res")
+        //     return "ccc"
+        // }).then((res) => {
+        //     console.log(res)
+        // }).catch(() => {
+
+        // })
+
+        //catch方法的执行时机
+        promise.then(res => {
+            console.log("then第一次回调") //这个新的Promise返回reject会找到最近的catch进行回调
+            // throw new Error("第二个Promise异常")
+            
+            return "aaa"
+        }).then(res => {
+            console.log("then第二次回调")
+            throw new Error("第三个Promise异常")
+            //注意如果下面没有处理错误情况的就会报错
+            return "vvv"
+        }).then(res => {
+            console.log("then第三次回调")
+        }).catch(err => {//找到最先被reject的
+            //这个catch也会捕获上面的throw抛出的异常 拿到对应的异常信息
+            //上面reject直接来到这里
+            console.log("catch第一次回调",err)//上面的那个拒绝那个就会执行这个catch 直接来到这个位置
+        })
+        //中断函数的执行
+        //return
+        //throw抛出异常
+        //yeild 暂停性的中断
+    </script>
+</body>
+</html>

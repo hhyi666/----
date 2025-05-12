@@ -503,14 +503,30 @@ for(const key in obj)console.log(key)
 ### 2.6ES13
 
 - at
+
 - Object.hasOwn
+  这个出现是用来替换下面这个的，直接就能访问对应的key-value的值，这个还能够找到自己的隐式原型
+  特殊情况使用hasOwn更方便
+
+  ```js
+  const info = Object.create(null)//创建新的对象，新对象的隐式原型指向这个对象
+  info.name = "huu"
+  // console.log(info.hasOwnProperty("name"))//自己的隐式原型就是null。所以就没有这个方法
+  console.log(Object.hasOwn(info,"name"))
+  ```
+
+  
+
   - Object.prototype,hasOwnProperty
+
 - class成员
-  - public instance of
-  - public static fields
-  - private instance fileds
-  - private static fields
-  - static block
+
+  - public instance fields 公有属性
+  - public static fields 公有类属性
+  - private instance fileds 私有属性 定义的时候签名加上#就行
+  - private static fields 私有类函数
+  - static block 静态代码块 
+    只有第一次加载的时候这个类的时候才会执行一次 就一次！！！！
 
 
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("error")
+                resolve("p1 solve")
+            }, 3000)
+        })
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => { resolve("p2 solve") }, 4000)
+        })
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => { resolve("p3 solve") }, 5000)
+        })
+        
+        //l类方法 all Settled会等到全部执行完，并且结果一定是then
+        //res返回的是对象，并且会有原失败的reason及成功的value 
+        //对象是status 和 对应的值
+        Promise.allSettled([p1,p2,p3]).then(res => {console.log(res)})
+    </script>
+</body>
+
+</html>

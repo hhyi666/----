@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const names = ["aaaa","bbb","vvv"]
+        for (const value of names) {
+            console.log(value)
+        }
+
+
+        //给数组创建一个迭代器 names的迭代器
+        let index = 0
+        const nameIterator = {
+
+            
+            next : function(){
+                
+                
+                //必须返回对象，done（Boolean） + value具体的值或者undefined
+                if(index < names.length){
+                    return {done : false,value : names[index++]}
+                }else {
+                    return {done : true}//迭代完成
+                }
+                //done代表是否迭代完成
+            }
+        }
+        const value1 = nameIterator.next()
+        const value2 = nameIterator.next()
+        const value3 = nameIterator.next()
+        const value4 = nameIterator.next()
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //类方法：拿到类名直接调用的方法 更加简洁 直接拒绝操作
+        //无论传入什么操作都是reject
+        Promise.reject("error").catch((err) => {
+            console.log(err)
+        })
+        //相当于
+        // new Promise((resolve,reject) => {
+        //     reject("error")
+        // })
+    </script>
+</body>
+</html>
