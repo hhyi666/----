@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function foo() {
+            console.log("foo1")
+            throw new Error("我是错误信息") //将异常抛给调用者 直到处理异常的方法
+            //没有就传给浏览器，浏览器报错
+
+            console.log("foo2")
+            console.log("foo3")
+            console.log("foo4")
+            console.log("foo5")
+        }
+
+        function bar(){
+
+            //捕获异常就不会传给浏览器 就不会报错（红色）
+            try {
+                foo()
+                console.log("try 后续的代码 ")
+            } catch (error) {
+                console.log(error) //这里产生错误信息。这样后面的就可以执行
+                console.log("catch后续的代码") //异常能执行
+            }finally{
+                console.log("最后的代码")//不管上面都会执行
+            }
+        }
+        function test(){
+            bar()
+        }
+        test()
+        console.log("-----------")
+    </script>
+</body>
+
+</html>

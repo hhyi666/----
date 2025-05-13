@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.定义一些其他的有异步函数
+        function requestDate(url) {
+            console.log("request date") //相当于请求
+            return new Promise((resolve, reject) => { //这里是请求的结果
+                setTimeout(() => {
+                    // resolve(url)
+                    reject(url)
+                }, 1000)
+            })
+
+        }
+        async function text() {
+            console.log("text function")
+            return "text"
+        }
+        async function bar() {
+            console.log("bar function")
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("bar")
+                }, 5000)
+            })
+        }
+        async function demo() {
+            console.log("demo function")
+            return {
+                then: function (resolve) {
+                    resolve("demo")
+                }
+            }
+        }
+
+        //调用的入口的async的函数
+        async function foo() {
+            //等待每一个出现结果才会继续往后执行
+            const res1 = await requestDate("huuyii")
+            console.log(res1)
+            //异步函数返回值本身就是Promise
+            const res2 = await text() //都是Promise会等待对应的结果
+            console.log(res2)
+
+            const res3 = await bar()
+            console.log(res3)
+            
+            const res4 = await demo()
+        }
+        foo().catch(err => {
+            console.log("错误：",err) //catch错误了就不会继续往下执行
+        })
+    </script>
+</body>
+
+</html>

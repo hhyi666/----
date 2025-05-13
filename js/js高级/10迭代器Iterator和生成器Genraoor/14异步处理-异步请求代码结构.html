@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //封装请求的方法 url -> 返回Promise（result）
+        function requestDate(url) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(url)
+                }, 1000)
+            })
+
+        }
+
+
+        //1.发送了一次网络请求
+        requestDate("http://baidu.com").then(res => {
+            console.log("res:", res)
+        }).catch(() => {
+
+        })
+
+        //要求：
+        //1，发送网路请求，等到这次的网络请求的结果
+        //2. 发送第二次网络请求，等待结果的返回
+        //3.发送第三次
+
+
+        //方式一：层层嵌套（回调地狱 callback hell）
+        // function getDate(){
+
+        //     //第一次请求
+        //     requestDate("huuyii").then(res1 => {
+        //         console.log("第一次的结果：",res1)
+
+        //         //第二次请求
+        //         requestDate(res + "aaa").then(res2 => {
+        //             console.log("第二次的结果",res2)
+
+
+        //             //第三次请求
+        //             requestDate(res2+"bbb").then(res3 => {
+        //                 console.log("第三次请求的结果",res3)
+        //             })
+        //         })
+        //     })
+        // }
+
+        //方式二：使用promise进行重构 变成  链式调用
+        //每次访问依赖上次的结果
+        //代码的阅读性不强，还要进行优化
+        // function getDate(){
+        //     requestDate("huuyii").then(res1 => {
+        //         console.log("第一次结果：",res1)
+        //         return requestDate(res1 + "aaa")
+        //         //这里可以进行返回普通值 或者return Promise 能够返回给下面的then新的新的Promise的结果
+        //     }).then(res2 => {
+        //         console.log("第二次结果：",res2)
+        //         return requestDate(res2 + "bbb")
+        //     }).then(res3 => {
+        //         console.log("第三次结果",res3)
+
+        //     })
+        // }
+
+        //方式三：最终代码
+        // function* getDate() {
+        //     const res1 = yield requestDate("huuyii") //结果不好预判 yield后面是返回值
+        //     //使用yield暂停函数的执行 等到拿到结果才继续运行
+        //     console.log(res1)
+        //     const res2 = yield requestDate(res1 + "aaa")
+        //     console.log(res2)
+        //     const res3 = yield requestDate(res2 + "bbb")
+        //     console.log(res3)
+        // }
+
+        // const generator = getDate()
+        // // console.log(generator.next().value)  // 拿到结果 这个的generator的value就是返回的promise
+
+        // generator.next().value.then(res1 => {// console.log("结果:",res1) //能够拿到结过 有结果才能接着走
+        //     generator.next(res1).value.then(res2 => {//将每一次的res结果传回去
+        //         generator.next(res2).value.then(res3 => {
+        //             generator.next(res3)
+        //         })
+        //     })
+        // })
+
+        //方案四 使用async和await的作用 前面生成器的语法糖 ES8新增
+        async function getDate() {
+            const res1 = await requestDate("huuyii") //结果不好预判 yield后面是返回值
+            //使用yield暂停函数的执行 等到拿到结果才继续运行
+            console.log(res1)
+            const res2 = await requestDate(res1 + "aaa")
+            console.log(res2)
+            const res3 = await requestDate(res2 + "bbb")
+            console.log(res3)
+        }
+        const generator = getDate()
+
+    </script>
+</body>
+
+</html>

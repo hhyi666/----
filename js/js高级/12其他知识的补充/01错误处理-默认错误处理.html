@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <script>
+
+        function foo(){
+            "asd".filter()
+            //报错的后后面的代码就不会再执行 JS报错后就不会再进行
+            console.log("后面的代码")
+        }
+
+        foo()
+        console.log("+++++++++++")
+        document.querySelector("button").onclick = function(){
+            console.log("监听按钮点击")
+        }
+
+
+        //2.自己封装的工具 封装的时候要尽量规范
+        function sum(sum1, sum2) {
+            if (typeof sum1 !== "number") {
+                throw "type error : num1传入的参数有问题，必须是number类型"
+            }
+            if (typeof sum2 !== "number") {
+                throw "type error : num2传入的参数有问题，必须是number类型"
+            }
+            return sum1 + sum2
+        }
+        console.log(sum(11, 10))
+        //先将两个数组转化字符串再操作
+
+
+        //正确的函数封装做法是封装的时候 如果引用的不对，就要弹出错误的原因
+    </script>
+</body>
+
+</html>

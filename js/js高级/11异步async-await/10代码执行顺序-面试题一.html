@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //分析调用的机制：：
+        // ！
+        //等到微任务执行完才执行宏任务
+        // Promise里面的clg等是正常的代码，直接接在执行上下文就能被执行
+        console.log("script start")
+
+        //setTime是将整个代码块加到宏任务队列当中
+        //执行的时候宏任务和微任务加到相对应的位置 继续执行
+        //微任务一直加东西，会导致宏任务不断地延后
+        setTimeout(function(){
+            console.log("setTimeout1")
+            new Promise(function(resolve){
+                resolve()
+            }).then(function(){
+                new Promise(function(resolve){
+                    resolve()
+                }).then(function(){
+                    console.log("then4")
+                })
+                console.log("then2")
+            })
+        })
+        new Promise(function(resolve){
+            console.log("promise1")
+            resolve()
+        }).then(function(){
+            console.log("then1")
+        });
+
+        setTimeout(function(){
+            console.log("setTimeout2")
+        })
+
+        console.log(2)
+
+        queueMicrotask(() => {
+            console.log("queueMicrotask1")
+        })
+
+        new Promise(function(resolve){
+            resolve()
+        }).then(function(){
+            console.log("then3")
+        })
+
+        console.log("script end")
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function requestDate(url) {
+            console.log("requestDate")
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("setTimeout")
+                    resolve(url)
+                }, 2000);
+            })
+        }
+
+        //1.使用Promise进行调用
+        // function getDate(){
+        //     console.log("getDate start")
+        //     requestDate("huuyii").then(res => {//这个then会等到上面的settimeout执行完才会继续执行
+        //         console.log("then1-res:",res)
+        //     })
+        //     console.log("getDate end")
+        // }
+
+
+        //2。async和await 转换成异步函数
+        async function getDate() {
+            console.log("getDate start")
+            const res = await requestDate("huuyii") //拿到结果继续执行 没有结果的时候会暂停
+            //但是函数外面的还是会继续执行
+
+            //使用await 这个后面的可以当成微任务进行处理 当成then的内容进行处理
+            console.log("then1-res", res)
+            console.log("getDate end")
+        }
+
+        getDate() //异步函数的执行过程适合普通函数的执行过程是一样的
+    </script>
+</body>
+
+</html>

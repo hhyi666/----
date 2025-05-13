@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //普通函数
+        // function foo(){}
+        // const bar = function(){} // 表达式
+        // const ccc = () => {}
+
+        //生成器函数 返回生成器对象
+        // function* foo(){
+
+        // }
+
+        //异步函数 
+        async function foo() {
+            console.log("funtion 1")
+            console.log("funtion 2")
+            console.log("funtion 3")
+        }
+        foo()
+
+        const bar = async function(){}
+        const baz = async () => {}
+        class Person{ //类里面定义异步函数
+            async running(){
+
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //返回值的区别
+        //1.普通函数
+        // function foo1(){
+        //     // return 
+        // }
+        // foo1()
+
+        //2。异步函数
+        async function foo2() {
+
+            //1.返回普通值
+            // return undefined
+            // return 123 
+            //就算返回的是明确的值也是Promise 只是直接返回resolve
+
+            //2.返回Promise 后面的then和catch根据返回的Promise进行操作
+            // return new Promise((resolve,reject) => {
+            //     setTimeout(() => {
+            //         resolve("aaa")
+            //     },1000)
+            // })
+
+            //3，返回thenable对象 对象的then方法决定
+            return {
+                then : function(resolve,reject){
+                    setTimeout(() => {
+                        resolve("bbb")
+                    },1000)
+                }
+            }
+        }
+        // console.log(foo2())  //异步函数返回的是Promise
+
+        foo2().then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+
+        //返回值的区别：
+        //1.有返回值的时候 但是异步函数的返回值相当于被包裹在resolve里面
+        //2，异步函数返回值是Promise的时候，状态Promise决定
+        //3，
+    </script>
+</body>
+</html>

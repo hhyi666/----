@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //新的关键字 ： await
+        //await条件：只能在异步函数async中进行使用
+        // async function foo1() {
+        //     await 123
+        // }
+        // foo1()
+
+
+        //2.await关键字
+
+        function bar(){
+            console.log("bar 执行")
+            return new Promise((resolve,reject) => {
+                setTimeout(() => {
+                    resolve("aaa")
+                },4000)
+            })
+        }
+        async function foo() {
+            console.log("-----")
+            const res = await bar() 
+            //使用 await的时候通常会跟着一个表达式 返回Promise 
+            //等待Promise有结果 将继续执行 等待有结果才会执行后续的结果
+            console.log(res)
+            
+            const res1 = await bar()
+            console.log(res1)
+
+            console.log("-----")
+        }
+
+        // foo()
+        const generator = foo()
+    </script>
+</body>
+</html>

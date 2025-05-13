@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // class Error{
+        //     constructor(message,code){
+        //         this.message = message
+        //         this.code = code
+        //     }
+        // }
+        //throw 抛出异常
+        //1.代码执行的时候遇见throw之后后续不会再执行 直接暂停代码的执行
+        //2.throw能够抛出具体的错误信息 可以是很多类型 描述错误的类型
+        function foo() {
+            console.log("foo1")
+            // throw "aaa" 
+
+            //可以抛出对象，信息更多 可以通过构造函数那样返回错误
+            // throw new Error("错误",1010)
+
+            //系统自己给了Error类 给错误信息的位置，以及错误信息的调用栈（找到在哪里调用的）
+            throw new Error("我是错误信息")
+
+            console.log("foo2")
+            console.log("foo3")
+            console.log("foo4")
+            console.log("foo5")
+        }
+        foo()
+    </script>
+</body>
+
+</html>

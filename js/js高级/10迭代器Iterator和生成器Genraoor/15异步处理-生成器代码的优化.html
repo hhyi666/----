@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function requestDate(url) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(url)
+                }, 1000);
+            })
+        }
+
+        function* getDate() {
+            const res1 = yield requestDate("huuyii")
+            console.log(res1)
+
+            const res2 = yield requestDate(res1 + "aaa")
+            console.log(res2)
+
+            const res3 = yield requestDate(res2 + "bbb")
+            console.log(res3)
+
+            const res4 = yield requestDate(res3 + "ccc")
+            console.log(res4)
+        }
+
+        // const generator = getDate()
+
+        // generator.next().value.then((res1) => {
+        //     generator.next(res1).value.then(res2 => {
+        //         generator.next(res2).value.then(res3 => {
+        //             generator.next(res3).value.then(res4 => {
+        //                 generator.next(res4)
+        //             })
+        //         })
+        //     })
+        // })
+
+        //自动化执行生成器函数（了解） 自动化调用
+        //可以尝试自己写一写这类函数
+        function execGenFn(genFn){
+
+            //1.获取对用的generator
+            const generator = genFn()
+            
+            //2。定义递归函数
+            function exec(res){
+                //result -> {done : true/false,value : 值/undefined} value是Promise
+                const result = generator.next(res)
+                if(result.done)return //观察是否结束
+                result.value.then(res => {
+                    exec(res)
+                })
+
+            }
+            //3,执行递归函数
+            exec()
+        }   
+        execGenFn(getDate)
+    </script>
+</body>
+
+</html>

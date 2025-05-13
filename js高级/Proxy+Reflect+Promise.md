@@ -407,6 +407,219 @@
 
 - 注意：如果没有设置监听错误的情况，会报错
 
+### 3.6细节的补充
+
+#### 1实例方法
+
+##### 1.1.then方法返回新的Promise
+
+- then中的回调来进行决定
+
+- ```js
+  promise.then(res => {	
+  	console,log(res)
+  	return "bbb"
+  }).then(res => {
+  	console.log(res)
+  	return "ccc"
+  })
+  ```
+
+  会产生这样的链式调用的效果
+
+- ！！！注意过程的执行顺序
+
+  ```js
+          promise.then(res => { // then返回新的promise方法 链式中的then时在等待新的决议
+              console.log("第一次then方法",res)
+              return "bbb"
+          }).then(res => {
+              console.log("第二次then方法",res)
+              return "vvv"
+          }).then(res => {
+              console.log("第三次then方法",res)
+              return "lll"
+          }).then((res) => {
+              console.log("第四次then方法",res)
+          })
+  
+          promise.then(res => {
+              console.log("添加第二个then方法")
+          })
+  ```
+
+  这个过程的执行结果就是第一个和最后一个会执行，因为有一开始只有这两个进行决议
+
+- then方法传入回调函数的返回值的类型
+
+  - 普通值
+
+  - 新的promise 决议也是根据这个新的promise进行设置
+
+  - 返回对象thenable 返回的对象是有then方法，会等待then方法执行，根据这个进行操作返回决议
+
+    ```js
+    promise.then(res => {
+                console.log("第一个Promise的then方法：",res)
+                //1，新的Promise
+                // return newPromise//等待决议成功在传递
+                //使用新的Promise进行返回
+                //这里默认返回undefined
+    
+                //2.普通值
+                // return "bbb"
+    
+                //3.返回对象 对象里面有then的值
+                return {
+                    then : function(resolve){//这里传入resolve的方法
+                        resolve("返回的是对象")
+                    }
+                }
+            }).then(res => {
+                console.log("第二个Promise的方法：",res)
+            })
+    ```
+
+- 
+
+##### 1.2.catch方法返回新的promise
+
+- catch执行，前面的某一个promise reject执行就会进行回调
+
+- catch返回值也是promise 由catch传入的回调来决定
+
+- 从then转换到catch身上 catch捕获最近的异常信息
+  可以中断的信息：return throw yeild
+
+  ```js
+  promise.then(res => {
+  	console.log("then第一次进行回调")
+  	return "aaa"
+  }).then(res => {
+  	console.log("第二次")
+  	throw new Error("异常") //这是就会直接转到catch的身上
+  })
+  ```
+
+  
+
+##### 1.3finally方法 ES9之后出现
+
+就是不管是fulfilled还是rejected 最后都会执行的代码 
+注意：这个是等决议完成之后才会执行，注意顺序
+
+#### 2.类方法
+
+定义：构造函数或者类本身就有的方法
+实例方法：新创建的实例上可以调用的方法
+
+##### 2.0resolve reject方法
+
+- 当我们已经有对应的结果想要通过Promise传出去，就直接使用resolve
+
+  ```js
+  		const studentList = []
+  
+          Promise.resolve(studentList).then((value) => {//相当于new P操作直接执行resolve操作
+              console.log(value)
+          })
+  ```
+
+  
+
+##### 2.1all方法
+
+- 等到所有的Promise由resolve结果，拿到数组 ，根据全部的进行判断
+
+- 如果过程中有一个reject，那么all promise的值就是reject
+
+- ```js
+          const p1 = new Promise((resolve,reject) => {
+              setTimeout(() => {
+                  reject("error")
+                  resolve("p1 solve")},3000)
+          })
+          const p2 = new Promise((resolve,reject) => {
+              setTimeout(() => {resolve("p2 solve")},4000)
+          })
+          const p3 = new Promise((resolve,reject) => {
+              setTimeout(() => {resolve("p3 solve")},5000)
+          })
+                  Promise.all([p1,p2,p3]).then((res) => { //res是一个数组类型，保存每一个结果
+              console.log("all promise res",res)
+          }).catch((err) => {
+              console.log(err)
+          })
+  ```
+
+  
+
+##### 2.2allSettle方法
+
+- 等到所有的Promise操作完，拿到数组=>元素是对象[{status :	,value/reason:	},...............]
+  成功有返回值，失败有返回的失败的原因 反应的信息更加充分
+
+- ```js
+          const p1 = new Promise((resolve, reject) => {
+              setTimeout(() => {
+                  reject("error")
+                  resolve("p1 solve")
+              }, 3000)
+          })
+          const p2 = new Promise((resolve, reject) => {
+              setTimeout(() => { resolve("p2 solve") }, 4000)
+          })
+          const p3 = new Promise((resolve, reject) => {
+              setTimeout(() => { resolve("p3 solve") }, 5000)
+          })
+          Promise.allSettled([p1,p2,p3]).then(res => {console.log(res)})
+  ```
+
+  
+
+##### 2.3race方法
+
+- 竞赛：只要有结果就返回，不管这个结果成功fulfilled还是失败rejected
+
+- 拿到一个结果停止 后续不再执行
+
+- ```js
+          const p1 = new Promise((resolve, reject) => {
+              setTimeout(() => {
+                  reject("error")
+                  resolve("p1 solve")
+              }, 3000)
+          })
+          const p2 = new Promise((resolve, reject) => {
+              setTimeout(() => { resolve("p2 solve") }, 4000)
+          })
+          const p3 = new Promise((resolve, reject) => {
+              setTimeout(() => { resolve("p3 solve") }, 5000)
+          })
+           Promise.race([p1,p2,p3]).then(res => console.log(res))
+          .catch(error => console.log(error))
+  
+  ```
+
+  
+
+##### 2.4any方法
+
+- 任意：会一直等待，等到一个fulfilled，如果没有就会生成一个错误的对象
+
+- 拿到全部的进行判断
+
+- ```js
+          Promise.any([p1,p2,p3]).then(res => {console.log(res)})
+          .catch(err => console.log(err))
+  ```
+
+  
+
+
+
+
+
 ## 思考：
 
 ### 1.说出proxy和Object.defineProperty（Vue2的实现）的区别

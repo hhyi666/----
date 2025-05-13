@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function foo() {
+            console.log("---------1")
+            console.log("---------2")
+
+
+            //执行过程中出现错误也会调用catch
+            // "abc".filter() //这里会抛出异常
+            //处理 ： 拿到异常，对异常进行reject 被捕获
+
+            throw new Error("huuyii") //抛出异常也会执行catch
+            console.log("---------3")
+            console.log("---------4")
+
+            return 123 //普通值返回的就是promise的resolve
+
+            //是reject的状态
+            // return new Promise((resolve,reject) => {
+            //     reject("aa")
+            // })
+
+            // return {
+            //     then : function()
+            // }
+        }
+
+        //调用函数返回promise.resolve()
+        //Pendinig-》 fulfilled
+        foo().then(res => {console.log(res)}).catch(err => {
+            console.log(err)
+            console.log("继续执行其他的代码")
+        })
+    </script>
+</body>
+</html>

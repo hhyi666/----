@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("script start")
+
+        function bar(){
+            console.log("bar function")    
+        }   
+
+        function foo(){
+            console.log("foo function")
+            bar()
+        }
+        foo()
+        //这里没有会加入到事件队列当中的值
+
+        //计时器 这里对听的是宏任务
+        setTimeout(() => {
+            console.log("settime0")            
+        }, 0)
+        setTimeout(() => {
+            console.log("settime2")            
+        }, 2000)
+        
+        //Promise  的then会加入到不同的队列
+        console.log("111")
+        new Promise((resolve,reject) => {
+            console.log("222") //这个回调函数在执行上下文就会执行，不会放到别的再执行
+            console.log("----1")
+            console.log("----2")
+            resolve("回调")
+            console.log("----3")
+        }).then(res => {//then会添加到队列当中 但是具体的不是原来的队列
+            //等到所有的全局上下文执行完才会继续执行 这里是不同的队列 这里是微任务 
+            //微任务先进行完才会进行宏任务
+            console.log(res)
+        })
+        console.log("333")
+
+        console.log("script end")
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name = "huuyii"
+
+        name = "kkk"
+        
+        function foo(){ //函数的执行的时候会创建自己的执行上下文 并执行 等到执行完了就会弹出执行上下文栈
+            //一次只会执行一次上下文
+            //每次执行一个函数 可能是一个函数里面调用另一个函数
+            //然后才会创建新的函数的执行上下文
+            console.log("foo function")
+
+            //1.在JS的内部进行
+            // for(let i = 0;i<100;i++){
+                
+            // }
+
+            //2.创建一个定时器 
+            //开始计时器 这个线程不是Js决定的，是浏览器的线程来操作这个计时操作
+            setTimeout(() => { //计时器是浏览器来计时
+                console.log("setTimeout")
+            }, 10000);
+        }
+        function bar(){
+            console.log("bar functoin")
+        }
+        foo()
+        bar()
+        
+        
+    </script>
+</body>
+</html>

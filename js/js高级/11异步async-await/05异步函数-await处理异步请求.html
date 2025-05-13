@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function requestDate(url) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // resolve(url)
+
+                    reject("ooo")
+                }, 2000)
+            })
+        }
+
+        //捕获异常可以通过函数外面的catch进行捕获，也可以通过在函数里面使用try catch进行捕获
+        //自己进行trycatch进行捕获
+        async function getDate() {
+            try {
+                const res1 = await requestDate("huuyii") // 等到每个有结果了之后继续运行
+                //那如果是reject呢 
+                //会抛出异常
+                console.log(res1)
+                const res2 = await requestDate(res1 + "aa")
+                console.log(res2)
+            } catch (error) {
+                console.log("捕获到异常",error)
+            }
+
+        }
+
+        // const generator = getDate()
+        getDate().catch(err => { //异常代码
+            console.log(err)
+        })
+    </script>
+</body>
+
+</html>

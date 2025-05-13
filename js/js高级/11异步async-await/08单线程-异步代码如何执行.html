@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button>按钮</button>
+    <script>
+
+        const btnEl = document.querySelector("button")
+        btnEl.onclick = function(){
+            console.log("btn onclick") //这里也是加到事件队列当中
+        }
+        console.log("Hello world!")
+        let name = "huuyii"
+        name = "kkk"
+        console.log(name)
+
+        //这里会有专门的一个工人（线程）来执行 浏览器操作
+
+
+        //这里的加入事件队列是指等到时间结束才会加入
+        setTimeout(() => {
+            console.log("计时器操作5s")
+        },5000)
+        setTimeout(() => {
+            //操作的时候六浏览器创建新的线程执行这个
+            //这个函数会创建自己的执行上下文 创建后立马弹出
+            //还会有一个队列结构 来操作这个一个一个执行 将这个操作加入时间队列当中
+            console.log("计时器操作2s")
+        }, 2000);//就算这个是0s也不会立即执行
+        //时间到了就会加入到调用栈当中 不会阻塞后续代码的执行
+        
+        console.log("计时器后面的操作")
+    </script>
+</body>
+</html>
