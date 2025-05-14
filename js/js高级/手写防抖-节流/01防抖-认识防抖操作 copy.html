@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- button也可以加上事防抖操作 -->
+    <button>按钮</button>
+    <input type="text">
+    <!-- 使用CDN进行引用 -->
+     <!--或者直接下载到本地，再引用 -->
+     
+    <script src="js/underscore-umd-min.js"></script>
+    <script>
+        //1。获取input元素
+        const inputEl = document.querySelector("input")
+        // //2.监听input的输入
+        // let index = 1
+        // inputEl.oninput = function(){ //减缓函数的执行频率
+        //     console.log(`发送网络请求${index ++}:,`,this.value)
+        // }
+
+
+
+        //在我们发送很快的时候，只最后一次发送网络请求就行，进行优化、
+        //防抖处理代码
+        let index = 1
+        inputEl.oninput = _.debounce(function () { //减缓函数的执行频率
+            console.log(`发送网络请求${index++}:,`, this.value)
+        }, 1000) //等待多长时间就会发送请求 函数延迟执行  
+        //等待多长时间发送  防抖操作
+
+
+        //优化浏览器的性能 需要进行频繁访问的时候
+        //输入框中的信息的时候
+        //按钮点击的时候
+        //监听浏览器的滚动事件
+        //用户 resize浏览器
+
+    </script>
+</body>
+
+</html>

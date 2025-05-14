@@ -47,7 +47,7 @@
                 //有这个的位置，就能够进行替换 找到相对应的位置
                 if(keyRe.test(fmtstring)){ //判断有没有 这个数据的位置
                     const value = (dateO[key] + "").padStart(2,"0")//需要转换成字符串的形式进行操作
-                    fmtstring = fmtstring.replace(keyRe,value)
+                    fmtstring = fmtstring.replace(keyRe,value) //replace能够查找正则表达式
                     //对相应的位置进行替换 对正则表达式的位置进行替换
                 }
             }

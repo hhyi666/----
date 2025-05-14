@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- button也可以加上事防抖操作 -->
+    <button>按钮</button>
+    <input type="text">
+    <button class="cancel">取消</button>
+    <!-- 使用CDN进行引用 -->
+    <!--或者直接下载到本地，再引用 -->
+    <script>
+
+        //传入函数能够回调
+        function hydebounce(fn, delay,immediate = false,resultcallback) {
+
+            //1.记录上一次事件触发的timer
+            let timer = null
+            let isIovte = false
+            //返回新的函数  事件触发的函数
+            const _debounce = function (...args) { //来到这前（上一次）的setTimeOut取消掉
+                //这个是返回的函数 是input调用的 
+
+                //这里是可以避免产生回调地狱的产生
+                //使用Promise
+
+                //有跟多次会取消上次设置的time
+                if (timer) clearTimeout(timer)
+
+                let res = undefined
+                if(immediate && !isIovte){
+                    res = fn.apply(this,args)
+                    if(resultcallback)resultcallback(res)
+                    isIovte = true
+                    return 
+                }
+
+                //延迟执行函数
+                timer = setTimeout(() => {
+                    res = fn.apply(this, args)
+                    if(resultcallback)resultcallback(res)
+                    timer = null //执行成功重新开始
+                    isIovte = false
+                }, delay)
+            }
+
+            //给debounce添加对象 用来返回，取消我们的进程time
+            //给函数添加对象
+            _debounce.cancel = function () {
+                if (timer) clearTimeout(timer)
+            }
+
+            return _debounce //有引用就不会销毁
+        }
+    </script>
+    <script src="js/underscore-umd-min.js"></script>
+    <script>
+        const cancelBtn = document.querySelector(".cancel")
+        //自己实现防抖函数
+        const inputEl = document.querySelector("input")
+
+        //手动的绑定和执行
+        const mydebounce =  hydebounce(function(name,age,height){
+            console.log("-----",name,age,height)
+            return "huuyii 666"
+        },1000,false,function(res){
+            console.log("执行后的结果：",res)
+        })
+        
+        const res = mydebounce("huuyii",18,1.8) //这里执行的是_debounce函数 是没有返回结果的
+        //我们是想要拿到setTime的里面的结果 但是这个异步执行的
+        // mydebounce("huuyii",18,1.8)
+
+    </script>
+</body>
+
+</html>

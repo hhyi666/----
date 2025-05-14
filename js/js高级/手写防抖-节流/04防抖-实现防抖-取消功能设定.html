@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- button也可以加上事防抖操作 -->
+    <button>按钮</button>
+    <input type="text">
+    <button class="cancel">取消</button>
+    <!-- 使用CDN进行引用 -->
+     <!--或者直接下载到本地，再引用 -->
+     <script>
+
+        function hydebounce(fn,delay,immediate = false){
+            
+            //1.记录上一次事件触发的timer
+            let timer = null
+            let isInvoke = false
+            //返回新的函数  事件触发的函数
+            const _debounce = function(...args){ //来到这前（上一次）的setTimeOut取消掉
+            //这个是返回的函数 是input调用的 
+                
+                //有跟多次会取消上次设置的time
+                if(timer) clearTimeout(timer)
+            
+                //第一次不需要延迟 立即执行功能
+                if(immediate && !isInvoke){
+                    fn.apply(this,args)
+                    isInvoke = true
+                    return
+                }
+
+                //延迟执行函数
+                timer = setTimeout(() => {
+                    fn.apply(this,args)
+                    timer = null //执行成功重新开始
+                },delay)
+            }
+
+            //给debounce添加对象 用来返回，取消我们的进程time
+            //给函数添加对象
+            _debounce.cancel = function(){
+                if(timer)clearTimeout(timer)
+            }
+
+            return _debounce //有引用就不会销毁
+        }
+     </script>
+    <script src="js/underscore-umd-min.js"></script>
+    <script>
+        const cancelBtn = document.querySelector(".cancel")
+        //自己实现防抖函数
+        const inputEl = document.querySelector("input")
+        let counter = 1
+        //这里其实是可以往里面传入值的  传参能够调用再次使用
+        const debounceFn = hydebounce(function(event){ //这里是返回值进行绑定，不是调用 //相当于独立函数调用
+            console.log(`发送请求${counter++}`,this.value) //this绑定的是window 
+        },3000,false)
+        inputEl.oninput = debounceFn
+        //我们有时候想要取消操作？如何操作 取消事件
+        cancelBtn.onclick = function(){
+            debounceFn.cancel()
+        }
+
+    </script>
+</body>
+
+</html>
