@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建正则
+
+        //这两个含义是相同的
+        // const re1 = new RegExp("abc","ig") //这是匹配的规则
+        const re1 = /abc/ig //注释
+        const message = "fzbs FABC abc2343254365467"
+
+        console.log(re1)
+
+        //使用正则对象上的实例方法
+
+        //2.使用字符串的方法，传入字符串
+        //需求：将所有abc（忽略大小写）替换成cba
+        const newMessage1 = message.replaceAll(/abc/ig,"cba") //能够忽略大小写
+        console.log(newMessage1)
+        
+
+        //需求：将字符串的数组都删除 
+        const newMessage = message.replaceAll(/\d+/ig,"")
+        console.log(newMessage)
+
+        //字符串中能够使用这些方法
+    </script>
+</body>
+</html>

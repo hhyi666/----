@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定义正则
+        const re = /./ig
+        const message = "abc.h/hy"
+        console.log(message.match(re)) //全部都会匹配到
+        //需要转义的字符
+        //[] \ ^ $ . | ? * + ()
+        //使用的前面需要加上 \ 才能使用
+        
+        const re2 = /\//
+        console.log(message.match(re2))
+
+
+        //获取文件名字
+        //jsxw文件也是js文件
+        const filenames = ["zxc.html","dad.jsx","dafdas.js"]
+        //需求：找到所有的js的文件名
+        const jsfile = /\.jsx?$/ //使用？就是代表x的个数可以是一个或者0个
+        // const newfilename = []
+        // for (const filename of filenames) {
+        //     if(jsfile.test(filename)){
+        //         newfilename.push(filename)
+        //     }
+        // }
+        // console.log(newfilename)
+        console.log("------")
+        const newfilename = filenames.filter(filename => jsfile.test(filename)) //直接使用filter就行
+        //高阶函数filter
+        console.log(newfilename)
+    </script>
+</body>
+</html>

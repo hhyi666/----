@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //。任意匹配一个字符
+        //+ 匹配前面的字符一个或者多个
+        // * 匹配前面的前一个元素0或多次
+        //1.贪婪模式
+        const message = "我最喜欢的人：《迪迦》和《刑天》"
+        
+        const nameRe = /《.+》/ //贪婪模式 会将》匹配到最后一个》才结束
+        //其他的都设置成。+的形式 直到找到最后一个结果 
+        console.log(message.match(nameRe)) //这是我们的书没有分隔开
+
+        //2。使用惰性模式使用？ 只要有》就返回 添加上  使用？添加惰性模式
+        const nameRee = /《.+?》/ig 
+        console.log(message.match(nameRee))
+    </script>
+</body>
+</html>

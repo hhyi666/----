@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+    <div class="time"></div>
+<body>
+    <script>
+        //传进来的时间可能会有不同
+
+
+        function formateTime(timestamp,fmtstring){
+
+            //1.将时间戳转换成new Date
+            const date = new Date(timestamp)
+            console.log(date)
+            // const year = date.getFullYear()
+            // const month = date.getMonth() + 1
+            // const day = date.getDate()
+            // const hour = date.getHours()
+            // const minute = date.getMinutes()
+            // const second = date.getSeconds()
+
+
+            // //将字符串进行匹配 创建正则
+            // const yearRe = /y+/
+
+            //直接使用对象进行存储
+            //正则和值进行匹配
+            const dateO = { //这里是为了使用for循环进行匹配找到值
+                "y+" : date.getFullYear(),
+                "M+" : date.getMonth() + 1,
+                "d+" : date.getDate(),
+                "h+" : date.getHours(),
+                "m+" : date.getMinutes(),
+                "s+" : date.getSeconds(),
+            }
+
+            for (const key in dateO) {
+                const keyRe = new RegExp(key) //key的正则表达式
+                // console.log(keyRe) 
+
+                //有这个的位置，就能够进行替换 找到相对应的位置
+                if(keyRe.test(fmtstring)){ //判断有没有 这个数据的位置
+                    const value = (dateO[key] + "").padStart(2,"0")//需要转换成字符串的形式进行操作
+                    fmtstring = fmtstring.replace(keyRe,value)
+                    //对相应的位置进行替换 对正则表达式的位置进行替换
+                }
+            }
+
+            return fmtstring
+        }
+
+        const timeEl = document.querySelector(".time")
+        //拿到时间 上架的时间 结束的时间
+        //拿到的是时间戳 是一段数字怎么处理 
+        const produceJSON = {
+            name : "phone",
+            newPrice : 9000,
+            oldPrice : 5000,
+            endTIme : 1659252290637
+        }
+        timeEl.textContent = formateTime(produceJSON.endTIme,"yyyy/MM/dd hh:mm:ss")
+        //这里的位置可是式任意的
+
+    </script>
+</body>
+</html>

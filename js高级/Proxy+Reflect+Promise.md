@@ -598,7 +598,7 @@
           })
            Promise.race([p1,p2,p3]).then(res => console.log(res))
           .catch(error => console.log(error))
-  
+        
   ```
 
   
@@ -614,11 +614,16 @@
           .catch(err => console.log(err))
   ```
 
-  
 
 
 
+#### 3.注意：then期待传入的是函数，如果不是函数那么，会发生透传，就是上面的值会连续的传到下面
 
+#### 4.promise的状态一旦改变就不会改变
+
+#### 5.finally的回调函数是不能接收Promise的结果的 undefined
+
+#### 6.如果最后访问这个Promise最后返回的就是finally的返回值，如果finally没有返回值那么就访问上一个then或者catch的返回值，undefined
 
 ## 思考：
 
@@ -657,5 +662,43 @@
 - 统一错误的处理：使用catch方法捕获异步操作中的错误，能集中处理，避免在每个异步操作回调中重复写错误的代码提高代码的可维护性
 - 控制异步流程
 
+### 4.理解Promise
 
+相当于保姆，我们能够任命他去完成一些任务，就相当于几个异步任务
+
+有时间的延迟，这时我们就能有promise进行书写
+
+注意：后续还是异步任务就需要返回的是一个新的promise对象，如果不是，就会返回一个结果就行，就是同步函数
+
+创建promise的时候创建的方法
+
+- new promise(fn)
+- Promise.resolve()
+
+
+
+# Promise面试题
+
+1.使用Promise实现每隔1秒输出1,2,3
+
+```js
+async function print(){
+	for(let i = 1;i<=3;i++){
+		await new Promise((resolve) => setTimeout(resolve,1000))//暂停1s再返回
+		console.log(i)
+	}
+}
+```
+
+将数组中的每一个元素转换为一个延迟执行的Promise，并通过Promise串联起来
+
+```js
+const arr = [1, 2, 3];
+arr.reduce((p, x) => p.then(() => new Promise((r) => setTimeout(() => {
+    console.log(x);
+    r();
+}, 1000))), Promise.resolve()).then(() => {
+    console.log('All numbers printed');
+});
+```
 

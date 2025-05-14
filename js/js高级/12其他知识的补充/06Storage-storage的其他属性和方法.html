@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const ACCESS_TOKEN = "token"
+
+        console.log(localStorage.length)
+
+        //常见的方法
+        localStorage.setItem(ACCESS_TOKEN,"why") //值需要保证一样的时候 存储新的对象就行 防止错误
+        console.log(localStorage.getItem(ACCESS_TOKEN))
+
+        //其他的方法
+        console.log(localStorage.key(1)) //根据索引获取key
+        console.log(localStorage.removeItem("infoTab")) //x主动的删除
+
+        localStorage.clear() //清除
+    </script>
+</body>
+</html>

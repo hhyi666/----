@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/cache.js"></script>
+    <script>
+        localCache.setCache("sno",111)
+
+        //storage本身是不能存储对象类型的
+        const userinfo = {
+            name : "huuyii",
+            age : 10,
+            level : 100,
+            imageUrl : "https://github/huuyii.img"
+        }
+        // localStorage.setItem("userinfo",JSON.stringify(userinfo)) //转成字符串存进去
+        // console.log(JSON.parse(localStorage.getItem("userinfo"))) //在转换回来
+
+        localCache.setCache("userinfo",userinfo) //封装工具的好处
+        console.log(localCache.getCache("userinfo"))
+
+        sessionCache.setCache("sss","juaisf") //直接使用封装的就行 
+        console.log(sessionCache.getCache("sss"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.量词的使用
+        const re = /a{3,5}/ //拿到某个范围的数量
+        const message = "fdaa vasdas aaaaaaaaaa aaaaa dassd"
+        console.log(message.match(re))
+        //想要结果就用match
+        //只想要真假就用test
+
+        //？就是0 || 1个都行
+
+        //2。常见的符号 + ？ *
+        //案例  字符串html的标签 将所有的标签都匹配出来
+        const htmlEl = "<div><span>hhhhh</span><h2>我是标题</h2></div>"
+        const tagRe = /<\/?[a-z][a-z0-9]*>/ig //忽略大小写 全局匹配
+        console.log(htmlEl.match(tagRe)) 
+        
+    </script>
+</body>
+</html>

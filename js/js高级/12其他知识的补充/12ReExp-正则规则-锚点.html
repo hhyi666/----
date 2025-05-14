@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const message = "My name is huuyii."
+        
+        // if(message.startsWith("my"))console.log("my开头")
+        // if(message.endsWith("huuyii"))console.log("huuyii开头")
+
+        //使用正则表示
+        if(/^my/i.test(message)){ //使用^ 要求字符串的开头是什么
+            console.log("my开头")
+        }
+        if(/huuyii$/i.test(message)){
+            console.log("huuyii结尾") //使用$要求字符串的结尾为是什么
+        }
+
+        if(/huuyii.$/i.test(message)){
+            console.log("以huuyii.结尾")
+        }
+
+
+        const re1 = /^coder$/ig  //这样写中间严格匹配
+        const info = "cooooder"
+        console.log(re1.test(info))
+    </script>
+</body>
+</html>

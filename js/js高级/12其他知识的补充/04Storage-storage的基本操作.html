@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let token = localStorage.getItem("token")
+        if(!token){//从本地获取 只会存储一次
+            console.log("从服务器获取到token")
+            token = "new token"
+            localStorage.setItem("token",token)
+        }
+
+        //也可以进行获取name password
+        let username = localStorage.getItem("username")
+        let password = localStorage.getItem("password")
+        if(!username || !password){
+            console.log("输入账号和密码")
+            username = "huuyii"
+            password = 123345
+            localStorage.setItem("username",username)
+            localStorage.setItem("password",password)
+        }
+        // const token  = "huuyii token" //通过网络请求打开
+        //将token储存到本地，进行获取、
+        //看本地有没有token -> 保存到storage里面    
+
+
+        //将账号和密码和token储存到浏览器当中
+        //已经储存到本地了
+        // localStorage.setItem("token",token)
+        
+        // localStorage本地存储
+        // sessionStoragebe本次会话的存储
+
+        //后续的操作
+
+    </script>
+</body>
+</html>

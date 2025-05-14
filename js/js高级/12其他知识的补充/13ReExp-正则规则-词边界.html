@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const message = "My name is huuyii."
+        console.log(/name/ig.test(message))
+        //需求 像要匹配name但是name必须是一个单独的词
+        //使用词边界 \b 检查字符串 就是判断name的两端是不是\w 
+        console.log(/\bname\b/i.test(message)) 
+
+
+        //词边界的应用
+        const infos = "now time is 11:56 12:00 1:10,number is 123:456"
+        const timeRe = /\b\d\d:\d\d\b/ig // \b就是是不是边界 但是两边是汉字就不行了
+
+        console.log(infos.match(timeRe))
+    </script>
+</body>
+</html>

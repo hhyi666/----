@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./static/about.html" target="_blank">关于</a>
+    <script>
+        //验证1：关闭网页
+        //1,localStorage 的存储
+        // localStorage.setItem("name","localStorage")
+        // //会储存下来
+
+        // // //2.sessionStorage
+        // sessionStorage.setItem("name","sessionStorage") //页面关闭了就没了
+        //存储的地方不一样
+
+
+        //2.验证2：打开新的网页 session不会删除 页面跳转的时使用session就行
+        // localStorage.setItem("info","local")
+        // sessionStorage.setItem("info","session")
+
+        //验证3：打开新的页面 并且是在新的标签中打开
+        //新页面的local有，但是session没有 属于不同的会话
+        localStorage.setItem("infoTab","local")
+        sessionStorage.setItem("infoTab","session")
+
+
+    </script>
+</body>
+</html>

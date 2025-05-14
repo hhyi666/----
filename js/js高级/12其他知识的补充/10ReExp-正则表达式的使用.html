@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    输入账号：<input type="text">
+    <p class="tip">请输入账号</p>
+    <script>
+        //创建正则
+
+        //这两个含义是相同的
+        // const re1 = new RegExp("abc","ig") //这是匹配的规则
+        const re1 = /abc/ig //注释
+        const message = "fzbs FABC abc2343254365467"
+
+        //1.使用正则对象上的实例方法
+        //webpack -> looder -> test
+        //test 检查某一个字符串是否符合某一个规则
+        // if(re1.test(message)){
+        //     console.log("message符合规则")
+        // }else console.log("不符合规则")
+    
+
+        //2.exec 执行方法使用正则执行一个字符串
+        // const res1 = re1.exec(message) //执行并找到最近的结果
+        // console.log(res1)
+
+        //3，match方法
+        // const res2 = message.match(re1) //拿到字符串中匹配的字符串
+        // console.log(res2)
+
+        //3.matchall
+        // const res = message.matchAll(re1) //这种返回的是迭代器 字符串必须加g转成全局搜索
+        // console.log(res)
+        // // console.log(res.next())
+        // for (const item of res) {
+        //     console.log(item)
+        // }
+
+        //4.replace
+
+        //5，split 切割字符串
+        // const res = message.split(re1) //进行切割将目标字符串进行切割
+        // console.log(res)
+
+        //6.search方法
+        const res = message.search(re1)
+        console.log(res)//找到第一次出现的索引 ，没有的话返回的就是-1
+
+
+
+
+    
+        //案例：让用户输入的账号必须是aaaaa以上
+        // const inputEl = document.querySelector("input")//里面有value属性
+        // const tipEl = document.querySelector(".tip")
+        // inputEl.oninput = function(){
+        //     const value = this.value
+        //     console.log("value:",value)
+        //     if(/^a{5,8}$/.test(value)){//至少有5个a
+        //         tipEl.textContent = "符合规则"
+        //     }else tipEl.textContent = "不符合规则，重新输入"
+        // }
+    </script>
+</body>
+</html>

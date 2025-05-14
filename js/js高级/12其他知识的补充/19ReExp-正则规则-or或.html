@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //将捕获组作为整体
+        const info = "asdsabcabcadsabcfdascbacbabc abc wada"
+        const abcRe = /(abc|cba){2,}/ig //能够拿到了两个abcabc组成对象
+        //使用|操作里面的都可以拿到 
+        console.log(info.match(abcRe))
+        
+    </script>
+</body>
+</html>

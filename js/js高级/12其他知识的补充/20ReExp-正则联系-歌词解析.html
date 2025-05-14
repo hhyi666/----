@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //正常的情况下这个数据是通过网路请求拿到的 拿到后端服务器的数据
+
+        const lyricLineStrings = [
+            { time: 3, text: "在每个眼神都只身荒野那瞬间" },
+            { time: 10, text: "你和我面对面如此地安慰" },
+            { time: 18, text: "如果我能发现" },
+            { time: 22, text: "动情的灵魂终将在前夜告别" },
+            { time: 26, text: "我也不愿停下仅有时间" },
+            { time: 29, text: "让我忘了我是谁" },
+        ]
+
+        //针对某一行的进行解释
+        const formattedStrings = lyricLineStrings.map(item =>
+            `${item.time}${item.text}`
+        ) //使用map直接进行拼接 
+        // console.log(formattedStrings)
+        
+        //这个方法能够够直接封装后续直接使用这个方法 
+        //更加方便
+        //想不到是正常的
+
+        //匹配时间
+        const timeRe = /\d\d?/ //观察拆开的部分
+        //当这里是时分秒的时候使用正则拆开
+        //字符串转化的时候会进行隐式转化
+        const lyricInfos = []
+        for (const linestring of formattedStrings) {
+            //1.获取时间
+            // console.log("time:",linestring.match(timeRe)[0]) //直接拿到时间
+            const time = linestring.match(timeRe)[0]
+            //2.获取内容
+            const content = linestring.replace(timeRe,"").trim() //去空格
+            console.log(time,content)
+            const lyricInfo = {time,content}
+            lyricInfos.push(lyricInfo)
+        }
+        console.log(lyricInfos) 
+        //后面显示歌词后面学 使用正则歌词
+        
+    </script>
+</body>
+
+</html>
