@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- button也可以加上事防抖操作 -->
+    <button>按钮</button>
+    <input type="text">
+    <button class="cancel">取消</button>
+    <!-- 使用CDN进行引用 -->
+    <!--或者直接下载到本地，再引用 -->
+
+    <!-- <script src="js/underscore-umd-min.js"></script> -->
+    <script>
+        const inputEl = document.querySelector("input")
+        const cancelBtn = document.querySelector(".cancel")
+
+
+        // let index = 1
+        // inputEl.oninput = _.debounce(function () { //减缓函数的执行频率
+        //     console.log(`发送网络请求${index++}:,`, this.value)
+        // }, 1000) 
+
+
+        //4，节流处理的代码 按照固定的频率进行执行
+        //自己实现节流函数 fn执行的函数    第一次不执行也可以进行控制  最后一次不不执行也可以进行控制
+        function hythrottle(fn, interval, { leading = true, trailing = true } = {}) {
+            let startTime = 0
+            let timer = null
+            const _throttle = function (...args) { //可以传入参数
+
+                const nowTime = new Date().getTime() //现在时间会非常大
+
+                //1.对第一次立即执行进行控制,只有第一次 不需要立即执行
+                if (!leading && startTime === 0) {
+                    startTime = nowTime
+                }
+                const waitTime = interval - (nowTime - startTime) //第一次立即执行 这个是直接就是负值
+
+                if (waitTime <= 0) {
+                    if (timer) clearTimeout(timer) // 防止下面和这里同时执行
+                    fn.apply(this, args) //使用apply进行绑定
+                    startTime = nowTime
+                    timer = null
+                    return
+                }
+
+                //是否需要执行尾部 有定时器就不需要再次开启
+                if (trailing && !timer) {
+                    timer = setTimeout(() => {
+                        fn.apply(this, args)
+                        startTime = new Date().getTime() //这里要对最新时间进行赋值
+                        timer = null
+                    }, waitTime);
+                }
+
+            }
+
+            _throttle.cancel = function(){
+                if(timer)clearTimeout(timer)
+                startTime = 0
+                timer = null
+            }
+            return _throttle
+        }
+
+
+        let counter = 1
+        const throttleFn = hythrottle(function (event) {
+            console.log(`发送网络请求：${counter++}`, this.value, event)
+        }, 3000, { trailing: true }) //每三秒进行触发
+        inputEl.oninput = throttleFn
+        cancelBtn.onclick = function () {
+            throttleFn.cancel() //执行取消操作
+        }
+    </script>
+</body>
+
+</html>
