@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //判断一个对象是不是对象类型
+        const name = "huuyi"
+        const age = 18
+        function isObject(value) {
+            const typeValue = typeof value //null object function array
+            //null 应该是返回的false 
+            return (value !== null) && (typeValue === "object" || typeValue === "function")
+        }
+        // console.log(isObject(name))
+
+
+        const map  = new WeakMap() //弱引用
+
+        function deepCopy(obj,map = new WeakMap()) {
+
+            //如果时symbol类型 返回新的symbol
+            if(typeof obj === "symbol"){ //symnol类型
+                return Symbol(obj.description)
+            }
+
+            //1，如果是原始类型。直接返回
+            if (!isObject(obj)) { //判断，直接返回
+                return obj
+            }
+
+            //Set类型需要进行特殊的判断 深拷贝set
+            if(obj instanceof Set){
+                const newSet =  new Set()
+                for (const value of set) {
+                    newSet.add(deepCopy(value))
+                }
+                return newSet
+            }
+
+
+            //如果是函数类型 函数用来执行 不需要进行深拷贝
+            if(typeof obj === "function"){
+                return obj
+            }
+
+
+            if(map.get(obj))return map.get(obj) //有就直接返回
+            //2.对象类型才需要创建类型
+            const newObj = Array.isArray(obj)?[]:{}
+            map.set(obj,newObj) //这里要是用map记录原来是否已经调用 对比了
+            for (const key in obj) {
+                newObj[key] = deepCopy(obj[key],map) //是对象就能返回，不是就继续进入下一层循环继续查找
+            }
+
+            //单纯遍历symbol
+            const symbolkeys = Object.getOwnPropertySymbols(obj)
+            for (const element of symbolkeys) {
+                newObj[Symbol(element.description)] = deepCopy(obj[element],map)
+            }
+            return newObj
+        }
+
+        const info = {
+            name: "huuyii",
+            age: 10,
+            friend: {
+                name: "huu",
+                address: {
+                    name: "chengdu",
+                    detail: "double tower"
+                }
+            },
+            // self : info
+        }   
+        info.self = info
+        const newInfo = deepCopy(info)
+        console.log(newInfo)
+    </script>
+</body>
+
+</html>

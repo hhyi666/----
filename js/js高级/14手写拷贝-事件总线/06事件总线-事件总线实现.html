@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="nav-btn">按钮</button>
+    <script>
+
+
+        class HYEventBus{
+            constructor(){
+                this.eventMap = {}
+            }
+
+
+            on(eventName,eventFn){ //表示进行监听
+                let eventFns = this.eventMap[eventName]
+                if(!eventFns){   //没有值就放一个空数组进去
+                    eventFns = []
+                    this.eventMap[eventName] = eventFns
+                }
+                eventFns.push(eventFn) //记得将值存下来
+                //赋值引用，直接更改就行
+            }
+
+            off(eventName,eventFn){//取消操作 
+                //找到对应的name中的Fn进行删除操作
+                let eventFns = this.eventMap[eventName]
+                if(!eventFns)return
+                for(let i = 0;i<eventFns.length;i++){
+                    const fn = eventFns[i]
+                    if(fn === eventFn){
+                        eventFns.splice(i,1)
+                        break
+                    }
+                }
+                //没有监听就删除
+                if(eventFns.length === 0){
+                    delete this.eventMap[eventName]
+                }
+            }
+            
+            emit(eventName,...args){ //表示发送事件 函数在这里获取进行监听 
+                //能够接收到的函数就进行返回
+                let eventFns = this.eventMap[eventName]
+                if(!eventFns)return
+                eventFns.forEach(fn => {
+                    fn(...args) //这样就能将参数传回去
+                })
+            }
+        }
+
+
+        //类 Eventbus -> 事件总线
+        //使用过程
+        const eventBus = new HYEventBus()
+
+
+        //nav.vue在组件中监听事件 表示谁进行监听
+        eventBus.on("navclick",() => {
+            console.log("navclick listener 01")
+        })
+        
+        const click = () => {
+            console.log("navclick listener 02")
+        }
+        setTimeout(() => {
+            eventBus.off("navclick",click) //通过off进行清除
+        }, 5000);
+
+        eventBus.on("navclick",click)
+
+
+        eventBus.on("siderclick",() => {
+            console.log("siderclick listener 03")
+        })
+2
+
+        //nav.vue
+        const btnEl = document.querySelector(".nav-btn")
+        btnEl.onclick = function(){
+            console.log("自己监听到按钮的点击")
+            eventBus.emit("navclick","huuyii")
+            //发送事件。上面的进行监听
+        }
+    </script>
+</body>
+</html>

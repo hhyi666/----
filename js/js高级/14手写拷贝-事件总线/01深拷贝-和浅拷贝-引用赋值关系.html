@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const info = {
+            name : "why",
+            age : 18,
+            friend : {
+                name : "kobe"
+            },
+            running () { },
+            [Symbol()] : "abc",
+            // obj : info
+            
+        }
+        info.obj = info //有意思的写法
+        //window的的windo对象也是window 自己引用自己 
+
+
+        //1.操作一 引用赋值 直接赋值指针 地址共享
+        const obj1 = info 
+
+
+        //2.操作二：浅拷贝
+        const obj2 = {...info}
+        obj2.name = "iii"
+        console.log(obj2.name)
+        console.log(info.name)
+
+        obj2.friend.name = "ooo" //但是深层的会改
+        console.log(obj2.friend.name)
+        console.log(info.friend.name)
+
+        //这样也是浅拷贝 只是数据的拷贝
+        const obj3 = Object.assign({},info)
+        console.log(obj3)
+
+        //操作三：深拷贝 JS默认没有深拷贝
+        //一般调用函数的时候传进去的参数，修改的时候慎重
+
+        //深拷贝 JSON
+        const obj4 = JSON.parse(JSON.stringify(info)) //转成字符串再进行操作 但是函数是不能进行拷贝的
+        //JSON是不能解决自己引用自己的操作
+        info.friend.name = "curry"
+        console.log(obj4.friend.name) //这里不会进行改变
+        //创建新的对象，和原来没关系
+        console.log(obj4)
+        
+
+    </script>
+</body>
+</html>
