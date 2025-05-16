@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //新建 XMLHTTPRequest对象
+        const xhr = new XMLHttpRequest()
+
+        
+        //监听状态的改变 宏任务 进行回调
+        xhr.onreadystatechange = function(){
+            console.log(xhr.response) //获取结果
+            if(xhr.readyState !== XMLHttpRequest.DONE)return 
+            //将字符串转换成jSON对象
+            console.log(JSON.parse(xhr.response))
+        }
+
+
+        //配置请求 只是配置
+        // method 请求的方式：get/post/delete/put/patch
+        xhr.open("get","") //这里不是发送请求
+
+
+        //发送请求(浏览器帮助发送请求)
+        xhr.send()
+    </script>
+</body>
+</html>

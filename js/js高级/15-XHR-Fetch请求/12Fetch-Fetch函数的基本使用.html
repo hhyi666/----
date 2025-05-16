@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // //Fetch 发送 get请求
+        // fetch("http://123.207.32.32:8000/home/multidata").then(res => {
+
+        //     //获取对应的responce
+        //     const response = res
+
+        //     //获取具体的结果
+        //     response.json().then(res => {
+        //         console.log(res)
+        //     })
+        //     // console.log(res)
+        // }).catch(err => {
+        //     console.log(err)
+        // })
+
+        // 优化一：
+        // fetch("http://123.207.32.32:8000/home/multidata").then(res => {
+
+        //     //获取对应的responce
+        //     const response = res
+
+        //     //获取具体的结果
+        //    return response.json() //返回的也是promise
+        //     // console.log(res)
+        // }).then(res => {
+        //     console.log(res)
+        // }).catch(err => {
+        //     console.log(err)
+        // })
+
+        //优化二：
+        // async function getDate() { //返回的是peomise就可以使用
+        //     const response = await fetch("http://123.207.32.32:8000/home/multidata") 
+        //     const res = await response.json()
+        //     console.log(res)
+        // } 
+        // getDate()
+
+        // post请求并且有参数
+        async function getDate() { //返回的是peomise就可以使用
+            // JSON形式
+            // const response = await fetch("http://123.207.32.32:1888/02_param/postjson",{
+            //     method : "post",
+            //     headers : {
+            //         "Content-type" : "application/json"
+            //     }, 
+            //     //需要转化成JSON类型才能转递
+            //     body : JSON.stringify({
+            //         name : "huuyii",
+            //         age : 10
+            //     })
+            // })
+            // const res = await response.json()
+            // console.log(res)
+
+            //这个是传递form形式
+            const formData = new FormData()
+            formData.append("name","huuyii")
+            formData.append("age",19)
+            const response = await fetch("http://123.207.32.32:1888/02_param/postform",{
+                method : "post",
+                //需要转化成JSON类型才能转递
+                body : formData
+            })
+
+            //获取responce的状态
+            console.log(response.statusText,response.status,response.ok)
+            //ok的状态码 就是200 - 299
+            const res = await response.json()
+            console.log(res)
+
+        }
+        getDate()
+    </script>
+</body>
+
+</html>

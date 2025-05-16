@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class="file"type="file">
+    <button class="upload">上传文件</button>
+    <script>
+
+        //xhr fetch 都可以上传文件
+        const BtnEl = document.querySelector(".upload")
+        BtnEl.onclick = function(){
+            console.log("文件上传")
+            
+            const xhr = new XMLHttpRequest()
+            xhr.onload = function(){
+                console.log(xhr.response)
+            }
+
+            //xhr上传能够查看上传的进度
+            xhr.onprogress = function(event){
+                console.log(event)
+            }
+
+            xhr.responseType = "json"
+            xhr.open("post","http://123.207.32.32:1888/02_param/upload")
+            //表单
+            const fileEl = document.querySelector(".file")
+            // console.log(fileEl.files)
+            const file = fileEl.files[0]
+            const formData = new FormData()
+            formData.append("avatar",file) //放在表单里面
+            //创建表单，是键值对的形式 手动设置键值对
+            //现有的表单元素就不需要手动进行，直接传入new的地方就行
+
+            xhr.send(formData)
+        }
+    </script>
+</body>
+</html>

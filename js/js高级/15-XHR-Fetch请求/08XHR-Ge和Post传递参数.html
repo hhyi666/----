@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form class="info">
+        <input type="text" name="username">
+        <input type="password" name="password">
+    </form>
+    <button class="send">发送请求</button>
+    <script>
+
+
+        //传递方式的四种方法
+        const formEl = document.querySelector(".info")
+        const sendBtn = document.querySelector(".send")
+        //方式三：form传递
+        sendBtn.onclick = function () {
+            // console.log(formEl)
+            const xhr = new XMLHttpRequest()
+            xhr.onload = function () {
+                console.log(xhr.response)
+            }
+            xhr.responseType = "json"
+            // xhr.open("post","http://123.207.32.32:1888/02_param/postform")
+            //将formElement对象转化成formData的对象
+            // const formData = new FormData(formEl) //想要将form传递给浏览器直接转成formData发送给浏览器
+            // xhr.send(formData)
+
+            //方式四：post -> json 转换成为字符串的形式进行传递
+            xhr.open("post","http://123.207.32.32:1888/02_param/postjson")
+            xhr.setRequestHeader("Content-type","application/json") //需要告诉浏览器发送的是什么类型的数据
+            xhr.send(JSON.stringify({name:"huuyii",age:12,height:1.88}))
+
+        }
+
+        //创建对象
+        // const xhr = new XMLHttpRequest
+        // //监听对象  
+        // xhr.onload = function () {
+        //     console.log(xhr.response)
+        // }
+
+        // //配置请求
+        // xhr.responseType = "json"
+
+        // //1。给服务器传递参数的方式 GET                       服务器地址+端口号+路径 根绝参数查到相应的值
+        // // xhr.open("get","http://123.207.32.32:1888/02_param/get?name=why&age=18&address=chengdu")
+
+        // //2，给服务器传递参数的方式POST ->unlencoded
+        // // xhr.open("post","http://123.207.32.32:1888/02_param/posturl")
+        // //post 参数放在send当中
+        // //我们需要设置发送数据的类型 编码的方式
+        // // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+
+
+        // //3。方式三：post请求 发送form
+        // //发送请求（请求体body） 这样的发送模式服务器不能解析
+        // xhr.send("name=huuyii&age=14&address=chengdu")
+    </script>
+</body>
+
+</html>

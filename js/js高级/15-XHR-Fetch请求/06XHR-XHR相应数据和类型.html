@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const xhr = new XMLHttpRequest()
+
+
+        //监听xhr对象的状态
+        xhr.onload = function () {
+            console.log(xhr.response)
+            console.log(xhr.responseText)
+            console.log(xhr.responseXML) //可以设置返回的格式
+         }
+
+         xhr.responseType = "text" //这里能将设置访问返回的类型
+         xhr.responseType = "json" //这样就能直接返回JSON文件类型
+         xhr.responseType = "xml"
+         
+
+         //接口 responce的类型有很多
+         //JSON类型  直接就能返回对象
+         //可以返回text类型 
+         //返回XML类型的数据
+        xhr.open("get",)
+        
+        //发送网络请求
+        xhr.send
+    </script>
+</body>
+
+</html>

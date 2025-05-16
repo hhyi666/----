@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="/js/js高级/15-XHR-Fetch请求/tools/ajax_promise.js"></script>
+
+    <script>
+        const promise = hyajax({
+            url : "http://123.207.32.32:1888/02_param/get",
+            data : {
+                name : "huuyii",
+                age : 16,
+            },
+        })
+        
+        console.log(promise.xhr)
+        promise.then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+    </script>
+</body>
+</html>

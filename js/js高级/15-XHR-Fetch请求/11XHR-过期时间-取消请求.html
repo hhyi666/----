@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>取消请求</button>
+    <script>
+        const xhr = new XMLHttpRequest()
+
+        xhr.onload = function(){
+            console.log(xhr.response)
+        }
+        xhr.ontimeout = function(){
+            console.log("访问已经取消")
+        }
+        xhr.onabort = function(){
+            console.log("请求已经取消")
+        }
+        xhr.responseType = "json"   //能够将返回值设置成对象类型      
+        //浏览器达到过期时间，没有拿到，就直接取消请求
+
+        //过期时间的设置 ，默认没有过期时间 超时时间
+        // xhr.timeout = 3000
+        xhr.open("get","http://123.207.32.32:1888/01_basic/timeout")
+
+        xhr.send()
+
+        //手动取消请求
+        const cancelBtn = document.querySelector("button")
+        cancelBtn.onclick = function(){
+            xhr.abort()//取消请求
+        }
+    </script>
+</body>
+</html>

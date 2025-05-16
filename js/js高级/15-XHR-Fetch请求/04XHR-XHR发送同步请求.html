@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //新建 XMLHTTPRequest对象
+        const xhr = new XMLHttpRequest()
+
+        
+        //监听状态的改变 宏任务 进行回调 监听状态的改变
+        //监听四种状态
+        xhr.onreadystatechange = function(){
+            //1.状态不是DONE的状态，直接返回
+            if(xhr.readyState !== XMLHttpRequest.DONE)return
+
+            //确定拿到数据 拿到数据后才会执行 异步代码 不会阻塞代码的执行
+            console.log("statechange:",xhr.readyState)
+        }
+
+
+        //配置请求 只是配置
+        // method 请求的方式：get/post/delete/put/patch
+        xhr.open("get","",false) //这里不是发送请求
+                        //设置同步请求还是异步请求
+
+        //发送请求(浏览器帮助发送请求) 发送同步请求
+        xhr.send()
+
+
+        //同步必须等到有结果才会执行
+        console.log("=-=================") //这里先执行
+    </script>
+</body>
+</html>
