@@ -2,6 +2,8 @@
 
 ### 2.1Proxy
 
+就是拦截操作，并且做出一些反应
+
 #### 2.1.1Object.defineProperty
 
  原来的监听的方法

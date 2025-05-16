@@ -153,6 +153,10 @@ person1.obj.foo2().call(person2)//上层作用域 obj
 
 ## 二.浏览器运行原理
 
+将静态的页面转化成可视化界面![浏览器渲染原理.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d569cfcae15442189f97dbd6d47c4ab3~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+
+![浏览器渲染原理-第 2 页.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5c360b4472914f14916102cdc69230ef~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+
 ### **3.1输入URL网页请求显式的过程**
 
 
@@ -160,10 +164,14 @@ person1.obj.foo2().call(person2)//上层作用域 obj
 ### **3.2网页的渲染过程**
 
 - HTML解析 -> DOM tree
+  渲染引擎使用HTML解析器，解析HTML文档，将各个HTML元素逐个转化成DOM节点，生成DOM树
 - CSS解析 > CSSOM tree
-- 生成 Render tree
-- 进行 layout布局
-- 进行paint绘制
+  解析CSS 转化成CSS对象，进行组装，构建CSSOM树
+- 生成 Render tree 渲染树的构建
+- 进行 layout布局  盒模型
+  计算元素的大小和位置 
+- 进行paint绘制  界面
+  根据计算的结果，吧每一个图层转换成像素，并对所有媒体文件进行解码
 
 ### **3.3回流和重绘**	
 
